@@ -1,0 +1,23 @@
+.container {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1.25rem;
+    padding-bottom: 1rem;
+
+    .navList {
+      ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+
+        li {
+          margin-right: 2rem;
+          font-size: 1.1rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

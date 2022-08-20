@@ -1,0 +1,46 @@
+.container {
+  width: 1280px;
+  margin: auto;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .logo {
+      width: 33%;
+
+      p {
+        width: 72%;
+        line-height: 1.75;
+        font-size: 1.15rem;
+        font-weight: 300;
+      }
+
+      .icons {
+        display: flex;
+        align-items: center;
+
+        .icon {
+          border-radius: 50%;
+          padding: 12px;
+          font-size: 1.45rem;
+          margin-right: 1rem;
+          cursor: pointer;
+          transition: 0.3s all ease-in-out;
+        }
+        .icon:first-child:hover {
+          color: #4267b2;
+        }
+
+        .icon:hover:nth-child(1) {
+          color: #1da1f2;
+        }
+
+        .icon:last-child:hover {
+          color: #c13584;
+        }
+      }
+    }
+  }
+}
