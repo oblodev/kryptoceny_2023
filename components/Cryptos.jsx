@@ -1,0 +1,145 @@
+import { useState, useEffect } from "react";
+
+import styles from "../styles/Cryptos.module.scss";
+
+import Image from "next/image";
+import NumberFormat from "react-number-format";
+
+function Cryptos({ cryptoData }) {
+  console.log(cryptoData);
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <h2>
+          <span>//</span> Aktualne kursy kryptowalut
+        </h2>
+        <div className={styles.cryptos}>
+          <table className={styles.kryptoTable}>
+            <thead>
+              <tr className={styles.kryptoHead}>
+                <th className={styles.kryptoBorder}>#</th>
+                <th className={`${styles.kryptoLeft} ${styles.kryptoBorder}`}>
+                  <p>Kryptowaluta</p>{" "}
+                </th>
+                <th className={styles.kryptoBorder}>Kurs</th>
+                <th className={styles.kryptoBorder}>Kurs 1h</th>
+                <th className={styles.kryptoBorder}>Kurs 24h</th>
+                <th className={styles.kryptoBorder}>Kurs 7d</th>
+                <th className={styles.kryptoBorder}>Wolumen 24h</th>
+                <th className={styles.kryptoBorder}>Kapitalzacja</th>
+              </tr>
+            </thead>
+            {cryptoData ? (
+              cryptoData.map((crypto) => (
+                <tbody>
+                  <tr key={crypto.symbol}>
+                    <td className={styles.kryptoBorder2}>
+                      {crypto.market_cap_rank}{" "}
+                    </td>
+                    <td
+                      className={`${styles.kryptoName} ${styles.kryptoBorder2}`}
+                    >
+                      <div className={styles.kryptoImage}>
+                        <Image
+                          src={crypto.image}
+                          width="24px"
+                          height="24px"
+                          style={{ marginRight: "8px" }}
+                        />
+                      </div>{" "}
+                      <p>{crypto.name}</p>
+                    </td>
+                    <td className={styles.kryptoBorder2}>
+                      {crypto.current_price >= 1
+                        ? crypto.current_price.toFixed(2)
+                        : crypto.current_price.toFixed(4)}
+                      $
+                    </td>
+                    <td className={styles.kryptoBorder2}>
+                      <span
+                        className={
+                          crypto.price_change_percentage_1h_in_currency > 0
+                            ? "green"
+                            : "red"
+                        }
+                      >
+                        {crypto.price_change_percentage_1h_in_currency.toFixed(
+                          2
+                        )}
+                        %
+                      </span>
+                    </td>
+                    <td className={styles.kryptoBorder2}>
+                      <span
+                        className={
+                          crypto.price_change_percentage_24h > 0
+                            ? "green"
+                            : "red"
+                        }
+                      >
+                        {crypto.price_change_percentage_24h.toFixed(2)} %
+                      </span>
+                    </td>
+                    <td
+                      className={`${styles.kryptoPrice} ${styles.kryptoBorder2}`}
+                    >
+                      <span
+                        className={
+                          crypto.price_change_percentage_7d_in_currency > 0
+                            ? "green"
+                            : "red"
+                        }
+                      >
+                        {crypto.price_change_percentage_7d_in_currency.toFixed(
+                          2
+                        )}
+                        %
+                      </span>
+                    </td>
+                    <td
+                      className={`${styles.kryptoPrice} ${styles.kryptoBorder2}`}
+                    >
+                      {
+                        <NumberFormat
+                          thousandsGroupStyle="thousand"
+                          value={crypto.total_volume}
+                          decimalSeparator="."
+                          displayType="text"
+                          type="text"
+                          thousandSeparator={true}
+                          allowNegative={true}
+                        />
+                      }
+                      $
+                    </td>
+                    <td
+                      className={`${styles.kryptoPrice} ${styles.kryptoBorder2}`}
+                    >
+                      {
+                        <NumberFormat
+                          thousandsGroupStyle="thousand"
+                          value={crypto.market_cap}
+                          decimalSeparator="."
+                          displayType="text"
+                          type="text"
+                          thousandSeparator={true}
+                          allowNegative={true}
+                        />
+                      }
+                      $
+                    </td>
+                  </tr>
+                </tbody>
+              ))
+            ) : (
+              <p>No Data</p>
+            )}
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Cryptos;

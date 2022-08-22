@@ -1,6 +1,7 @@
 import styles from "../styles/Nav.module.scss";
 import Image from "next/image";
 import logo from "../public/images/logo_kryptokurs.png";
+import Link from "next/link";
 
 function Nav() {
   return (
@@ -11,10 +12,18 @@ function Nav() {
         </div>
         <div className={styles.navList}>
           <ul>
-            <li> KryptoKurs</li>
-            <li>Kryptowaluty</li>
-            <li>O nas</li>
-            <li>Kontakt</li>
+            <li>
+              <Link href="/">KryptoKurs</Link>
+            </li>
+            <li>
+              <Link href="/kryptowaluty">Kryptowaluty</Link>
+            </li>
+            <li>
+              <Link href="/o-nas">O nas</Link>
+            </li>
+            <li>
+              <Link href="/kontakt">Kontakt</Link>
+            </li>
           </ul>
         </div>
       </div>

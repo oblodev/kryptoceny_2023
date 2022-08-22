@@ -1,0 +1,57 @@
+.container {
+  max-width: 1280px;
+  margin: auto;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    .header {
+      margin-bottom: 2rem;
+
+      h2 {
+        span {
+          color: #5271ff;
+          font-size: 1.75rem;
+          font-weight: 700 !important;
+        }
+      }
+    }
+
+    .statCards {
+      display: flex;
+      flex-direction: row;
+
+      .statCard {
+        background-color: #fff;
+        padding: 2.5em 2.75rem;
+        border-radius: 30px;
+        margin-right: 1.5rem;
+        border-top: 2px solid #5271ff;
+        border-bottom: 1px solid #5271ff;
+        box-shadow: 0 0 25px 3px rgb(0 0 0 / 4%);
+        transition: all 0.3s ease-in-out;
+
+        h2 {
+          font-size: 1.25rem;
+          font-weight: 500;
+          margin: 0;
+        }
+
+        p {
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: #5271ff;
+        }
+      }
+
+      .statCard:hover {
+        box-shadow: 0 0 25px 3px rgb(0 0 0 / 12%);
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.container {
+  width: 1280px;
+  margin: auto;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

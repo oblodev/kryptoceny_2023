@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h2 {
+      margin-bottom: 4rem;
+      span {
+        color: #5271ff;
+      }
+    }
+  }
+}
+
+.kryptoBorder {
+  border-bottom: 2px solid #5271ff;
+}
+
+.kryptoBorder2 {
+  border-bottom: 1px solid #5271ff;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.kryptoTable {
+  width: 1180px;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #fff;
+  border-radius: 40px;
+  border-top: 4px solid #5271ff;
+  border-bottom: 1px solid #5271ff;
+  box-shadow: 0 0 25px 3px rgb(0 0 0 / 8%);
+  font-family: "Poppins", sans-serif;
+
+  .kryptoHeader {
+    border-bottom: 2px solid #5271ff;
+    background-color: red;
+  }
+
+  .kryptoHead {
+    .kryptoLeft {
+      text-align: left;
+
+      p {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 2rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .kryptoName {
+    text-align: left;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+
+    .kryptoImage {
+      margin-right: 0.5rem;
+      margin-left: 2rem;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+  }
+}

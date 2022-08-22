@@ -1,17 +1,20 @@
 .container {
-  width: 1280px;
+  max-width: 1400px;
   margin: auto;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    width: 100%;
 
     .logo {
-      width: 33%;
-
+      max-width: 30%;
+      margin-top: 1rem;
       p {
-        width: 72%;
+        width: 75%;
         line-height: 1.75;
         font-size: 1.15rem;
         font-weight: 300;
@@ -33,12 +36,34 @@
           color: #4267b2;
         }
 
-        .icon:hover:nth-child(1) {
+        .icon:hover {
           color: #1da1f2;
         }
 
         .icon:last-child:hover {
           color: #c13584;
+        }
+      }
+    }
+
+    .categories {
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          line-height: 2;
+        }
+      }
+    }
+
+    .links {
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          line-height: 2;
         }
       }
     }

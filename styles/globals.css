@@ -16,3 +16,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.green {
+  color: #00cc00;
+}
+
+.red {
+  color: #f91e5a;
+}
