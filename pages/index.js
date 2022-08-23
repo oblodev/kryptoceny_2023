@@ -5,23 +5,17 @@ import Stats from "../components/Stats";
 import styles from "../styles/Home.module.css";
 
 export async function getStaticProps() {
-  const res = await fetch(
-    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=2&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
-  );
-  const data = await res.json();
-
   const resStat = await fetch(`https://api.coingecko.com/api/v3/global`);
   const statData = await resStat.json();
 
   return {
     props: {
-      cryptoData: data,
       stats: statData,
     },
   };
 }
 
-export default function Home({ cryptoData, stats }) {
+export default function Home({ stats }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -30,8 +24,8 @@ export default function Home({ cryptoData, stats }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Stats stats={stats} />
-      <Cryptos cryptoData={cryptoData} />
+      <Stats stats={stats} suppressHydrationWarning={true} />
+      <Cryptos />
     </div>
   );
 }

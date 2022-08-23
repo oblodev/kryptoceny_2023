@@ -1,12 +1,29 @@
 import { useState, useEffect } from "react";
 
 import styles from "../styles/Cryptos.module.scss";
-
+import axios from "axios";
 import Image from "next/image";
 import NumberFormat from "react-number-format";
+import NextPageBtn from "./NextPageBtn";
+import BackPageBtn from "./BackPageBtn";
+import { useTheme } from "../hooks/useTheme";
 
-function Cryptos({ cryptoData }) {
-  console.log(cryptoData);
+function Cryptos() {
+  const [cryptoData, setCryptoData] = useState([]);
+
+  const { page, show } = useTheme();
+
+  useEffect(() => {
+    const fetchCryptos = async () => {
+      const { data } = await axios(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+      );
+
+      setCryptoData(data);
+    };
+
+    fetchCryptos();
+  }, [page]);
 
   return (
     <div className={styles.container}>
@@ -14,6 +31,7 @@ function Cryptos({ cryptoData }) {
         <h2>
           <span>//</span> Aktualne kursy kryptowalut
         </h2>
+
         <div className={styles.cryptos}>
           <table className={styles.kryptoTable}>
             <thead>
@@ -48,7 +66,7 @@ function Cryptos({ cryptoData }) {
                           style={{ marginRight: "8px" }}
                         />
                       </div>{" "}
-                      <p>{crypto.name}</p>
+                      <span>{crypto.name}</span>
                     </td>
                     <td className={styles.kryptoBorder2}>
                       {crypto.current_price >= 1
@@ -133,9 +151,16 @@ function Cryptos({ cryptoData }) {
                 </tbody>
               ))
             ) : (
-              <p>No Data</p>
+              <div>
+                <p>Laduje dane ...</p>
+              </div>
             )}
           </table>
+        </div>
+        <div className={styles.buttons}>
+          {show ? <BackPageBtn /> : <p></p>}
+
+          <NextPageBtn />
         </div>
       </div>
     </div>
