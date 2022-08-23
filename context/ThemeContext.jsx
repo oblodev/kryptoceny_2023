@@ -8,6 +8,8 @@ const themeReducer = (state, action) => {
       return { ...state, page: action.payload };
     case "CHANGE_SHOW":
       return { ...state, show: action.payload };
+    case "SET_FETCH":
+      return { ...state, isFetched: action.payload };
     default:
       return state;
   }
@@ -17,6 +19,7 @@ export function ThemeProvider({ children }) {
   const [state, dispatch] = useReducer(themeReducer, {
     page: 1,
     show: false,
+    isFetched: false,
   });
 
   const changePage = (page) => {
@@ -27,8 +30,14 @@ export function ThemeProvider({ children }) {
     dispatch({ type: "CHANGE_SHOW", payload: show });
   };
 
+  const changeFetch = (isFetched) => {
+    dispatch({ type: "SET_FETCH", payload: isFetched });
+  };
+
   return (
-    <ThemeContext.Provider value={{ ...state, changePage, changeShow }}>
+    <ThemeContext.Provider
+      value={{ ...state, changePage, changeShow, changeFetch }}
+    >
       {children}
     </ThemeContext.Provider>
   );

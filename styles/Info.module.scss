@@ -1,0 +1,27 @@
+.container {
+  width: 1280px;
+  margin: auto;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 6rem;
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+  }
+
+  .nota {
+    margin-top: 4rem;
+    font-size: 0.84rem !important;
+  }
+}

@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  background-color: #232329;
+  height: auto;
+  margin-bottom: 8rem;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.5rem 2rem;
+    margin: 0 4rem;
+
+    h2 {
+      color: #fff;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+      font-weight: 300;
+      font-size: 1.8rem;
+    }
+
+    .poradnikWrap {
+      display: flex;
+      flex-direction: row;
+      color: #fff;
+      margin-bottom: 2rem;
+
+      .poradnikCard {
+        position: relative;
+        margin: 2rem 3rem;
+
+        .poradnikHeader {
+          position: absolute;
+          top: 9rem;
+          left: 1rem;
+
+          h3 {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+  }
+}

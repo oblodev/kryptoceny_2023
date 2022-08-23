@@ -10,8 +10,9 @@ import { useTheme } from "../hooks/useTheme";
 
 function Cryptos() {
   const [cryptoData, setCryptoData] = useState([]);
+  //const [isFetched, setIsFetched] = useState(false);
 
-  const { page, show } = useTheme();
+  const { page, show, changeFetch, isFetched } = useTheme();
 
   useEffect(() => {
     const fetchCryptos = async () => {
@@ -20,6 +21,7 @@ function Cryptos() {
       );
 
       setCryptoData(data);
+      changeFetch(true);
     };
 
     fetchCryptos();

@@ -1,0 +1,43 @@
+.container {
+  width: 1220px;
+  margin: auto;
+  margin-top: 4rem;
+  margin-bottom: 8rem;
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    margin: auto;
+
+    .moreCard {
+      h4 {
+        margin-bottom: 0.75rem;
+        margin-left: 0.4rem;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #5277ff;
+      }
+
+      .moreImg {
+        border-radius: 16px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid #fff;
+        box-shadow: 0 0 25px 3px rgb(0 0 0 / 8%);
+        transition: 0.2s all ease-in;
+      }
+
+      .moreImg:hover {
+        border: 2px solid #5277ff;
+      }
+
+      h5 {
+        margin-left: 0.3rem;
+        margin-top: 0.25rem;
+        font-weight: 300;
+        font-size: 1.15rem;
+      }
+    }
+  }
+}

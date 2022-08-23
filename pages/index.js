@@ -1,6 +1,10 @@
 import Head from "next/head";
 import Cryptos from "../components/Cryptos";
+import Featured from "../components/Featured";
 import Header from "../components/Header";
+import Info from "../components/Info";
+import MoreFeatured from "../components/MoreFeatured";
+import Poradnik from "../components/Poradnik";
 import Stats from "../components/Stats";
 import styles from "../styles/Home.module.css";
 
@@ -26,6 +30,10 @@ export default function Home({ stats }) {
       <Header />
       <Stats stats={stats} suppressHydrationWarning={true} />
       <Cryptos />
+      <Featured />
+      <MoreFeatured />
+      <Poradnik />
+      <Info />
     </div>
   );
 }
