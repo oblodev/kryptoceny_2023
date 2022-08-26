@@ -6,20 +6,12 @@ import Info from "../components/Info";
 import MoreFeatured from "../components/MoreFeatured";
 import Poradnik from "../components/Poradnik";
 import Stats from "../components/Stats";
+import { getFeaturedPost } from "../services/featuredPostIndex";
+import { getPosts } from "../services";
+import { getPoradnikPosts } from "../services/poradnikPostsIndex";
 import styles from "../styles/Home.module.css";
 
-export async function getStaticProps() {
-  const resStat = await fetch(`https://api.coingecko.com/api/v3/global`);
-  const statData = await resStat.json();
-
-  return {
-    props: {
-      stats: statData,
-    },
-  };
-}
-
-export default function Home({ stats }) {
+export default function Home({ stats, featuredPost, posts, poradnikPosts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -28,12 +20,31 @@ export default function Home({ stats }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Stats stats={stats} suppressHydrationWarning={true} />
+      <Stats stats={stats} />
       <Cryptos />
-      <Featured />
-      <MoreFeatured />
-      <Poradnik />
+      <Featured featuredPost={featuredPost} />
+      <MoreFeatured posts={posts} />
+      <Poradnik poradnikPosts={poradnikPosts} />
       <Info />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const resStat = await fetch(`https://api.coingecko.com/api/v3/global`);
+  const statData = await resStat.json();
+
+  const featuredPost = (await getFeaturedPost()) || [];
+  const posts = (await getPosts()) || [];
+
+  const poradnikPosts = (await getPoradnikPosts()) || [];
+
+  return {
+    props: {
+      stats: statData,
+      featuredPost,
+      posts,
+      poradnikPosts,
+    },
+  };
 }

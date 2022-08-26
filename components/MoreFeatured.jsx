@@ -2,58 +2,28 @@ import styles from "../styles/MoreFeatured.module.scss";
 import Image from "next/image";
 import placeholder from "../public/images/placeholder.jpg";
 
-function MoreFeatured() {
+function MoreFeatured({ posts }) {
+  console.log(posts);
+  console.log(posts[0].node.categories.name);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.moreCard}>
-          <h4>INWESTYCJE</h4>
-          <div className={styles.moreImg}>
-            <Image src={placeholder} objectFit="cover" />
-          </div>
+        {posts &&
+          posts.slice(-6).map((post) => (
+            <div className={styles.moreCard}>
+              <h4>{post.node.categories[0].name}</h4>
+              <div className={styles.moreImg}>
+                <Image
+                  src={post.node.featuredImage.url}
+                  objectFit="cover"
+                  height="507px"
+                  width="750px"
+                />
+              </div>
 
-          <h5>Gielda FTX wyceniona na 25 miliardow dolarow</h5>
-        </div>
-        <div className={styles.moreCard}>
-          <h4>INWESTYCJE</h4>
-          <div className={styles.moreImg}>
-            <Image src={placeholder} />
-          </div>
-
-          <h5>Gielda FTX wyceniona na 25 miliardow dolarow</h5>
-        </div>
-        <div className={styles.moreCard}>
-          <h4>INWESTYCJE</h4>
-          <div className={styles.moreImg}>
-            <Image src={placeholder} />
-          </div>
-
-          <h5>Gielda FTX wyceniona na 25 miliardow dolarow</h5>
-        </div>
-        <div className={styles.moreCard}>
-          <h4>INWESTYCJE</h4>
-          <div className={styles.moreImg}>
-            <Image src={placeholder} />
-          </div>
-
-          <h5>Gielda FTX wyceniona na 25 miliardow dolarow</h5>
-        </div>
-        <div className={styles.moreCard}>
-          <h4>INWESTYCJE</h4>
-          <div className={styles.moreImg}>
-            <Image src={placeholder} />
-          </div>
-
-          <h5>Gielda FTX wyceniona na 25 miliardow dolarow</h5>
-        </div>
-        <div className={styles.moreCard}>
-          <h4>INWESTYCJE</h4>
-          <div className={styles.moreImg}>
-            <Image src={placeholder} />
-          </div>
-
-          <h5>Gielda FTX wyceniona na 25 miliardow dolarow</h5>
-        </div>
+              <h5>{post.node.title}</h5>
+            </div>
+          ))}
       </div>
     </div>
   );
