@@ -13,19 +13,27 @@ function Featured({ featuredPost }) {
           <span>//</span> Aktualnosci ze swiata krpytowalut
         </h2>
         <div className={styles.featured}>
-          <div className={styles.imgWrapper}>
+          <div
+            style={{
+              width: "1200px",
+              height: "640px",
+              position: "relative",
+            }}
+            className={styles.imgWrapper}
+          >
             <Image
               src={blockchain}
               className={styles.img}
+              s
               width="1200px"
-              height="700px"
+              height="640px"
               objectFit="cover"
             />
           </div>
           <div className={styles.feature}>
             <p>{post.categories[0].name}</p>
             <h3>{post.title}</h3>
-            <p>{moment(post.createdAt).format("DD MM, YYYY")}</p>
+            <p>{moment(post.createdAt).format("DD.MM.YYYY")}</p>
           </div>
         </div>
       </div>

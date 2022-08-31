@@ -8,7 +8,9 @@ function Nav() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <Image src={logo} />
+          <Link href="/">
+            <Image src={logo} />
+          </Link>
         </div>
         <div className={styles.navList}>
           <ul>
@@ -17,6 +19,9 @@ function Nav() {
             </li>
             <li>
               <Link href="/kryptowaluty">Kryptowaluty</Link>
+            </li>
+            <li>
+              <Link href="/kryptokursy">Kursy Kryptowalut</Link>
             </li>
             <li>
               <Link href="/o-nas">O nas</Link>

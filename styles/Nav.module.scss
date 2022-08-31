@@ -6,6 +6,10 @@
     margin-top: 1.25rem;
     padding-bottom: 1rem;
 
+    .logo {
+      cursor: pointer;
+    }
+
     .navList {
       ul {
         display: flex;
@@ -14,7 +18,7 @@
 
         li {
           margin-right: 2rem;
-          font-size: 1.1rem;
+          font-size: 1rem;
           cursor: pointer;
           transition: all 0.3s ease-in-out;
         }

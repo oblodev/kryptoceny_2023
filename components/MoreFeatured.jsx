@@ -11,17 +11,27 @@ function MoreFeatured({ posts }) {
         {posts &&
           posts.slice(-6).map((post) => (
             <div className={styles.moreCard}>
-              <h4>{post.node.categories[0].name}</h4>
               <div className={styles.moreImg}>
-                <Image
-                  src={post.node.featuredImage.url}
-                  objectFit="cover"
-                  height="507px"
-                  width="750px"
-                />
+                <div
+                  className={styles.imgWrapper}
+                  style={{
+                    width: "400px",
+                    height: "300px",
+                    position: "relative",
+                  }}
+                >
+                  <Image
+                    src={post.node.featuredImage.url}
+                    objectFit="cover"
+                    width="400px"
+                    height="300px"
+                  />
+                </div>
+                <div className={styles.feature}>
+                  <h4>{post.node.categories[0].name}</h4>
+                  <h5>{post.node.title}</h5>
+                </div>
               </div>
-
-              <h5>{post.node.title}</h5>
             </div>
           ))}
       </div>

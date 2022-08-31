@@ -35,6 +35,7 @@ export async function getStaticProps() {
   const statData = await resStat.json();
 
   const featuredPost = (await getFeaturedPost()) || [];
+
   const posts = (await getPosts()) || [];
 
   const poradnikPosts = (await getPoradnikPosts()) || [];

@@ -1,6 +1,6 @@
 import styles from "../styles/Poradnik.module.scss";
 import Image from "next/image";
-import placeholder from "../public/images/placeholder.jpg";
+import Link from "next/link";
 
 function Poradnik({ poradnikPosts }) {
   console.log(poradnikPosts);
@@ -15,13 +15,14 @@ function Poradnik({ poradnikPosts }) {
                 <div className={styles.poradnikImg}>
                   <Image
                     src={poradnikPost.node.poradnikImage.url}
-                    width="600px"
-                    height="480px"
-                    borderRadius="20px"
+                    width="400px"
+                    height="280px"
                   />
                 </div>
                 <div className={styles.poradnikHeader}>
-                  <h3>{poradnikPost.node.title}</h3>
+                  <Link href={`/poradnik/${poradnikPost.node.slug}`}>
+                    <h3>{poradnikPost.node.title}</h3>
+                  </Link>
                 </div>
               </div>
             ))}

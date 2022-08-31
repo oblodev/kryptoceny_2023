@@ -14,10 +14,11 @@
 
     h2 {
       color: #fff;
-      margin-top: 2rem;
-      margin-bottom: 3rem;
-      font-weight: 300;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
       font-size: 1.8rem;
+      color: #5277ff;
     }
 
     .poradnikWrap {
@@ -28,17 +29,29 @@
 
       .poradnikCard {
         position: relative;
-        margin: 2rem 3rem;
+        margin: 2rem 1.4rem;
+        transition: 0.3s all ease-out;
+        border-radius: 20px;
+        overflow: hidden;
 
         .poradnikHeader {
           position: absolute;
-          top: 9rem;
-          left: 1rem;
+          width: 100%;
+          top: 14.4rem;
+
+          background-color: rgba(0, 0, 0, 0.6);
 
           h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding-left: 0.6rem;
           }
         }
+      }
+
+      .poradnikCard:hover {
+        color: #5277ff;
+        cursor: pointer;
       }
     }
   }
