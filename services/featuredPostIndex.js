@@ -8,7 +8,6 @@ export const getFeaturedPost = async () => {
     query MyQuery {
       featuredPostsConnection {
         edges {
-          cursor
           node {
             author {
               bio
@@ -29,7 +28,11 @@ export const getFeaturedPost = async () => {
               name
               slug
             }
+            content {
+              text
+            }
           }
+          cursor
         }
       }
     }

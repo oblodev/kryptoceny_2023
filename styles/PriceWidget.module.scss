@@ -1,0 +1,67 @@
+.priceWidget {
+  height: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+  margin-bottom: 3rem;
+  overflow: hidden;
+  margin-left: 2rem;
+  position: sticky;
+
+  top: 2rem;
+  padding: 1rem;
+
+  margin: 1rem 1.2rem;
+
+  .priceWidgetHeader {
+    margin-bottom: 0rem;
+    border-bottom: 1px solid #afa9a9;
+    text-align: center;
+    h3 {
+      margin: 0;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  .crypto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    border-bottom: 1px solid #afafaf;
+
+    .cryptoImage {
+    }
+    .cryptoInfo {
+      padding: 0.25rem;
+      text-align: center;
+      h5 {
+        margin: 0;
+        padding-bottom: 0.2rem;
+        font-size: 0.8rem;
+        color: rgba(75, 86, 97, 0.7);
+      }
+
+      p {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+    }
+
+    .cryptoChange {
+      font-size: 1rem;
+      font-weight: 700;
+
+      .red {
+        color: red;
+      }
+
+      .green {
+        color: green;
+      }
+    }
+  }
+}
