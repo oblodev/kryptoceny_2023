@@ -5,6 +5,8 @@ function Header() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1>KryptoKurs - Aktualne kursy kryptowalut</h1>
+
+        <p>Witamy! Portal obecnie jest w wersji Beta.</p>
       </div>
     </div>
   );

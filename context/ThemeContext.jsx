@@ -10,6 +10,8 @@ const themeReducer = (state, action) => {
       return { ...state, show: action.payload };
     case "SET_FETCH":
       return { ...state, isFetched: action.payload };
+    case "CHANGE_MODE":
+      return { ...state, mode: action.payload };
     default:
       return state;
   }
@@ -20,6 +22,7 @@ export function ThemeProvider({ children }) {
     page: 1,
     show: false,
     isFetched: false,
+    mode: false,
   });
 
   const changePage = (page) => {
@@ -32,6 +35,10 @@ export function ThemeProvider({ children }) {
 
   const changeFetch = (isFetched) => {
     dispatch({ type: "SET_FETCH", payload: isFetched });
+  };
+
+  const changeMode = (mode) => {
+    dispatch({ type: "CHANGE_MODE", payload: mode });
   };
 
   return (

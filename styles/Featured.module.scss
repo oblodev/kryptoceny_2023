@@ -2,11 +2,35 @@
   width: 1280px;
   margin: auto;
 
+  @media screen and (max-width: 420px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 900px) and (min-width: 421px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 981px) {
+    width: 100%;
+  }
+
   .wrapper {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+
+    h2 {
+      margin-bottom: 4rem;
+      span {
+        color: #5277ff;
+        font-weight: 900;
+      }
+
+      @media screen and (max-width: 420px) {
+        text-align: center;
+      }
+    }
 
     .featured {
       position: relative;
@@ -18,8 +42,24 @@
       box-shadow: 0 0 25px 3px rgb(0 0 0 / 11%);
 
       .imgWrapper {
-        width: 100%;
-        height: 100%;
+        width: 1200px;
+        height: 640px;
+        position: relative;
+
+        @media screen and (max-width: 420px) {
+          width: 360px;
+          height: 280px;
+        }
+
+        @media screen and (max-width: 900px) and (min-width: 421px) {
+          width: 600px;
+          height: 320px;
+        }
+
+        @media screen and (min-width: 981px) and (max-width: 1200px) {
+          width: 800px;
+          height: 420px;
+        }
       }
 
       .feature {
@@ -29,12 +69,34 @@
         color: #fff;
         background-color: rgba(0, 0, 0, 0.6);
 
+        @media screen and (max-width: 420px) {
+          padding-left: 1rem;
+        }
+
+        @media screen and (max-width: 900px) and (min-width: 421px) {
+          padding-left: 1.25rem;
+        }
+
         h3 {
           font-size: 2.2rem;
           width: 72%;
           margin: 0;
           padding-top: 1rem;
           padding-bottom: 0.5rem;
+
+          @media screen and (max-width: 420px) {
+            font-size: 1.2rem;
+            width: 90%;
+            padding-top: 0.5rem;
+            padding-bottom: 0.25rem;
+          }
+
+          @media screen and (max-width: 900px) and (min-width: 421px) {
+            font-size: 1.4rem;
+            width: 90%;
+            padding-top: 0.5rem;
+            padding-bottom: 0.4rem;
+          }
         }
 
         p:first-child {
@@ -43,10 +105,27 @@
           margin: 0;
           padding-top: 1rem;
           text-transform: uppercase;
+
+          @media screen and (max-width: 420px) {
+            font-size: 0.8rem;
+            padding-top: 0.5rem;
+          }
+
+          @media screen and (max-width: 900px) and (min-width: 421px) {
+            font-size: 0.9rem;
+            padding-top: 0.6rem;
+          }
         }
 
         p:last-child {
           padding-bottom: 0.6rem;
+          @media screen and (max-width: 420px) {
+            padding-bottom: 0.2rem;
+          }
+
+          @media screen and (max-width: 900px) and (min-width: 421px) {
+            padding-bottom: 0.4rem;
+          }
         }
       }
     }

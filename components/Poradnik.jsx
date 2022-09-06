@@ -10,22 +10,26 @@ function Poradnik({ poradnikPosts }) {
         <h2>Poradnik Krypto</h2>
         <div className={styles.poradnikWrap}>
           {poradnikPosts &&
-            poradnikPosts.slice(-3).map((poradnikPost) => (
-              <div className={styles.poradnikCard}>
-                <div className={styles.poradnikImg}>
-                  <Image
-                    src={poradnikPost.node.poradnikImage.url}
-                    width="400px"
-                    height="280px"
-                  />
-                </div>
-                <div className={styles.poradnikHeader}>
-                  <Link href={`/poradnik/${poradnikPost.node.slug}`}>
-                    <h3>{poradnikPost.node.title}</h3>
-                  </Link>
-                </div>
-              </div>
-            ))}
+            poradnikPosts
+              .slice(-3)
+              .reverse()
+              .map((poradnikPost) => (
+                <Link href={`/poradnik/${poradnikPost.node.slug}`}>
+                  <div className={styles.poradnikCard}>
+                    <div className={styles.poradnikImg}>
+                      <Image
+                        src={poradnikPost.node.poradnikImage.url}
+                        width="400px"
+                        height="280px"
+                        objectFit="cover"
+                      />
+                    </div>
+                    <div className={styles.poradnikHeader}>
+                      <h3>{poradnikPost.node.title}</h3>
+                    </div>
+                  </div>
+                </Link>
+              ))}
         </div>
       </div>
     </div>

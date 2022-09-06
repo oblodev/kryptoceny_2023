@@ -2,9 +2,33 @@
   width: 1280px;
   margin: auto;
 
+  @media screen and (max-width: 420px) {
+    width: auto;
+  }
+
+  @media screen and (max-width: 900px) and (min-width: 421px) {
+    width: auto;
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1250px) {
+    width: 100%;
+  }
+
   .wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 2rem;
+    flex-direction: column;
+
+    h1 {
+      @media screen and (max-width: 420px) {
+        font-size: 1.1rem;
+      }
+
+      @media screen and (max-width: 900px) and (min-width: 421px) {
+        font-size: 1.6rem;
+      }
+    }
   }
 }

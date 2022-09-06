@@ -1,0 +1,51 @@
+.container {
+  margin: auto;
+  background: #f2f5f8;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h1 {
+      font-size: 1.4rem;
+      margin-top: 4rem;
+
+      span {
+        color: #5277ff;
+        font-weight: 900;
+      }
+    }
+
+    .cryptoWrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 4rem;
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+
+      .crypto {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+        padding: 1.5rem;
+
+        .cryptoHeader {
+          color: #343b42;
+        }
+
+        .cryptoInfo {
+          .cryptoInfoText {
+            display: flex;
+            flex-direction: row;
+
+            div {
+              margin-right: 2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

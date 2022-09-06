@@ -6,7 +6,7 @@ const graphqlAPI =
 export const getPoradnikPosts = async () => {
   const query = gql`
     query MyQuery {
-      poradniksConnection {
+      poradniksConnection  {
         edges {
           cursor
           node {
@@ -22,12 +22,16 @@ export const getPoradnikPosts = async () => {
             slug
             title
             excerpt
+            date
             poradnikImage {
               url
             }
             categories {
               name
               slug
+            }
+            content {
+              raw
             }
           }
         }
@@ -38,4 +42,40 @@ export const getPoradnikPosts = async () => {
   const result = await request(graphqlAPI, query);
 
   return result.poradniksConnection.edges;
+};
+
+export const getPoradnikDetails = async (slug) => {
+  const query = gql`
+    query getPoradnikDetails($slug: String!) {
+      poradnik(where: { slug: $slug }) {
+        author {
+          bio
+          name
+          id
+          photo {
+            url
+          }
+        }
+        createdAt
+        slug
+        title
+        excerpt
+        date
+        poradnikImage {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+        content {
+          raw
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.poradnik;
 };

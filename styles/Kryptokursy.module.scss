@@ -1,6 +1,6 @@
 .container {
-  max-width: 1400px;
   margin: auto;
+  background: #f2f5f8;
 }
 
 .wrapper {
@@ -8,23 +8,46 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  max-width: 1400px;
+
+  @media screen and (max-width: 420px) {
+    max-width: 100%;
+  }
 }
 
 .wrapper h1 {
   margin-top: 5rem;
   text-align: center;
-  width: 1280px;
+
   margin-bottom: 2rem;
+
+  @media screen and (max-width: 420px) {
+    width: 100%;
+    margin-top: 3rem;
+    font-size: 1.5rem;
+  }
 }
 
 .wrapper p {
   width: 72%;
   line-height: 1.5;
   font-size: 1.15rem;
+
+  @media screen and (max-width: 420px) {
+    font-size: 1rem;
+    width: 80%;
+  }
 }
 
 .wrapper h2 {
   margin-top: 4rem;
+
+  @media screen and (max-width: 420px) {
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 0 2rem;
+  }
 }
 
 .widget {

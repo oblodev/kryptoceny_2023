@@ -1,10 +1,11 @@
-import styles from "../styles/PostDetail.module.scss";
+import styles from "../styles/PoradnikDetail.module.scss";
 import Image from "next/image";
 import moment from "moment";
 import PriceWidget from "./PriceWidget";
 import React from "react";
 
-function PostDetail({ post }) {
+function PoradnikDetail({ poradnik }) {
+  console.log(poradnik);
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 
@@ -65,19 +66,19 @@ function PostDetail({ post }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <h1>{post.title}</h1>
+        <h1>{poradnik.title}</h1>
         <div className={styles.headerInfo}>
           <p>
-            od <span>{post.author.name}</span>
+            od <span>{poradnik.author.name}</span>
           </p>
-          <p>{moment(post.date).format("DD.MM.YYYY")}</p>
-          <p className={styles.category}>{post.categories[0].name}</p>
+          <p>{moment(poradnik.date).format("DD.MM.YYYY")}</p>
+          <p className={styles.category}>{poradnik.categories[0].name}</p>
         </div>
       </div>
       <div className={styles.postWrap}>
         <div className={styles.post}>
           <div
-            className={styles.postImage}
+            className={styles.featuredImage}
             style={{
               border: "8px solid #fff",
               borderRadius: "16px",
@@ -86,17 +87,17 @@ function PostDetail({ post }) {
             }}
           >
             <Image
-              src={post.featuredImage.url}
+              src={poradnik.poradnikImage.url}
               alt="post-image"
               width="880px"
               height="520px"
               objectFit="cover"
             />
           </div>
-          {console.log(post.content.raw)}
-          <p className={styles.excerpt}>{post.excerpt}</p>
+          {console.log(poradnik.content.raw)}
+          <p className={styles.excerpt}>{poradnik.excerpt}</p>
           <div className={styles.postText}>
-            {post.content.raw.children.map((typeObj, index) => {
+            {poradnik.content.raw.children.map((typeObj, index) => {
               const children = typeObj.children.map((item, itemIndex) =>
                 getContentFragment(itemIndex, item.text, item)
               );
@@ -113,4 +114,4 @@ function PostDetail({ post }) {
   );
 }
 
-export default PostDetail;
+export default PoradnikDetail;

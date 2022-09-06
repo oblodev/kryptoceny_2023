@@ -6,7 +6,7 @@ const graphqlAPI =
 export const getPosts = async () => {
   const query = gql`
     query MyQuery {
-      postsConnection {
+      postsConnection(first: 500) {
         edges {
           cursor
           node {
@@ -22,6 +22,7 @@ export const getPosts = async () => {
             slug
             title
             excerpt
+            date
             featuredImage {
               url
             }
@@ -59,6 +60,7 @@ export const getPostDetails = async (slug) => {
         slug
         title
         excerpt
+        date
         featuredImage {
           url
         }
