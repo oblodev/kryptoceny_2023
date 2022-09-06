@@ -33,6 +33,7 @@ export const getPosts = async () => {
             content {
               text
             }
+            id
           }
         }
       }
@@ -71,6 +72,7 @@ export const getPostDetails = async (slug) => {
         content {
           raw
         }
+        id
       }
     }
   `;

@@ -14,7 +14,7 @@ function MoreFeatured({ posts }) {
               .reverse()
               .map((post) => (
                 <Link href={`/post/${post.node.slug}`}>
-                  <div className={styles.moreCard}>
+                  <div className={styles.moreCard} key={post.node.id}>
                     <div className={styles.moreImg}>
                       <div className={styles.imgWrapper}>
                         <Image

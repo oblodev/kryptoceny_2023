@@ -12,7 +12,7 @@ function Cryptos() {
   const [cryptoData, setCryptoData] = useState([]);
   //const [isFetched, setIsFetched] = useState(false);
 
-  const { page, show, changeFetch, isFetched } = useTheme();
+  const { page, show, isFetched } = useTheme();
 
   useEffect(() => {
     const fetchCryptos = async () => {
@@ -21,7 +21,7 @@ function Cryptos() {
       );
 
       setCryptoData(data);
-      changeFetch(true);
+      console.log(data);
     };
 
     fetchCryptos();
@@ -61,7 +61,7 @@ function Cryptos() {
             {cryptoData ? (
               cryptoData.map((crypto) => (
                 <tbody>
-                  <tr key={crypto.symbol}>
+                  <tr key={crypto.market_cap_rank}>
                     <td className={styles.kryptoBorder2}>
                       {crypto.market_cap_rank}{" "}
                     </td>

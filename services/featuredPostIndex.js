@@ -31,6 +31,7 @@ export const getFeaturedPost = async () => {
             content {
               text
             }
+            id
           }
           cursor
         }

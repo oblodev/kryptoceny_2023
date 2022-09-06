@@ -6,7 +6,7 @@ const graphqlAPI =
 export const getPoradnikPosts = async () => {
   const query = gql`
     query MyQuery {
-      poradniksConnection  {
+      poradniksConnection {
         edges {
           cursor
           node {
@@ -33,6 +33,7 @@ export const getPoradnikPosts = async () => {
             content {
               raw
             }
+            id
           }
         }
       }
@@ -71,6 +72,7 @@ export const getPoradnikDetails = async (slug) => {
         content {
           raw
         }
+        id
       }
     }
   `;

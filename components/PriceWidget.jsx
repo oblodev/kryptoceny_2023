@@ -5,13 +5,14 @@ import axios from "axios";
 
 import { RiArrowRightDownLine, RiArrowRightUpLine } from "react-icons/ri";
 
+const headers = {
+  "X-RapidAPI-Key": "965544b128msh602fdb4437bf366p1faec3jsnd3773b9075b7",
+  "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
+};
+
 function PriceWidget() {
   const [cryptos, setCryptos] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
-  const headers = {
-    "X-RapidAPI-Key": "965544b128msh602fdb4437bf366p1faec3jsnd3773b9075b7",
-    "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
-  };
 
   useEffect(() => {
     const fetchCryptos = async () => {
@@ -24,6 +25,7 @@ function PriceWidget() {
 
       setCryptos(data.data.coins);
       setIsFetched(true);
+      console.log(data.data.coins);
     };
 
     fetchCryptos();
@@ -36,7 +38,7 @@ function PriceWidget() {
       </div>
       {isFetched &&
         cryptos.map((crypto) => (
-          <div className={styles.crypto}>
+          <div className={styles.crypto} key={crypto.rank}>
             <div className={styles.cryptoImage}>
               <Image
                 src={crypto.iconUrl}
