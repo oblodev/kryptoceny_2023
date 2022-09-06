@@ -13,8 +13,8 @@ function MoreFeatured({ posts }) {
               .slice(-6)
               .reverse()
               .map((post) => (
-                <Link href={`/post/${post.node.slug}`}>
-                  <div className={styles.moreCard} key={post.node.id}>
+                <Link href={`/post/${post.node.slug}`} key={post.node.id}>
+                  <div className={styles.moreCard}>
                     <div className={styles.moreImg}>
                       <div className={styles.imgWrapper}>
                         <Image

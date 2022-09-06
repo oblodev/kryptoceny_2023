@@ -60,8 +60,8 @@ function Cryptos() {
             </thead>
             {cryptoData ? (
               cryptoData.map((crypto) => (
-                <tbody>
-                  <tr key={crypto.market_cap_rank}>
+                <tbody key={crypto.market_cap_rank}>
+                  <tr>
                     <td className={styles.kryptoBorder2}>
                       {crypto.market_cap_rank}{" "}
                     </td>

@@ -14,8 +14,11 @@ function Poradnik({ poradnikPosts }) {
               .slice(-3)
               .reverse()
               .map((poradnikPost) => (
-                <Link href={`/poradnik/${poradnikPost.node.slug}`}>
-                  <div className={styles.poradnikCard} key={poradnikPost.id}>
+                <Link
+                  href={`/poradnik/${poradnikPost.node.slug}`}
+                  key={poradnikPost.id}
+                >
+                  <div className={styles.poradnikCard}>
                     <div className={styles.poradnikImg}>
                       <Image
                         src={poradnikPost.node.poradnikImage.url}
