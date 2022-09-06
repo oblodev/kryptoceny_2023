@@ -11,7 +11,8 @@ function Featured({ featuredPost }) {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h2>
-          <span>//</span> Aktualnosci ze swiata kryptowalut
+          <span className={styles.span}>//</span> Aktualnosci ze swiata
+          kryptowalut
         </h2>
         <Link href={`/post/${post.slug}`}>
           <div className={styles.featured}>

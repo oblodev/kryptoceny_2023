@@ -8,7 +8,8 @@ function Stats({ stats }) {
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <h2>
-            <span>// </span>Aktualne statystki rynku kryptowalut
+            <span className={styles.span}>// </span>Aktualne statystki rynku
+            kryptowalut
           </h2>
         </div>
         <div className={styles.statCards}>

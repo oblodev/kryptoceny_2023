@@ -10,7 +10,6 @@ import { useTheme } from "../hooks/useTheme";
 
 function Cryptos() {
   const [cryptoData, setCryptoData] = useState([]);
-  //const [isFetched, setIsFetched] = useState(false);
 
   const { page, show, isFetched } = useTheme();
 

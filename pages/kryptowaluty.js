@@ -5,7 +5,7 @@ function kryptowaluty() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1>
-          <span>//</span> Kryptowaluty
+          <span className={styles.span}>//</span> Kryptowaluty
         </h1>
         <div className={styles.cryptoWrap}>
           <div className={styles.crypto}>
