@@ -1,4 +1,4 @@
-import styles from "../../styles/PoradnikDetails.module.scss";
+import styles from "../../styles/poradnikDetails.module.scss";
 import PoradnikDetail from "../../components/PoradnikDetail";
 
 import {
