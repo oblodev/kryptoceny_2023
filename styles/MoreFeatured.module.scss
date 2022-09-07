@@ -1,5 +1,5 @@
 .container {
-  width: 1280px;
+  max-width: 1400px !important;
   margin: auto;
   margin-top: 4rem;
   margin-bottom: 8rem;
@@ -9,10 +9,6 @@
   }
 
   @media screen and (max-width: 900px) and (min-width: 421px) {
-    width: 100%;
-  }
-
-  @media screen and (min-width: 981px) {
     width: 100%;
   }
 

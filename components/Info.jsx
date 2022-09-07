@@ -56,8 +56,12 @@ function Info() {
             muszą ze sobą współistnieć.
           </p>
           <p>
-            Więcej informacji znajdziesz tutaj Kursy kryptowalut – wszystkie
-            najważniejsze informacje.
+            Więcej informacji znajdziesz tutaj{" "}
+            <a href="/kryptokursy" className={styles.kryptoLink}>
+              {" "}
+              Kursy kryptowalut – wszystkie najważniejsze informacje
+            </a>
+            .
           </p>
         </div>
         <p className={styles.nota}>
