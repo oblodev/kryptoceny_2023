@@ -1,6 +1,5 @@
 import styles from "../styles/Featured.module.scss";
 import Image from "next/image";
-import blockchain from "../public/images/blockchain.jpg";
 import moment from "moment";
 import Link from "next/link";
 
