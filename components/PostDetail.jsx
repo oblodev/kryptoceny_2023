@@ -2,6 +2,7 @@ import styles from "../styles/PostDetail.module.scss";
 import moment from "moment";
 import PriceWidget from "./PriceWidget";
 import React from "react";
+import Image from "next/image";
 
 function PostDetail({ post }) {
   const getContentFragment = (index, text, obj, type) => {
