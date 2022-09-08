@@ -9,7 +9,7 @@ function Footer() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <Image src={logo} />
+          <Image src={logo} alt="kryptokurs-logo" />
           <p>
             <span>Kryptokurs.pl</span> - Aktualne kursy kryptowalut według
             kapitalizacji rynkowej i najświeższe newsy ze świata kryptowalut.

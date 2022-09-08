@@ -68,6 +68,7 @@ function Cryptos() {
                       <div className={styles.kryptoImage}>
                         <Image
                           src={crypto.image}
+                          alt="crypto-logo"
                           width="24px"
                           height="24px"
                           style={{ marginRight: "8px" }}

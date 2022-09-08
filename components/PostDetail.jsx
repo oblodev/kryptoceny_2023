@@ -3,6 +3,7 @@ import Image from "next/image";
 import moment from "moment";
 import PriceWidget from "./PriceWidget";
 import React from "react";
+import Image from "next/image";
 
 function PostDetail({ post }) {
   const getContentFragment = (index, text, obj, type) => {
@@ -49,7 +50,7 @@ function PostDetail({ post }) {
         );
       case "image":
         return (
-          <img
+          <Image
             key={index}
             alt={obj.title}
             height={obj.height}

@@ -19,6 +19,7 @@ function Featured({ featuredPost }) {
                 className={styles.img}
                 objectFit="cover"
                 layout="responsive"
+                alt="post-image"
               />
             </div>
             <div className={styles.feature}>

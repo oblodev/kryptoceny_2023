@@ -25,6 +25,7 @@ function Poradnik({ poradnikPosts }) {
                         width="400px"
                         height="280px"
                         objectFit="cover"
+                        alt="poradnik-image"
                       />
                     </div>
                     <div className={styles.poradnikHeader}>

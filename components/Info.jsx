@@ -1,4 +1,5 @@
 import styles from "../styles/Info.module.scss";
+import Link from "next/link";
 
 function Info() {
   return (
@@ -57,10 +58,11 @@ function Info() {
           </p>
           <p>
             Więcej informacji znajdziesz tutaj{" "}
-            <a href="/kryptokursy" className={styles.kryptoLink}>
-              {" "}
-              Kursy kryptowalut – wszystkie najważniejsze informacje
-            </a>
+            <Link href="/kryptokursy">
+              <span className={styles.kryptoLink}>
+                Kursy kryptowalut – wszystkie najważniejsze informacje
+              </span>
+            </Link>
             .
           </p>
         </div>

@@ -18,7 +18,7 @@ function Nav() {
       <div className={styles.wrapper}>
         <div className={styles.logo}>
           <Link href="/">
-            <Image src={logo} />
+            <Image src={logo} alt="kryptokurs-logo" />
           </Link>
           <p>BETA</p>
         </div>
