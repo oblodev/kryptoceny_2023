@@ -7,10 +7,18 @@
 
   padding: 1.5rem 2rem 5rem 2rem;
 
+  @media screen and (max-width: 420px) {
+    padding: 1rem 0.5rem 3rem 0.5rem;
+  }
+
   .header {
     display: flex;
     flex-direction: column;
     padding: 1rem;
+
+    @media screen and (max-width: 420px) {
+      padding: 0.5rem;
+    }
 
     .headerInfo {
       display: flex;
@@ -21,6 +29,10 @@
         padding-left: 0.25rem;
         color: #4b5661;
         font-size: 1rem;
+
+        @media screen and (max-width: 420px) {
+          font-size: 0.9rem;
+        }
 
         span {
           color: #5277ff;
@@ -40,9 +52,22 @@
     flex-direction: row;
     justify-content: space-between;
 
+    @media screen and (max-width: 420px) {
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: 900px) and (min-width: 421px) {
+      flex-direction: column;
+    }
+
     .post {
       padding: 1rem;
       flex: 0.73;
+
+      @media screen and (max-width: 420px) {
+        flex: 1;
+      }
+
       .excerpt {
         background-color: #fff;
         border-radius: 10px;
@@ -50,6 +75,11 @@
         padding: 1.5rem;
         font-size: 1.15rem;
         font-weight: 700;
+
+        @media screen and (max-width: 420px) {
+          font-size: 1rem;
+          padding: 0.65rem 0.5rem;
+        }
       }
 
       .postImage {
@@ -67,6 +97,11 @@
         padding: 1.5rem;
         line-height: 1.5;
         font-size: 1.05rem;
+
+        @media screen and (max-width: 420px) {
+          font-size: 1rem;
+          padding: 0.65rem 0.5rem;
+        }
       }
     }
 

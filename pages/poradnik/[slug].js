@@ -18,7 +18,6 @@ function poradnikDetails({ data }) {
 export default poradnikDetails;
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   const data = await getPoradnikDetails(params.slug);
 
   return {

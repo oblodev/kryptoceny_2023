@@ -11,14 +11,14 @@ function Featured({ featuredPost }) {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h2>Aktualnosci ze swiata kryptowalut</h2>
-        <Link href={`/post/${post.slug}`}>
+        <Link href={`/featured/${post.slug}`}>
           <div className={styles.featured}>
             <div className={styles.imgWrapper}>
               <Image
-                src={blockchain}
+                src={post.featuredImage.url}
                 className={styles.img}
                 objectFit="cover"
-                layout="responsive"
+                layout="fill"
                 alt="post-image"
               />
             </div>
