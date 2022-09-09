@@ -6,7 +6,7 @@ function Info() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.infoWrap}>
-          <h2>Kursy Kryptowaluty</h2>
+          <h2>Kursy Kryptowalut</h2>
           <p>
             KryptoKurs.pl to najszybszy i zarazem najłatwiejszy sposób na
             sprawdzenie kursu, niezależnie od tego, czy chodzi nam o Bitcoina
