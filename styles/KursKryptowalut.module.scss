@@ -1,37 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
 
-.container {
-  max-width: 1000px;
-  margin: auto;
-  margin-top: 8rem;
-  margin-bottom: 4rem;
-  @media screen and (max-width: 420px) {
-    width: 100%;
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .header {
     margin-top: 4rem;
+    text-align: center;
   }
 
-  @media screen and (max-width: 900px) and (min-width: 421px) {
-    width: 100%;
+  .cryptos {
     margin-top: 4rem;
-  }
-
-  @media screen and (min-width: 901px) and (max-width: 1250px) {
-    width: 100%;
-    margin-top: 4rem;
-  }
-
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    h2 {
-      margin-bottom: 4rem;
-      span {
-        color: #5271ff;
-      }
-    }
+    margin-bottom: 4rem;
   }
 }
 
@@ -162,26 +144,5 @@
       margin-top: 0;
       margin-bottom: 6px;
     }
-  }
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  display: none;
-}
-
-.hide {
-  @media screen and (max-width: 420px) {
-    display: none;
-  }
-}
-
-.tabHide {
-  @media screen and (max-width: 900px) and (min-width: 421px) {
-    display: none;
   }
 }

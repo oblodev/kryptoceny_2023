@@ -1,0 +1,141 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .header {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .kryptoWrap {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 6%);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+
+    .kryptoHeader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      h2 {
+        margin-left: 1rem;
+        font-size: 2rem;
+        color: #4b5661;
+
+        span {
+          color: #5277ff;
+        }
+      }
+    }
+
+    .kryptoChanges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+
+      .kryptoChange {
+        background-color: #eef2ff;
+        padding: 0.75rem 2.95rem;
+        margin-right: 0.95rem;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+          font-size: 1.15rem;
+          margin-bottom: 1.75rem;
+        }
+
+        .kryptoChangeProc {
+          padding: 0.6rem 1.5rem;
+          border: 1px solid #4b5661;
+          border-radius: 25px;
+
+          p {
+            margin: 0;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .chartHeader {
+      display: flex;
+      width: 950px;
+      margin-bottom: 2rem;
+
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1rem;
+
+        h3 {
+          font-size: 1.5rem;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    .chartKrypto {
+      .chartInfo {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+          font-size: 1.35rem;
+          font-weight: 700;
+          margin-bottom: 2rem;
+        }
+
+        p:first-child {
+          margin-left: 2rem;
+        }
+
+        p:last-child {
+          margin-right: 2rem;
+        }
+      }
+    }
+
+    .kryptoFakty {
+      width: 950px;
+      line-height: 1.5;
+      padding: 0 1.25rem;
+
+      .kryptoInfo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .kryptoInfoCard {
+          background-color: #eef2ff;
+          margin-right: 2rem;
+          width: 30%;
+          padding: 1.5rem;
+          margin-top: 2rem;
+          text-align: center;
+          box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 6%);
+          border-radius: 16px;
+
+          h4 {
+            margin: 0;
+            font-size: 1rem;
+          }
+          p {
+            font-size: 1.3rem;
+            font-weight: 900;
+          }
+        }
+      }
+    }
+  }
+}

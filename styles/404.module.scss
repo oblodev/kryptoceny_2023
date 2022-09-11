@@ -1,0 +1,24 @@
+.container {
+  margin: auto;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+      margin-top: 4rem;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 4rem;
+      background-color: #5577ff;
+      color: #fff;
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+  }
+}

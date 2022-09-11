@@ -2,13 +2,11 @@ import styles from "../styles/Kryptokursy.module.scss";
 
 import { SymbolInfo } from "react-ts-tradingview-widgets";
 
-import { Ticker } from "react-ts-tradingview-widgets";
-
 function kryptokursy() {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h1>Kursy kryptowalut </h1>
+        <h1>Kurs kryptowalut</h1>
         <p>
           Handel kryptowalutami w przeciągu kilku ostatnich lat urósł do
           rozmiarów osobnej kategorii na rynku walutowym. Stało się to za sprawą

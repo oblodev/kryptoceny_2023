@@ -28,10 +28,10 @@ function Nav() {
               <Link href="/">KryptoKurs</Link>
             </li>
             <li>
-              <Link href="#">Kryptowaluty</Link>
+              <Link href="#">Kurs Kryptowalut</Link>
             </li>
             <li>
-              <Link href="/kryptokursy">Kursy Kryptowalut</Link>
+              <Link href="/kryptokursy">Informacje</Link>
             </li>
             <li>
               <Link href="#">O nas</Link>

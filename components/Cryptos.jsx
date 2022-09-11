@@ -1,31 +1,12 @@
-import { useState, useEffect } from "react";
-
 import styles from "../styles/Cryptos.module.scss";
-import axios from "axios";
 import Image from "next/image";
 import NumberFormat from "react-number-format";
 import NextPageBtn from "./NextPageBtn";
 import BackPageBtn from "./BackPageBtn";
 import { useTheme } from "../hooks/useTheme";
+import Link from "next/link";
 
-function Cryptos() {
-  const [cryptoData, setCryptoData] = useState([]);
-
-  const { page, show, isFetched } = useTheme();
-
-  useEffect(() => {
-    const fetchCryptos = async () => {
-      const { data } = await axios(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
-      );
-
-      setCryptoData(data);
-      console.log(data);
-    };
-
-    fetchCryptos();
-  }, [page]);
-
+function Cryptos({ cryptoData }) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -52,7 +33,7 @@ function Cryptos() {
                 >
                   Wolumen 24h
                 </th>
-                <th className={styles.kryptoBorder}>Kapitalzacja</th>
+                <th className={styles.kryptoBorder}>Kapitalizacja</th>
               </tr>
             </thead>
             {cryptoData ? (
@@ -74,12 +55,14 @@ function Cryptos() {
                           style={{ marginRight: "8px" }}
                         />
                       </div>{" "}
-                      <span>{crypto.name}</span>
+                      <Link href={`/kryptowaluta/${crypto.id}`}>
+                        <a>{crypto.name}</a>
+                      </Link>
                     </td>
                     <td className={styles.kryptoBorder2}>
-                      {crypto.current_price >= 1
-                        ? crypto.current_price.toFixed(2)
-                        : crypto.current_price.toFixed(4)}
+                      {crypto?.current_price >= 1
+                        ? crypto?.current_price?.toFixed(2)
+                        : crypto?.current_price?.toFixed(4)}
                       $
                     </td>
                     <td className={styles.kryptoBorder2}>
@@ -90,7 +73,7 @@ function Cryptos() {
                             : "red"
                         }
                       >
-                        {crypto.price_change_percentage_1h_in_currency.toFixed(
+                        {crypto?.price_change_percentage_1h_in_currency?.toFixed(
                           2
                         )}
                         %
@@ -104,7 +87,7 @@ function Cryptos() {
                             : "red"
                         }
                       >
-                        {crypto.price_change_percentage_24h.toFixed(2)} %
+                        {crypto.price_change_percentage_24h?.toFixed(2)} %
                       </span>
                     </td>
                     <td
@@ -117,7 +100,7 @@ function Cryptos() {
                             : "red"
                         }
                       >
-                        {crypto.price_change_percentage_7d_in_currency.toFixed(
+                        {crypto.price_change_percentage_7d_in_currency?.toFixed(
                           2
                         )}
                         %
@@ -164,11 +147,6 @@ function Cryptos() {
               </div>
             )}
           </table>
-        </div>
-        <div className={styles.buttons}>
-          {show ? <BackPageBtn /> : <p></p>}
-
-          <NextPageBtn />
         </div>
       </div>
     </div>
