@@ -4,7 +4,6 @@ import NumberFormat from "react-number-format";
 import Link from "next/link";
 
 function KursyKryptowalut({ cryptoData }) {
-  console.log([cryptoData][0].cryptos);
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>

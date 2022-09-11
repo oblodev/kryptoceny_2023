@@ -5,7 +5,6 @@ import PriceWidget from "./PriceWidget";
 import React from "react";
 
 function PoradnikDetail({ poradnik }) {
-  console.log(poradnik);
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 

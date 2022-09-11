@@ -7,7 +7,6 @@ import {
 } from "../../services/poradnikPostsIndex";
 
 function poradnikDetails({ data }) {
-  console.log(data);
   return (
     <div className={styles.container}>
       <PoradnikDetail poradnik={data} />

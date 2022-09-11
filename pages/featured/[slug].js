@@ -10,8 +10,6 @@ import styles from "../../styles/FeaturedPostDetails.module.scss";
 import FeaturedPostDetail from "../../components/FeaturedPostDetail";
 
 function FeaturedPostDetails({ data }) {
-  console.log(data);
-
   return (
     <div className={styles.container}>
       <Head>

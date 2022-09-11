@@ -2,7 +2,6 @@ import styles from "../styles/Stats.module.scss";
 import NumberFormat from "react-number-format";
 
 function Stats({ stats }) {
-  console.log(stats);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

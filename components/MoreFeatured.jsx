@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 function MoreFeatured({ posts }) {
-  console.log(posts);
   return (
     <>
       <div className={styles.container}>

@@ -4,7 +4,6 @@ import moment from "moment";
 import Link from "next/link";
 
 function Featured({ featuredPost }) {
-  console.log(featuredPost);
   const post = featuredPost[featuredPost.length - 1].node;
   return (
     <div className={styles.container}>
