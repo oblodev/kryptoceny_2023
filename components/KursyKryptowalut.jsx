@@ -2,8 +2,28 @@ import styles from "../styles/KursKryptowalut.module.scss";
 import Image from "next/image";
 import NumberFormat from "react-number-format";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useTheme } from "../hooks/useTheme";
+import axios from "axios";
 
-function KursyKryptowalut({ cryptoData }) {
+function KursyKryptowalut() {
+  const [cryptoData, setCryptoData] = useState([]);
+
+  const { page, show, isFetched } = useTheme();
+
+  useEffect(() => {
+    const fetchCryptos = async () => {
+      const { data } = await axios(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
+      );
+
+      setCryptoData(data);
+      console.log(data);
+    };
+
+    fetchCryptos();
+  }, [page]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -37,8 +57,8 @@ function KursyKryptowalut({ cryptoData }) {
               <th className={styles.kryptoBorder}>Kapitalizacja</th>
             </tr>
           </thead>
-          {[cryptoData] ? (
-            [cryptoData][0].cryptos.map((crypto) => (
+          {cryptoData ? (
+            cryptoData.map((crypto) => (
               <tbody key={crypto.market_cap_rank}>
                 <tr>
                   <td className={styles.kryptoBorder2}>

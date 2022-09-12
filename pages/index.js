@@ -11,13 +11,7 @@ import { getPosts } from "../services";
 import { getPoradnikPosts } from "../services/poradnikPostsIndex";
 import styles from "../styles/Home.module.css";
 
-export default function Home({
-  stats,
-  featuredPost,
-  posts,
-  poradnikPosts,
-  cryptos,
-}) {
+export default function Home({ stats, featuredPost, posts, poradnikPosts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -27,7 +21,7 @@ export default function Home({
       </Head>
       <Header />
       <Stats stats={stats} />
-      <Cryptos cryptoData={cryptos} />
+      <Cryptos />
       <Featured featuredPost={featuredPost} />
       <MoreFeatured posts={posts} />
       <Poradnik poradnikPosts={poradnikPosts} />
@@ -46,18 +40,12 @@ export async function getStaticProps() {
 
   const poradnikPosts = (await getPoradnikPosts()) || [];
 
-  const result = await fetch(
-    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
-  );
-  const data = await result.json();
-
   return {
     props: {
       stats: statData,
       featuredPost,
       posts,
       poradnikPosts,
-      cryptos: data,
     },
   };
 }

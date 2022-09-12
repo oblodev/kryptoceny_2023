@@ -14,7 +14,7 @@ export default kryptowaluta;
 export async function getStaticProps(context) {
   const id = context.params.id;
   const res = await fetch(
-    `https://api.coingecko.com/api/v3/coins/${id}?tickers=true&market_data=true&community_data=true&developer_data=true&sparkline=true`
+    `https://api.coingecko.com/api/v3/coins/${id}?tickers=true&market_data=true&community_data=true&developer_data=false&sparkline=true`
   );
   const data = await res.json();
   console.log(data);
