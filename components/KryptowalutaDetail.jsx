@@ -96,11 +96,7 @@ function KryptowalutaDetail({ krypto }) {
           </div>
         </div>
         <div className={styles.chartKrypto}>
-          <Sparklines
-            data={krypto.market_data.sparkline_7d.price}
-            limit={75}
-            margin={5}
-          >
+          <Sparklines data={krypto.market_data.sparkline_7d.price} limit={75}>
             <SparklinesLine color={"#5277ff"}></SparklinesLine>
           </Sparklines>
           <div className={styles.chartInfo}>
@@ -112,7 +108,7 @@ function KryptowalutaDetail({ krypto }) {
         </div>
       </div>
       <div className={styles.kryptoWrap}>
-        <div className={styles.chartHeader}>
+        <div className={styles.kryptoFaktyHeader}>
           <div>
             <Image
               src={krypto.image.thumb}
