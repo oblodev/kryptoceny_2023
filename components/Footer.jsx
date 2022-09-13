@@ -45,11 +45,15 @@ function Footer() {
         <div className={styles.links}>
           <h3>Przydatne</h3>
           <ul>
-            <li>O nas</li>
+            <li>
+              <Link href="onas">O nas</Link>
+            </li>
             <li>Regulamin Serwisu</li>
             <li>Inwestycje</li>
             <li>Polityka prywatności</li>
-            <li>Kontakt</li>
+            <li>
+              <a href="mailto:hello@kryptokurs.pl">Kontakt</a>
+            </li>
           </ul>
         </div>
       </div>

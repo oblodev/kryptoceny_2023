@@ -28,10 +28,6 @@ function KursyKryptowalut() {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <h1>Aktualne kursy kryptowalut</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid,
-          dolorum?
-        </p>
       </div>
       <div className={styles.cryptos}>
         <table className={styles.kryptoTable}>

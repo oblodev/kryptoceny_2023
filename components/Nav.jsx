@@ -28,16 +28,16 @@ function Nav() {
               <Link href="/">KryptoKurs</Link>
             </li>
             <li>
-              <Link href="#">Kurs Kryptowalut</Link>
+              <Link href="/kurskryptowalut">Kurs Kryptowalut</Link>
             </li>
             <li>
               <Link href="/kryptokursy">Informacje</Link>
             </li>
             <li>
-              <Link href="#">O nas</Link>
+              <Link href="onas">O nas</Link>
             </li>
             <li>
-              <Link href="#">Kontakt</Link>
+              <a href="mailto:hello@kryptokurs.pl">Kontakt</a>
             </li>
           </ul>
         </div>
@@ -59,26 +59,24 @@ function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
-                    <a onClick={() => setToggleSide(false)}>Kryptowaluty</a>
+                  <Link href="kurskryptowalut">
+                    <a onClick={() => setToggleSide(false)}>Kurs Kryptowalut</a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/kryptokursy">
-                    <a onClick={() => setToggleSide(false)}>
-                      Kursy Kryptowalut
-                    </a>
+                    <a onClick={() => setToggleSide(false)}>Informacje</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" onClick={() => setToggleSide(false)}>
+                  <Link href="onas" onClick={() => setToggleSide(false)}>
                     O nas
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
+                  <a href="mailto:hello@kryptokurs.pl">
                     <a onClick={() => setToggleSide(false)}>Kontakt</a>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </motion.div>
