@@ -125,15 +125,15 @@ function KryptowalutaDetail({ krypto }) {
             {krypto.market_data.current_price.usd.toFixed(2)}. Kurs kryptowaluty{" "}
             {krypto.name}{" "}
             {krypto.market_data.price_change_percentage_24h > 0
-              ? "zyskal"
-              : "stracil"}{" "}
+              ? "zyskał"
+              : "stracił"}{" "}
             w ostatnich 24h{" "}
             {krypto.market_data.price_change_percentage_24h.toFixed(2)}%.
-            Kryptowaluta {krypto.name} obecnie sie plasuje na{" "}
-            {krypto.market_cap_rank}. miejscu wedlug kapitalizacji rynokowej.
+            Kryptowaluta {krypto.name} obecnie się plasuje na{" "}
+            {krypto.market_cap_rank}. miejscu według kapitalizacji rynkowej.
           </p>
           <p>
-            Do osagniecia nowego ATH brakuje{" "}
+            Do osiągnięcia nowego ATH brakuje{" "}
             {krypto.market_data.ath_change_percentage.usd.toFixed(2)}%.
           </p>
           <div className={styles.kryptoInfo}>
