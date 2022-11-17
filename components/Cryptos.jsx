@@ -1,31 +1,11 @@
 import styles from "../styles/Cryptos.module.scss";
-import { useEffect, useState } from "react";
+
 import Image from "next/image";
 import NumberFormat from "react-number-format";
-import NextPageBtn from "./NextPageBtn";
-import BackPageBtn from "./BackPageBtn";
-import { useTheme } from "../hooks/useTheme";
+
 import Link from "next/link";
-import axios from "axios";
 
 function Cryptos({ cryptoData }) {
-  const { page, show, isFetched } = useTheme();
-
-  // useEffect(() => {
-  //   const fetchCryptos = async () => {
-  //     const { data } = await axios(
-  //      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${page}&sparkline=true& price_change_percentage=1h%2C24h%2C7d`
-  //    );
-  //
-  //     setCryptoData(data);
-  //      console.log(data);
-  //  };
-  //
-  //   fetchCryptos();
-  //  }, [page]);
-
-  console.log(cryptoData);
-
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
