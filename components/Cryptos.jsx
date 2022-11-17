@@ -8,23 +8,23 @@ import { useTheme } from "../hooks/useTheme";
 import Link from "next/link";
 import axios from "axios";
 
-function Cryptos() {
-  const [cryptoData, setCryptoData] = useState([]);
-
+function Cryptos({ cryptoData }) {
   const { page, show, isFetched } = useTheme();
 
-  useEffect(() => {
-    const fetchCryptos = async () => {
-      const { data } = await axios(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`
-      );
+  // useEffect(() => {
+  //   const fetchCryptos = async () => {
+  //     const { data } = await axios(
+  //      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${page}&sparkline=true& price_change_percentage=1h%2C24h%2C7d`
+  //    );
+  //
+  //     setCryptoData(data);
+  //      console.log(data);
+  //  };
+  //
+  //   fetchCryptos();
+  //  }, [page]);
 
-      setCryptoData(data);
-      console.log(data);
-    };
-
-    fetchCryptos();
-  }, [page]);
+  console.log(cryptoData);
 
   return (
     <div className={styles.container}>
