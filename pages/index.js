@@ -59,5 +59,6 @@ export async function getStaticProps() {
       poradnikPosts,
       cryptoData: data,
     },
+    revalidate: 3,
   };
 }
