@@ -18,6 +18,7 @@ export default function Home({
   poradnikPosts,
   cryptoData,
 }) {
+  console.log(featuredPost);
   return (
     <div className={styles.container}>
       <Head>
