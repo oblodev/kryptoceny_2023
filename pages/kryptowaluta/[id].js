@@ -1,15 +1,7 @@
 import KryptowalutaDetail from "../../components/KryptowalutaDetail";
 import styles from "../../styles/kryptowaluta.module.scss";
-import { RingLoader } from "react-spinners";
 
 function kryptowaluta({ data }) {
-  if (!data) {
-    return (
-      <div className={styles.spinner}>
-        <RingLoader color="#000" size={160} />
-      </div>
-    );
-  }
   return (
     <div className={styles.container}>
       <KryptowalutaDetail krypto={data} />
@@ -47,6 +39,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 }
