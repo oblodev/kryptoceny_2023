@@ -46,7 +46,7 @@ function Footer() {
           <h3>Przydatne</h3>
           <ul>
             <li>
-              <Link href="onas">O nas</Link>
+              <Link href="/onas">O nas</Link>
             </li>
             <li>Regulamin Serwisu</li>
             <li>Inwestycje</li>

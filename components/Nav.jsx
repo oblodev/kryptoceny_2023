@@ -59,7 +59,7 @@ function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="kurskryptowalut">
+                  <Link href="/kurskryptowalut">
                     <a onClick={() => setToggleSide(false)}>Kurs Kryptowalut</a>
                   </Link>
                 </li>
@@ -69,7 +69,7 @@ function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="onas" onClick={() => setToggleSide(false)}>
+                  <Link href="/onas" onClick={() => setToggleSide(false)}>
                     O nas
                   </Link>
                 </li>
