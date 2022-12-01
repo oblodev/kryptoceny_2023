@@ -10,6 +10,8 @@ import { getFeaturedPost } from "../services/featuredPostIndex";
 import { getPosts } from "../services";
 import { getPoradnikPosts } from "../services/poradnikPostsIndex";
 import styles from "../styles/Home.module.css";
+import Analytics from "analytics";
+import googleAnalytics from "@analytics/google-analytics";
 
 export default function Home({
   stats,
@@ -18,7 +20,16 @@ export default function Home({
   poradnikPosts,
   cryptoData,
 }) {
-  console.log(featuredPost);
+  const analytics = Analytics({
+    app: "KryptoKurs",
+    plugins: [
+      googleAnalytics({
+        measurementIds: ["G-FWJK9L9RED"],
+      }),
+    ],
+  });
+
+  analytics.page();
   return (
     <div className={styles.container}>
       <Head>
