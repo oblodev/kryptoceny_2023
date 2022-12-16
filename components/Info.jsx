@@ -8,7 +8,7 @@ function Info() {
         <div className={styles.infoWrap}>
           <h2>Kursy Kryptowalut</h2>
           <p>
-            KryptoKurs.pl to najszybszy i zarazem najłatwiejszy sposób na
+            KryptoCeny.pl to najszybszy i zarazem najłatwiejszy sposób na
             sprawdzenie kursu, niezależnie od tego, czy chodzi nam o Bitcoina
             czy jednego z wielu dostępnych altcoinów.
           </p>

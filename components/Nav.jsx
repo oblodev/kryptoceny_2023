@@ -1,6 +1,6 @@
 import styles from "../styles/Nav.module.scss";
 import Image from "next/image";
-import logo from "../public/images/logo_kryptokurs.png";
+import logo from "../public/images/KryptoCeny.png";
 import Link from "next/link";
 import { VscMenu } from "react-icons/vsc";
 import { HiX } from "react-icons/hi";
@@ -24,9 +24,6 @@ function Nav() {
         </div>
         <div className={styles.navList}>
           <ul>
-            <li>
-              <Link href="/">KryptoKurs</Link>
-            </li>
             <li>
               <Link href="/kurskryptowalut">Kurs Kryptowalut</Link>
             </li>
@@ -53,11 +50,6 @@ function Nav() {
             >
               <HiX className={styles.x} onClick={() => setToggleSide(false)} />
               <ul>
-                <li>
-                  <Link href="/">
-                    <a onClick={() => setToggleSide(false)}>KryptoKurs</a>
-                  </Link>
-                </li>
                 <li>
                   <Link href="/kurskryptowalut">
                     <a onClick={() => setToggleSide(false)}>Kurs Kryptowalut</a>

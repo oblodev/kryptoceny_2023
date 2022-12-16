@@ -1,6 +1,6 @@
 import styles from "../styles/Footer.module.scss";
 import Image from "next/image";
-import logo from "../public/images/logo_kryptokurs.png";
+import logo from "../public/images/KryptoCeny.png";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ function Footer() {
         <div className={styles.logo}>
           <Image src={logo} alt="kryptokurs-logo" />
           <p>
-            <span>Kryptokurs.pl</span> - Aktualne kursy kryptowalut według
+            <span>KryptoCeny.pl</span> - Aktualne kursy kryptowalut według
             kapitalizacji rynkowej i najświeższe newsy ze świata kryptowalut.
           </p>
           <div className={styles.icons}>

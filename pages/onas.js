@@ -1,6 +1,6 @@
 import styles from "../styles/Onas.module.scss";
 import Image from "next/image";
-import logo from "../public/images/logo_kryptokurs.png";
+import logo from "../public/images/KryptoCeny.png";
 
 function onas() {
   return (
@@ -12,7 +12,7 @@ function onas() {
           </div>
           <div className={styles.info}>
             <p>
-              KryptoKurs.pl to najszybszy i zarazem najłatwiejszy sposób na
+              KryptoCeny.pl to najszybszy i zarazem najłatwiejszy sposób na
               sprawdzenie kursu Bitcoina oraz wielu innych “altcoinów”, takich
               jak: Ethereum, Litecoin czy Cardano. Serwis zajmuje się
               monitorowaniem kryptowalut 24 godziny na dobę, siedem dni w
@@ -31,7 +31,7 @@ function onas() {
               inwestycjach.”
             </p>
 
-            <h2>Dlaczego KryptoKurs?</h2>
+            <h2>Dlaczego KryptoCeny?</h2>
             <p>
               Rynkiem kryptowalut zajmujemy się od 2017 roku. Od zawsze
               stawialiśmy na prostotę i przejrzystość, ponieważ uważamy, że te
