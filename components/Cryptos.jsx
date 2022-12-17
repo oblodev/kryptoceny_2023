@@ -9,8 +9,6 @@ function Cryptos({ cryptoData }) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h2>Aktualne kursy kryptowalut</h2>
-
         <div className={styles.cryptos}>
           <table className={styles.kryptoTable}>
             <thead>
@@ -146,6 +144,11 @@ function Cryptos({ cryptoData }) {
               </div>
             )}
           </table>
+        </div>
+        <div className={styles.headerBtn}>
+          <Link href="/kurskryptowalut">
+            <button>Zobacz więcej</button>
+          </Link>
         </div>
       </div>
     </div>

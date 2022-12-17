@@ -7,16 +7,17 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 10rem;
     margin-bottom: 2rem;
 
     .header {
       margin-bottom: 2rem;
 
       h2 {
+        font-size: 1.85rem;
         span {
           color: #5271ff;
-          font-size: 1.75rem;
+
           font-weight: 900;
 
           @media screen and (max-width: 420px) {

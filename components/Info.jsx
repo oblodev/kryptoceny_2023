@@ -67,7 +67,7 @@ function Info() {
           </p>
         </div>
         <p className={styles.nota}>
-          *Nota ostrzegawcza: Witryna KryptoKurs.pl nie jest poradnikiem
+          *Nota ostrzegawcza: Witryna KryptoCeny.pl nie jest poradnikiem
           inwestycyjnych w rozumieniu Rozporządzenia Ministra Finansów z dnia 19
           października 2005 r. w sprawie informacji stanowiących rekomendacji
           dotyczących instrumentów finansowych lub ich emitentów. Treści

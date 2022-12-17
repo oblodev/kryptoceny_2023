@@ -38,8 +38,8 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Stats stats={stats} />
       <Cryptos cryptoData={cryptoData} />
+      <Stats stats={stats} />
       <Featured featuredPost={featuredPost} />
       <MoreFeatured posts={posts} />
       <Poradnik poradnikPosts={poradnikPosts} />

@@ -3,8 +3,8 @@
 .container {
   max-width: 1000px;
   margin: auto;
-  margin-top: 8rem;
-  margin-bottom: 4rem;
+  margin-top: 6rem;
+  margin-bottom: 8rem;
   @media screen and (max-width: 420px) {
     width: 100%;
     margin-top: 4rem;
@@ -26,10 +26,23 @@
     justify-content: center;
     flex-direction: column;
 
-    h2 {
-      margin-bottom: 4rem;
-      span {
-        color: #5271ff;
+    .headerBtn {
+      margin-top: 2rem;
+      button {
+        background: #fff !important;
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+        border-radius: 16px;
+        border: 2px solid #5271ff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        font-weight: 500;
+        margin-top: 1rem;
+      }
+
+      button:hover {
+        background: #5271ff !important;
+        color: #fff;
       }
     }
   }
