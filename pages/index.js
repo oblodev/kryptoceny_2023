@@ -21,10 +21,10 @@ export default function Home({
   cryptoData,
 }) {
   const analytics = Analytics({
-    app: "KryptoKurs",
+    app: "KryptoCeny.pl",
     plugins: [
       googleAnalytics({
-        measurementIds: ["G-FWJK9L9RED"],
+        measurementIds: ["G-WDF9PPGR3K"],
       }),
     ],
   });
