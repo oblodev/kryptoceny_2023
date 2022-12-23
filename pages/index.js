@@ -21,7 +21,7 @@ export default function Home({
   cryptoData,
 }) {
   const analytics = Analytics({
-    app: "KryptoCeny.pl",
+    app: "KryptoCeny",
     plugins: [
       googleAnalytics({
         measurementIds: ["G-WDF9PPGR3K"],
