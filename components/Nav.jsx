@@ -28,7 +28,12 @@ function Nav() {
               <Link href="/kurskryptowalut">Kurs Kryptowalut</Link>
             </li>
             <li>
-              <Link href="/kryptokursy">Informacje</Link>
+              <div className={styles.dropdown}>
+                <Link href="/kryptokursy">Informacje</Link>
+                <div className={styles.dropdownContent}>
+                  <Link href="/kryptowaluty">Kryptowaluty</Link>
+                </div>
+              </div>
             </li>
             <li>
               <Link href="onas">O nas</Link>

@@ -1,0 +1,13 @@
+.container {
+  background: #f2f5f8;
+
+  .wrapper {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 1rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}

@@ -93,7 +93,7 @@ function PoradnikDetail({ poradnik }) {
               objectFit="cover"
             />
           </div>
-          {console.log(poradnik.content)}
+
           <p className={styles.excerpt}>{poradnik.excerpt}</p>
           <div className={styles.postText}>
             {poradnik.content.raw.children.map((typeObj, index) => {

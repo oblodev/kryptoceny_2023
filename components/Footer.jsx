@@ -48,9 +48,15 @@ function Footer() {
             <li>
               <Link href="/onas">O nas</Link>
             </li>
-            <li>Regulamin Serwisu</li>
-            <li>Inwestycje</li>
-            <li>Polityka prywatności</li>
+            <li>
+              <Link href="/regulamin">Regulamin Serwisu</Link>
+            </li>
+            <li>
+              <Link href="/kryptowaluty">Kryptowaluty</Link>
+            </li>
+            <li>
+              <Link href="/politykaprywatnosci">Polityka prywatności</Link>
+            </li>
             <li>
               <a href="mailto:hello@kryptokurs.pl">Kontakt</a>
             </li>
