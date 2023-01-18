@@ -280,7 +280,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/https://support.microsoft.com/pl-pl/help/10607/microsoft-edge-view-delete-browser-history"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Edge</span>
               </a>
@@ -289,7 +289,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/https://support.microsoft.com/pl-pl/help/278835/how-to-delete-cookie-files-in-internet-explorer"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Internet Explorer</span>
               </a>
@@ -298,7 +298,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/http://support.google.com/chrome/bin/answer.py?hl=pl&amp;answer=95647"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Chrome</span>
               </a>
@@ -307,7 +307,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/http://support.apple.com/kb/PH5042"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Safari</span>
               </a>
@@ -316,7 +316,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/http://support.mozilla.org/pl/kb/W%C5%82%C4%85czanie%20i%20wy%C5%82%C4%85czanie%20obs%C5%82ugi%20ciasteczek"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Firefox</span>
               </a>
@@ -325,7 +325,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/http://help.opera.com/Windows/12.10/pl/cookies.html"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Opera</span>
               </a>
@@ -337,7 +337,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/http://support.google.com/chrome/bin/answer.py?hl=pl&amp;answer=95647"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Android</span>
               </a>
@@ -346,7 +346,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/http://support.apple.com/kb/HT1677?viewlocale=pl_PL"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Safari (iOS)</span>
               </a>
@@ -355,7 +355,7 @@ function politykaprywatnosci() {
               <a
                 href="https://web.archive.org/web/20220705074222/http://www.windowsphone.com/pl-pl/how-to/wp7/web/changing-privacy-and-other-browser-settings"
                 target="_blank"
-                rel="noopener"
+                rel="noreferrer"
               >
                 <span>Windows Phone</span>
               </a>

@@ -4,6 +4,7 @@ import {
   getKryptowalutyDetails,
 } from "../../services/kryptoInfoData";
 import styles from "../../styles/kryptoinfo.module.scss";
+import Image from "next/image";
 
 function kryptoinfo({ data }) {
   console.log(data);

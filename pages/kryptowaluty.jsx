@@ -16,7 +16,7 @@ function kryptowaluty({ data }) {
         <div className={styles.kryptoWrap}>
           {data &&
             data.map((krypto) => (
-              <div className={styles.kryptoCard}>
+              <div className={styles.kryptoCard} key={krypto.cursor}>
                 <div className={styles.kryptoCardHeader}>
                   <h2>{krypto.node.title}</h2>
                   <img src={krypto.node.kryptoImage.url} alt="krypto-logo" />
