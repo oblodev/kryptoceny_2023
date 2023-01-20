@@ -1,12 +1,17 @@
 import styles from "../styles/Info.module.scss";
 import Link from "next/link";
+import { AiOutlineLineChart } from "react-icons/ai";
 
 function Info() {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.infoWrap}>
-          <h2>Kursy Kryptowalut</h2>
+          <div className={styles.header}>
+            <AiOutlineLineChart className={styles.icon} />
+            <h2>Kursy Kryptowalut</h2>
+          </div>
+
           <p>
             KryptoCeny.pl to najszybszy i zarazem najłatwiejszy sposób na
             sprawdzenie kursu, niezależnie od tego, czy chodzi nam o Bitcoina

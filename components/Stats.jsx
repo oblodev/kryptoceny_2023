@@ -1,12 +1,14 @@
 import styles from "../styles/Stats.module.scss";
 import NumberFormat from "react-number-format";
+import { ImStatsBars } from "react-icons/im";
 
 function Stats({ stats }) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.header}>
-          <h2>Aktualne statystki rynku kryptowalut</h2>
+          <ImStatsBars className={styles.icon} />
+          <h2>Statystyki</h2>
         </div>
         <div className={styles.statCards}>
           <div className={styles.statCard}>

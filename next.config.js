@@ -11,6 +11,13 @@ module.exports = {
       "assets.coingecko.com",
       "media.graphassets.com",
       "cdn.coinranking.com",
+      "assets.coingecko.com",
+      "cdn.benchmark.pl",
+      "galeria.bankier.pl",
+      "tvn24.pl",
+      "img.joemonster.org",
+      "antyweb.pl",
+      "m.natemat.pl",
     ],
   },
 };

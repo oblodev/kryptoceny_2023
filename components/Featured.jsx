@@ -2,13 +2,18 @@ import styles from "../styles/Featured.module.scss";
 import Image from "next/image";
 import moment from "moment";
 import Link from "next/link";
+import { FaNewspaper } from "react-icons/fa";
 
 function Featured({ featuredPost }) {
   const post = featuredPost[featuredPost.length - 1].node;
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h2>Aktualności ze świata kryptowalut</h2>
+        <div className={styles.header}>
+          <FaNewspaper className={styles.icon} />
+          <h2>Aktualności</h2>
+        </div>
+
         <Link href={`/featured/${post.slug}`}>
           <div className={styles.featured}>
             <div className={styles.imgWrapper}>

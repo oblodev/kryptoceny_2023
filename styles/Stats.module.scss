@@ -1,6 +1,7 @@
 .container {
   max-width: 1280px;
   margin: auto;
+  margin-bottom: 8rem;
 
   .wrapper {
     display: flex;
@@ -11,22 +12,28 @@
     margin-bottom: 2rem;
 
     .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      margin-left: 6rem;
       margin-bottom: 2rem;
+
+      @media screen and (max-width: 450px) {
+        margin-left: 3rem;
+      }
+
+      .icon {
+        font-size: 1.9rem;
+        margin-right: 0.7rem;
+        color: #ffa052;
+      }
 
       h2 {
         font-size: 1.85rem;
-        span {
-          color: #5271ff;
-
-          font-weight: 900;
-
-          @media screen and (max-width: 420px) {
-            font-size: 1.25rem;
-          }
-        }
-
-        @media screen and (max-width: 420px) {
-          font-size: 1.1rem;
+        @media screen and (max-width: 450px) {
+          font-size: 1.7rem;
         }
       }
     }

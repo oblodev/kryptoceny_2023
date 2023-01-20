@@ -1,12 +1,15 @@
 import styles from "../styles/Poradnik.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { IoDocumentTextOutline } from "react-icons/io";
 
 function Poradnik({ poradnikPosts }) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <h2>Poradnik Krypto</h2>
+        <div className={styles.header}>
+          <h2>Poradnik</h2>
+        </div>
         <div className={styles.poradnikWrap}>
           {poradnikPosts &&
             poradnikPosts

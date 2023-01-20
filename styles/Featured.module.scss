@@ -1,16 +1,16 @@
 .container {
-  width: 1280px;
+  width: 1200px;
   margin: auto;
 
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 450px) {
     width: 100%;
   }
 
-  @media screen and (max-width: 900px) and (min-width: 421px) {
+  @media screen and (max-width: 900px) and (min-width: 451px) {
     width: 100%;
   }
 
-  @media screen and (min-width: 981px) {
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
     width: 100%;
   }
 
@@ -21,21 +21,32 @@
     justify-content: center;
     margin-top: 10rem;
 
-    h2 {
-      margin-bottom: 4rem;
-      font-size: 1.85rem;
+    .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      margin-left: 2rem;
+      margin-bottom: 2rem;
 
-      span {
-        color: #5277ff;
-        font-weight: 900;
+      .icon {
+        margin-right: 0.7rem;
+        font-size: 1.9rem;
+        color: #ffa052;
       }
 
-      @media screen and (max-width: 420px) {
-        text-align: center;
+      h2 {
+        font-size: 1.85rem;
       }
     }
 
+    @media screen and (min-width: 901px) and (max-width: 1200px) {
+      max-width: 800px;
+    }
+
     .featured {
+      max-width: 1200px;
       position: relative;
       cursor: pointer;
       border-radius: 20px;
@@ -43,24 +54,41 @@
       transition: 0.4s all ease-in-out;
       border: 10px solid #fff;
       box-shadow: 0 0 25px 3px rgb(0 0 0 / 11%);
+      padding: 0.5rem;
+
+      @media screen and (max-width: 450px) {
+        max-width: 380px !important;
+        height: 280px;
+      }
+
+      @media screen and (max-width: 900px) and (min-width: 451px) {
+        max-width: 500px !important;
+        height: 320px;
+      }
+
+      @media screen and (min-width: 901px) and (max-width: 1200px) {
+        max-width: 800px;
+        height: 420px;
+        margin: auto;
+      }
 
       .imgWrapper {
-        width: 1200px;
-        height: 640px;
+        width: 1080px;
+        height: 600px;
         position: relative;
 
-        @media screen and (max-width: 420px) {
+        @media screen and (max-width: 450px) {
           width: 360px;
           height: 280px;
         }
 
-        @media screen and (max-width: 900px) and (min-width: 421px) {
+        @media screen and (max-width: 900px) and (min-width: 451px) {
           width: 600px;
           height: 320px;
         }
 
-        @media screen and (min-width: 981px) and (max-width: 1200px) {
-          width: 800px;
+        @media screen and (min-width: 901px) and (max-width: 1200px) {
+          max-width: 800px;
           height: 420px;
         }
       }
@@ -73,11 +101,11 @@
         background-color: rgba(0, 0, 0, 0.6);
         width: 100%;
 
-        @media screen and (max-width: 420px) {
+        @media screen and (max-width: 450px) {
           padding-left: 1rem;
         }
 
-        @media screen and (max-width: 900px) and (min-width: 421px) {
+        @media screen and (max-width: 900px) and (min-width: 451px) {
           padding-left: 1.25rem;
         }
 
@@ -88,14 +116,14 @@
           padding-top: 1rem;
           padding-bottom: 0.5rem;
 
-          @media screen and (max-width: 420px) {
+          @media screen and (max-width: 450px) {
             font-size: 1.2rem;
             width: 90%;
             padding-top: 0.5rem;
             padding-bottom: 0.25rem;
           }
 
-          @media screen and (max-width: 900px) and (min-width: 421px) {
+          @media screen and (max-width: 900px) and (min-width: 451px) {
             font-size: 1.4rem;
             width: 90%;
             padding-top: 0.5rem;
@@ -110,12 +138,12 @@
           padding-top: 1rem;
           text-transform: uppercase;
 
-          @media screen and (max-width: 420px) {
+          @media screen and (max-width: 450px) {
             font-size: 0.8rem;
             padding-top: 0.5rem;
           }
 
-          @media screen and (max-width: 900px) and (min-width: 421px) {
+          @media screen and (max-width: 900px) and (min-width: 451px) {
             font-size: 0.9rem;
             padding-top: 0.6rem;
           }

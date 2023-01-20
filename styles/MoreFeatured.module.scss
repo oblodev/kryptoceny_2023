@@ -1,5 +1,5 @@
 .container {
-  max-width: 1400px !important;
+  max-width: 1200px;
   margin: auto;
   margin-top: 4rem;
   margin-bottom: 8rem;
@@ -15,27 +15,29 @@
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 2rem;
-    margin: auto;
+    grid-gap: 1.5rem;
 
-    @media screen and (max-width: 420px) {
-      grid-template-columns: 1fr;
-      grid-gap: 1rem;
+    @media screen and (max-width: 450px) {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
     }
 
-    @media screen and (max-width: 900px) and (min-width: 421px) {
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 0.35rem;
+    @media screen and (max-width: 900px) and (min-width: 451px) {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
     }
 
     @media screen and (min-width: 901px) and (max-width: 1200px) {
+      display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-gap: 0.5rem;
     }
 
     .moreCard {
       display: flex;
       justify-content: center;
+      max-width: 360px;
 
       @media screen and (min-width: 981px) {
       }
@@ -55,7 +57,7 @@
       }
 
       .moreImg {
-        border-radius: 20px;
+        border-radius: 18px;
         overflow: hidden;
         cursor: pointer;
         border: 10px solid #fff;

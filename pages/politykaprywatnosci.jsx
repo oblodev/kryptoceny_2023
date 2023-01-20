@@ -21,7 +21,7 @@ function politykaprywatnosci() {
           </li>
           <li>
             Adres kontaktowy poczty elektronicznej operatora:
-            hello@kryptokurs.pl
+            hello@kryptoceny.pl
           </li>
           <li>
             Operator jest Administratorem Twoich danych osobowych w odniesieniu
