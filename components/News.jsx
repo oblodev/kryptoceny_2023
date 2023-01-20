@@ -17,7 +17,7 @@ function News({ newsData }) {
         <div className={styles.news}>
           {newsData &&
             newsData.articles.slice(0, 9).map((news) => (
-              <Link href={news.url}>
+              <Link href={news.url} key={news.title}>
                 <div className={styles.newsCard}>
                   <div className={styles.newsImage}>
                     <img
