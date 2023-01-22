@@ -29,8 +29,9 @@ function Nav() {
             </li>
             <li>
               <div className={styles.dropdown}>
-                <Link href="/kryptokursy">Informacje</Link>
+                <Link href="/kryptowaluty">Kryptowaluty</Link>
                 <div className={styles.dropdownContent}>
+                  <Link href="/kryptokursy">Informacje</Link>
                   <Link href="/kryptowaluty">Kryptowaluty</Link>
                 </div>
               </div>
