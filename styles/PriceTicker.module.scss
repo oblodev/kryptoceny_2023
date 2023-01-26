@@ -7,6 +7,7 @@
   background-color: rgba(#000, 0.9);
   padding-left: 100%;
   box-sizing: content-box;
+  z-index: 9999999999;
 
   .ticker {
     display: inline-block;
