@@ -5,6 +5,7 @@ import {
   getPoradnikDetails,
   getPoradnikPosts,
 } from "../../services/poradnikPostsIndex";
+import PriceTicker from "../../components/PriceTicker";
 
 function poradnikDetails({ data }) {
   return (

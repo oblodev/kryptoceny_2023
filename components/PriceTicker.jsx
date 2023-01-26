@@ -21,7 +21,7 @@ function PriceTicker() {
         <div className={styles.ticker}>
           {cryptoData &&
             cryptoData.map((crypto) => (
-              <div className={styles.ticker__item}>
+              <div className={styles.ticker__item} key={crypto.name}>
                 <div className={styles.wrap}>
                   <Image
                     src={crypto.image}
