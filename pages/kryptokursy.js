@@ -1,6 +1,7 @@
 import styles from "../styles/Kryptokursy.module.scss";
 
 import { SymbolInfo } from "react-ts-tradingview-widgets";
+import PriceTicker from "../components/PriceTicker";
 
 function kryptokursy() {
   return (
@@ -116,6 +117,7 @@ function kryptokursy() {
           społeczności internetowej osiągnęła ogromny sukces.
         </p>
       </div>
+      <PriceTicker />
     </div>
   );
 }

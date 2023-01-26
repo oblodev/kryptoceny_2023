@@ -6,7 +6,6 @@ import { FaRegNewspaper } from "react-icons/fa";
 import newsLogo from "../public/images/Kryptoceny-news.jpg";
 
 function News({ newsData }) {
-  console.log(newsData.articles);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

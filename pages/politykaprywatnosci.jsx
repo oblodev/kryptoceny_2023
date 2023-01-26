@@ -13,7 +13,7 @@ function politykaprywatnosci() {
         <ol>
           <li>
             Niniejsza polityka dotyczy Serwisu www, funkcjonującego pod adresem
-            url: <strong>kryptokurs.pl</strong>
+            url: kryptoceny.pl
           </li>
           <li>
             Operatorem serwisu oraz Administratorem danych osobowych jest:

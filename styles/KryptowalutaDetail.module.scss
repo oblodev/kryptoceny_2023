@@ -214,3 +214,32 @@
     }
   }
 }
+
+.kryptoButtons {
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 2rem;
+
+  @media screen and (max-width: 420px) {
+    margin-left: 2rem;
+  }
+
+  .wroc {
+    background-color: #fff;
+    padding: 0.4rem 1.75rem;
+    font-size: 1rem;
+    border: 1px solid #5277ff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s all ease-in-out;
+    margin-left: 1rem;
+    font-weight: 700;
+  }
+
+  .wroc:hover {
+    background-color: #5277ff;
+    color: #fff;
+  }
+}

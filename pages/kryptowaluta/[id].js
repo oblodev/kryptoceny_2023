@@ -1,10 +1,12 @@
 import KryptowalutaDetail from "../../components/KryptowalutaDetail";
+import PriceTicker from "../../components/PriceTicker";
 import styles from "../../styles/kryptowaluta.module.scss";
 
 function kryptowaluta({ data }) {
   return (
     <div className={styles.container}>
       <KryptowalutaDetail krypto={data} />
+      <PriceTicker />
     </div>
   );
 }

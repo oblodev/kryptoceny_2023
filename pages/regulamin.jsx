@@ -28,7 +28,7 @@ function regulamin() {
             </li>
             <li>
               Regulamin określa rodzaje i zakres usług świadczonych drogą
-              elektroniczną przez Stronę www.kryptokurs.pl, zasady świadczenia
+              elektroniczną przez Stronę www.kryptoceny.pl, zasady świadczenia
               tych usług, warunki zawierania i rozwiązywania um&oacute;w o
               świadczenie usług drogą elektroniczną, a także tryb postępowania
               reklamacyjnego.
@@ -74,12 +74,12 @@ function regulamin() {
             </li>
             <li>REGULAMIN &ndash; niniejszy regulamin Strony.</li>
             <li>
-              USŁUGODAWCA &ndash; <strong>Dawid Kostka</strong> wykonujący/a
-              działalność gospodarczą pod firmą <strong>Cubustec</strong>, adres
-              siedziby: ul. Piłsudskiego 74/320, 50-020, Wrocław, Poland, adres
-              do doręczeń: -, NIP: 9291769111, REGON: 384009288, wpisaną do
-              Centralnej Ewidencji i Informacji o Działalności Gospodarczej,
-              adres poczty elektronicznej: hello@kryptokurs.pl, tel. -.
+              USŁUGODAWCA &ndash; Dawid Kostka wykonujący/a działalność
+              gospodarczą pod firmą Cubustec, adres siedziby: ul. Piłsudskiego
+              74/320, 50-020, Wrocław, Poland, adres do doręczeń: -, NIP:
+              9291769111, REGON: 384009288, wpisaną do Centralnej Ewidencji i
+              Informacji o Działalności Gospodarczej, adres poczty
+              elektronicznej: hello@kryptokurs.pl, tel. -.
             </li>
             <li>
               USŁUGOBIORCA &ndash; osoba fizyczna, osoba prawna albo jednostka

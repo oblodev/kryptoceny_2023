@@ -1,10 +1,12 @@
 import styles from "../styles/kursy.module.scss";
 import KursyKryptowalut from "../components/KursyKryptowalut";
+import PriceTicker from "../components/PriceTicker";
 
 function kursy({ cryptoData }) {
   return (
     <div className={styles.container}>
       <KursyKryptowalut cryptoData={cryptoData} />
+      <PriceTicker />
     </div>
   );
 }

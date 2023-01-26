@@ -1,6 +1,7 @@
 import styles from "../styles/Onas.module.scss";
 import Image from "next/image";
 import logo from "../public/images/KryptoCeny.png";
+import PriceTicker from "../components/PriceTicker";
 
 function onas() {
   return (
@@ -46,6 +47,7 @@ function onas() {
           </div>
         </div>
       </div>
+      <PriceTicker />
     </div>
   );
 }

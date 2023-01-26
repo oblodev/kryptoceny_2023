@@ -10,6 +10,7 @@ function poradnikDetails({ data }) {
   return (
     <div className={styles.container}>
       <PoradnikDetail poradnik={data} />
+      <PriceTicker />
     </div>
   );
 }

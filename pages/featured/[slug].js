@@ -8,6 +8,7 @@ import {
 
 import styles from "../../styles/FeaturedPostDetails.module.scss";
 import FeaturedPostDetail from "../../components/FeaturedPostDetail";
+import PriceTicker from "../../components/PriceTicker";
 
 function FeaturedPostDetails({ data }) {
   return (

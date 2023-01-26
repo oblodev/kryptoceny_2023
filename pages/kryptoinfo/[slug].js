@@ -5,6 +5,7 @@ import {
 } from "../../services/kryptoInfoData";
 import styles from "../../styles/kryptoinfo.module.scss";
 import Image from "next/image";
+import PriceTicker from "../../components/PriceTicker";
 
 function kryptoinfo({ data }) {
   console.log(data);
@@ -89,6 +90,7 @@ function kryptoinfo({ data }) {
           })}
         </div>
       </div>
+      <PriceTicker />
     </div>
   );
 }

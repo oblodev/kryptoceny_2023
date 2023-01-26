@@ -177,6 +177,11 @@ function KryptowalutaDetail({ krypto }) {
           </div>
         </div>
       </div>
+      <div className={styles.kryptoButtons}>
+        <Link href="/kurskryptowalut">
+          <button className={styles.wroc}>Wróć</button>
+        </Link>
+      </div>
     </div>
   );
 }
