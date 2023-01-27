@@ -3,16 +3,21 @@ import Image from "next/image";
 import moment from "moment";
 import Link from "next/link";
 import { FaNewspaper } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function Featured({ featuredPost }) {
   const post = featuredPost[featuredPost.length - 1].node;
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.header}>
+        <motion.div
+          className={styles.header}
+          whileInView={{ y: [40, 0], opacity: [0, 1] }}
+          transition={{ duration: 0.75 }}
+        >
           <FaNewspaper className={styles.icon} />
           <h2>Aktualności</h2>
-        </div>
+        </motion.div>
 
         <Link href={`/featured/${post.slug}`}>
           <div className={styles.featured}>

@@ -1,16 +1,21 @@
 import styles from "../styles/Info.module.scss";
 import Link from "next/link";
 import { AiOutlineLineChart } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 function Info() {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.infoWrap}>
-          <div className={styles.header}>
+          <motion.div
+            className={styles.header}
+            whileInView={{ y: [40, 0], opacity: [0, 1] }}
+            transition={{ duration: 0.75 }}
+          >
             <AiOutlineLineChart className={styles.icon} />
             <h2>Kursy Kryptowalut</h2>
-          </div>
+          </motion.div>
 
           <p>
             KryptoCeny.pl to najszybszy i zarazem najłatwiejszy sposób na

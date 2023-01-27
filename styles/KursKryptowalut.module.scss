@@ -11,6 +11,21 @@
     text-align: center;
   }
 
+  .searchContainer {
+    margin-top: 2rem;
+    .search {
+      padding: 0.5rem;
+      width: 280px;
+      font-weight: 700;
+      color: #5271ff;
+      border: 2px solid #5271ff;
+    }
+
+    .search:focus {
+      outline: none;
+    }
+  }
+
   .cryptos {
     margin-top: 4rem;
     margin-bottom: 4rem;

@@ -1,15 +1,20 @@
 import styles from "../styles/Stats.module.scss";
 import NumberFormat from "react-number-format";
 import { ImStatsBars } from "react-icons/im";
+import { motion } from "framer-motion";
 
 function Stats({ stats }) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.header}>
+        <motion.div
+          className={styles.header}
+          whileInView={{ y: [40, 0], opacity: [0, 1] }}
+          transition={{ duration: 0.75 }}
+        >
           <ImStatsBars className={styles.icon} />
           <h2>Statystyki</h2>
-        </div>
+        </motion.div>
         <div className={styles.statCards}>
           <div className={styles.statCard}>
             <h2>Kapitalizacja rynkowa</h2>

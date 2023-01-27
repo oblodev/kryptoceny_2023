@@ -4,15 +4,20 @@ import moment from "moment";
 import "moment/locale/pl";
 import { FaRegNewspaper } from "react-icons/fa";
 import newsLogo from "../public/images/Kryptoceny-news.jpg";
+import { motion } from "framer-motion";
 
 function News({ newsData }) {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.header}>
+        <motion.div
+          className={styles.header}
+          whileInView={{ y: [40, 0], opacity: [0, 1] }}
+          transition={{ duration: 0.75 }}
+        >
           <FaRegNewspaper className={styles.icon} />
           <h2>News</h2>
-        </div>
+        </motion.div>
         <div className={styles.news}>
           {newsData &&
             newsData.articles.slice(0, 9).map((news) => (
