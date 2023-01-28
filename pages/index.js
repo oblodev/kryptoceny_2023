@@ -14,6 +14,7 @@ import styles from "../styles/Home.module.css";
 import Analytics from "analytics";
 import googleAnalytics from "@analytics/google-analytics";
 import PriceTicker from "../components/PriceTicker";
+import Heading from "../components/Heading";
 
 export default function Home({
   stats,
@@ -45,6 +46,7 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <Heading stats={stats} />
       <Cryptos cryptoData={cryptoData} />
       <Featured featuredPost={featuredPost} />
       <MoreFeatured posts={posts} />

@@ -1,0 +1,34 @@
+.container {
+  text-align: center;
+  font-size: 0.8765rem;
+  margin-bottom: -3rem;
+
+  .wrapper {
+    @media screen and (max-width: 450px) {
+      padding: 1rem;
+    }
+
+    @media screen and (max-width: 900px) and (min-width: 451px) {
+      padding: 0.75rem;
+    }
+
+    .info {
+      .infoNum {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.plus {
+  color: #00cc00;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.minus {
+  color: #f91e5a;
+  font-size: 1rem;
+  font-weight: 500;
+}

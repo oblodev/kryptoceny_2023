@@ -12,6 +12,8 @@
     "@analytics/google-analytics": "^1.0.5",
     "analytics": "^0.8.1",
     "axios": "^0.27.2",
+    "big-number": "^2.0.0",
+    "bignumber.js": "^9.1.1",
     "framer-motion": "^7.10.3",
     "graphql": "^16.6.0",
     "graphql-request": "^4.3.0",

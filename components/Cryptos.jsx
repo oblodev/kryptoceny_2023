@@ -59,7 +59,7 @@ function Cryptos({ cryptoData }) {
                     <td className={styles.kryptoBorder2}>
                       {crypto?.current_price >= 1
                         ? crypto?.current_price?.toFixed(2)
-                        : crypto?.current_price?.toFixed(4)}
+                        : crypto?.current_price?.toFixed(5)}
                       $
                     </td>
                     <td className={styles.kryptoBorder2}>
