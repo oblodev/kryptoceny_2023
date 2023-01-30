@@ -1,10 +1,17 @@
+import { useState, useEffect } from "react";
 import styles from "../styles/Footer.module.scss";
 import Image from "next/image";
 import logo from "../public/images/KryptoCeny.png";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import { getCategories } from "../services";
 
 function Footer() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories().then((newCategories) => setCategories(newCategories));
+  }, []);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -35,24 +42,24 @@ function Footer() {
         <div className={styles.categories}>
           <h3>Kategorie</h3>
           <ul>
-            <li>Bitcoin</li>
-            <li>Blockchain</li>
-            <li>Inwestycje</li>
-            <li>Kryptowaluty</li>
-            <li>Poradnik Krypto</li>
+            {categories.map((category) => (
+              <li key={category.slug}>
+                <Link href={`/category/${category.slug}`}>{category.name}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className={styles.links}>
           <h3>Przydatne</h3>
           <ul>
             <li>
+              <Link href="/poradnik/all">Poradnik Krypto</Link>
+            </li>
+            <li>
               <Link href="/onas">O nas</Link>
             </li>
             <li>
               <Link href="/regulamin">Regulamin Serwisu</Link>
-            </li>
-            <li>
-              <Link href="/kryptowaluty">Kryptowaluty</Link>
             </li>
             <li>
               <Link href="/politykaprywatnosci">Polityka prywatności</Link>

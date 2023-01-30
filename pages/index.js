@@ -34,7 +34,7 @@ export default function Home({
   });
 
   analytics.page();
-  console.log(newsData);
+
   return (
     <div className={styles.container}>
       <Head>

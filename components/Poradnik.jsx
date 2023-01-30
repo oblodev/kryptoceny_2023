@@ -2,6 +2,7 @@ import styles from "../styles/Poradnik.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { IoDocumentTextOutline } from "react-icons/io";
+import { Button } from "react-bootstrap";
 
 function Poradnik({ poradnikPosts }) {
   return (
@@ -37,6 +38,10 @@ function Poradnik({ poradnikPosts }) {
                 </Link>
               ))}
         </div>
+
+        <Link href="/poradnik/all">
+          <button className={styles.button}>Zobacz więcej</button>
+        </Link>
       </div>
     </div>
   );

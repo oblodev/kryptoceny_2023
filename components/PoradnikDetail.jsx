@@ -1,5 +1,6 @@
 import styles from "../styles/PoradnikDetail.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 import moment from "moment";
 import PriceWidget from "./PriceWidget";
 import React from "react";
@@ -71,7 +72,9 @@ function PoradnikDetail({ poradnik }) {
             od <span>{poradnik.author.name}</span>
           </p>
           <p>{moment(poradnik.date).format("DD.MM.YYYY")}</p>
-          <p className={styles.category}>{poradnik.categories[0].name}</p>
+          <Link href="/poradnik/all" className={styles.category}>
+            Poradnik Krypto
+          </Link>
         </div>
       </div>
       <div className={styles.postWrap}>

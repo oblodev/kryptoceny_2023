@@ -3,6 +3,7 @@ import moment from "moment";
 import PriceWidget from "./PriceWidget";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 function PostDetail({ post }) {
   const getContentFragment = (index, text, obj, type) => {
@@ -71,7 +72,9 @@ function PostDetail({ post }) {
             od <span>{post.author.name}</span>
           </p>
           <p>{moment(post.date).format("DD.MM.YYYY")}</p>
-          <p className={styles.category}>{post.categories[0].name}</p>
+          <Link href={`/post/${post.slug}`} className={styles.category}>
+            {post.categories[0].name}
+          </Link>
         </div>
       </div>
       <div className={styles.postWrap}>

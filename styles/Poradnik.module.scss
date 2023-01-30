@@ -124,5 +124,20 @@
         cursor: pointer;
       }
     }
+
+    .button {
+      padding: 0.5rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #ffa052;
+      background-color: #ffa052;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.3s all ease-in-out;
+      border-radius: 10px;
+    }
+
+    .button:hover {
+      color: #fff;
+    }
   }
 }
