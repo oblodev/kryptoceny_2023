@@ -24,10 +24,6 @@ export const getFeaturedPost = async () => {
             featuredImage {
               url
             }
-            categories {
-              name
-              slug
-            }
             content {
               text
             }
@@ -62,10 +58,6 @@ export const getFeaturedPostDetails = async (slug) => {
         date
         featuredImage {
           url
-        }
-        categories {
-          name
-          slug
         }
         content {
           raw
