@@ -4,12 +4,12 @@ import moment from "moment";
 import Link from "next/link";
 
 const CategoryPost = ({ posts }) => {
-  console.log(posts);
+  console.log(posts[0].node.categories[0].name);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.header}>
-          <h1>Kategoria: </h1>
+          <h1>Kategoria: {posts[0].node.categories[0].name}</h1>
         </div>
         <div className={styles.postWrap}>
           {posts &&

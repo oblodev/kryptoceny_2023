@@ -72,7 +72,10 @@ function PostDetail({ post }) {
             od <span>{post.author.name}</span>
           </p>
           <p>{moment(post.date).format("DD.MM.YYYY")}</p>
-          <Link href={`/post/${post.slug}`} className={styles.category}>
+          <Link
+            href={`/category/${post.categories[0].slug}`}
+            className={styles.category}
+          >
             {post.categories[0].name}
           </Link>
         </div>
