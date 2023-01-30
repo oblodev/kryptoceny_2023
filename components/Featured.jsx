@@ -31,7 +31,7 @@ function Featured({ featuredPost }) {
               />
             </div>
             <div className={styles.feature}>
-              <p>{post.categories[0].name}</p>
+              <p></p>
               <h3>{post.title}</h3>
               <p>{moment(post.createdAt).format("DD.MM.YYYY")}</p>
             </div>

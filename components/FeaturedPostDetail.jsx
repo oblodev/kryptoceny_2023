@@ -71,7 +71,7 @@ function PostDetail({ post }) {
             od <span>{post.author.name}</span>
           </p>
           <p>{moment(post.date).format("DD.MM.YYYY")}</p>
-          <p className={styles.category}>{post.categories[0].name}</p>
+          <p className={styles.category}></p>
         </div>
       </div>
       <div className={styles.postWrap}>
