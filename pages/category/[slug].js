@@ -9,7 +9,7 @@ const CategoryPost = ({ posts }) => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.header}>
-          <h1>Kategoria: {posts[0].node.categories[0].name}</h1>
+          <h1>Kategoria: </h1>
         </div>
         <div className={styles.postWrap}>
           {posts &&
