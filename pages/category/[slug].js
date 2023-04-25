@@ -5,6 +5,7 @@ import Link from "next/link";
 
 const CategoryPost = ({ posts }) => {
   console.log(posts[0].node.categories[0].name);
+  console.log(posts.map((post) => post.node.categories[0].name));
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
