@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 function PostDetail({ post }) {
+  console.log("post");
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 

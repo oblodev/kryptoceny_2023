@@ -20,6 +20,7 @@ export const getFeaturedPost = async () => {
             createdAt
             slug
             title
+            category
             excerpt
             featuredImage {
               url
@@ -53,6 +54,7 @@ export const getFeaturedPostDetails = async (slug) => {
         }
         createdAt
         slug
+        category
         title
         excerpt
         date

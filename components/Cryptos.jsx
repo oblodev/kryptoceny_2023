@@ -6,6 +6,7 @@ import NumberFormat from "react-number-format";
 import Link from "next/link";
 
 function Cryptos({ cryptoData }) {
+  console.log(cryptoData);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -33,7 +34,7 @@ function Cryptos({ cryptoData }) {
                 <th className={styles.kryptoBorder}>Kapitalizacja</th>
               </tr>
             </thead>
-            {cryptoData ? (
+            {Array.isArray(cryptoData) ? (
               cryptoData.map((crypto) => (
                 <tbody key={crypto.market_cap_rank}>
                   <tr>

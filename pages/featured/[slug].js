@@ -11,6 +11,7 @@ import FeaturedPostDetail from "../../components/FeaturedPostDetail";
 import PriceTicker from "../../components/PriceTicker";
 
 function FeaturedPostDetails({ data }) {
+  console.log("HELLOO", data);
   return (
     <div className={styles.container}>
       <Head>
