@@ -8,8 +8,6 @@ import Image from "next/image";
 import PriceTicker from "../../components/PriceTicker";
 
 function kryptoinfo({ data }) {
-  console.log(data);
-
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 
@@ -72,7 +70,7 @@ function kryptoinfo({ data }) {
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <div className={styles.icon}>
-            <img src={data.kryptoImage.url} />
+            <img src={data.kryptoImage.url} alt="krypto-logo" />
           </div>
           <div className={styles.heading}>
             <h1>{data.title}</h1>

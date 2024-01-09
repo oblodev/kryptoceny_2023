@@ -93,7 +93,6 @@ function PostDetail({ post }) {
               objectFit="cover"
             />
           </div>
-          {console.log(post.content.raw)}
           <p className={styles.excerpt}>{post.excerpt}</p>
           <div className={styles.postText}>
             {post.content.raw.children.map((typeObj, index) => {

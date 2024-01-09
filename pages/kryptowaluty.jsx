@@ -7,7 +7,6 @@ import Link from "next/link";
 import PriceTicker from "../components/PriceTicker";
 
 function kryptowaluty({ data }) {
-  console.log(data);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

@@ -8,8 +8,6 @@ import { motion } from "framer-motion";
 function Featured({ featuredPost }) {
   const post = featuredPost[featuredPost.length - 1].node;
 
-  console.log("POST HERE", featuredPost);
-
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
