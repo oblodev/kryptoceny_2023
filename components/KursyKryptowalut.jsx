@@ -9,8 +9,6 @@ function KursyKryptowalut({ cryptoData }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 50;
 
-  console.log("THE DATA", cryptoData);
-
   // Filter the data based on search text
   const filteredData = cryptoData.filter((coin) => {
     if (text === "") {
@@ -24,7 +22,6 @@ function KursyKryptowalut({ cryptoData }) {
   // Calculate total pages based on filtered data
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
-  // Calculate the current items to be displayed on the page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);

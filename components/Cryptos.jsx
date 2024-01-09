@@ -6,7 +6,6 @@ import NumberFormat from "react-number-format";
 import Link from "next/link";
 
 function Cryptos({ cryptoData }) {
-  console.log(cryptoData);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

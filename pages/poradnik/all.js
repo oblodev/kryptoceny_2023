@@ -4,7 +4,6 @@ import moment from "moment";
 import Link from "next/link";
 
 const PoradnikAll = ({ data }) => {
-  console.log(data);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

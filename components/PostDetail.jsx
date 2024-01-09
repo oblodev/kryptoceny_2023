@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 function PostDetail({ post }) {
-  console.log("post");
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 
@@ -100,7 +99,7 @@ function PostDetail({ post }) {
               objectFit="cover"
             />
           </div>
-          {console.log(post.content.raw)}
+
           <p className={styles.excerpt}>{post.excerpt}</p>
           <div className={styles.postText}>
             {post.content.raw.children.map((typeObj, index) => {

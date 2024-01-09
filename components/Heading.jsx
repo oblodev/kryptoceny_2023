@@ -2,7 +2,6 @@ import styles from "../styles/Heading.module.scss";
 import BigNumber from "bignumber.js";
 
 function Heading({ stats }) {
-  console.log(stats);
   const number = stats.data.total_market_cap.usd;
   const formattedNumber = (number / 1e12).toFixed(2).slice(0, 4);
   return (

@@ -7,8 +7,6 @@ import styles from "../../styles/PostDetails.module.scss";
 import PostDetail from "../../components/PostDetail";
 
 function PostDetails({ data }) {
-  console.log("post", data);
-
   return (
     <div className={styles.container}>
       <Head>

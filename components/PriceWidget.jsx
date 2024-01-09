@@ -25,7 +25,6 @@ function PriceWidget() {
 
       setCryptos(data.data.coins);
       setIsFetched(true);
-      console.log(data.data.coins);
     };
 
     fetchCryptos();
