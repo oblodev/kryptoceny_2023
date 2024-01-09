@@ -65,7 +65,7 @@ function Footer() {
               <Link href="/politykaprywatnosci">Polityka prywatności</Link>
             </li>
             <li>
-              <a href="mailto:hello@kryptokurs.pl">Kontakt</a>
+              <a href="mailto:hello@netcreators.io">Kontakt</a>
             </li>
           </ul>
         </div>

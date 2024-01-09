@@ -25,7 +25,7 @@ function kryptowaluty({ data }) {
                 <div className={styles.kryptoCardInfo}>
                   <p>{krypto.node.desc}</p>
                   <Link href={`/kryptoinfo/${krypto.node.slug}`}>
-                    <button>Dowiedz sie wiecej ...</button>
+                    <button>Dowiedz sie wiecej</button>
                   </Link>
                 </div>
               </div>

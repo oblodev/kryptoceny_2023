@@ -41,7 +41,7 @@ export default function Home({
         <title>Aktualne kursy kryptowalut || KryptoCeny.pl</title>
         <meta
           name="Aktualne kursy kryptowalut"
-          content="Created by NetCreators.io"
+          content="Odkryj KryptoCeny.pl - Twoje źródło aktualnych informacji o kryptowalutach. Śledź na bieżąco kursy, trendy rynkowe oraz analizy głównych walut cyfrowych, takich jak Bitcoin, Ethereum i inne. Zapoznaj się z naszymi artykułami, aktualnościami oraz przewodnikami edukacyjnymi, aby pogłębić swoją wiedzę o świecie kryptowalut. Niezależnie od tego, czy jesteś doświadczonym inwestorem, czy początkującym entuzjastą, nasza platforma oferuje cenne wskazówki i dane, które pomogą Ci nawigować w dynamicznym świecie inwestycji w krypto."
         />
         <meta
           name="google-site-verification"
@@ -85,7 +85,7 @@ export async function getStaticProps() {
   const data = await res.json();
 
   const resNews = await fetch(
-    `https://newsapi.org/v2/everything?q=kryptowaluty+OR+bitcoin+OR+ethereum+OR+web3+OR+cardano+OR+binance+OR+ftx+OR+metaverse+OR+nft+OR+doge+OR+ripple+OR+solana+OR+coin&language=pl&from=${formattedDate}&sortBy=publishedAt&apiKey=802bc8322889437a80f9be9198939678`
+    `https://newsapi.org/v2/everything?q=kryptowaluty+OR+bitcoin+OR+ethereum+OR+web3+OR+cardano+OR+binance+OR+ftx+OR+metaverse+OR+nft+OR+doge+OR+ripple+OR+solana+OR+coin+OR+etf+OR+binance&language=pl&from=${formattedDate}&sortBy=publishedAt&apiKey=802bc8322889437a80f9be9198939678`
   );
   const newsData = await resNews.json();
 

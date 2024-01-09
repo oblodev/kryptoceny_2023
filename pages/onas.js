@@ -13,9 +13,11 @@ function onas() {
           </div>
           <div className={styles.info}>
             <p>
-              KryptoCeny.pl to najszybszy i zarazem najłatwiejszy sposób na
-              sprawdzenie kursu Bitcoina oraz wielu innych “altcoinów”, takich
-              jak: Ethereum, Litecoin czy Cardano. Serwis zajmuje się
+              <strong>
+                KryptoCeny.pl to najszybszy i zarazem najłatwiejszy sposób
+              </strong>{" "}
+              na sprawdzenie kursu Bitcoina oraz wielu innych “altcoinów”,
+              takich jak: Ethereum, Litecoin czy Cardano. Serwis zajmuje się
               monitorowaniem kryptowalut 24 godziny na dobę, siedem dni w
               tygodniu.
             </p>
@@ -31,6 +33,8 @@ function onas() {
               dla Was przygotowaliśmy, pomoże Wam w rozsądnych i zyskownych
               inwestycjach.”
             </p>
+            <br />
+            <br />
 
             <h2>Dlaczego KryptoCeny?</h2>
             <p>
@@ -42,7 +46,7 @@ function onas() {
               z ich cennego czasu.
             </p>
             <div className={styles.logo}>
-              <Image src={logo} />
+              <Image src={logo} alt="kryptoceny-logo" />
             </div>
           </div>
         </div>

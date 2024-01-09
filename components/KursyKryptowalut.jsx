@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/KursKryptowalut.module.scss";
 import Image from "next/image";
 import NumberFormat from "react-number-format";
@@ -6,6 +6,37 @@ import Link from "next/link";
 
 function KursyKryptowalut({ cryptoData }) {
   const [text, setText] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 50;
+
+  console.log("THE DATA", cryptoData);
+
+  // Filter the data based on search text
+  const filteredData = cryptoData.filter((coin) => {
+    if (text === "") {
+      return true;
+    } else if (coin.name.toLowerCase().includes(text.toLowerCase())) {
+      return true;
+    }
+    return false;
+  });
+
+  // Calculate total pages based on filtered data
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  // Calculate the current items to be displayed on the page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+  useEffect(() => {
+    // Reset to the first page when search text changes
+    setCurrentPage(1);
+  }, [text]);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -44,8 +75,8 @@ function KursyKryptowalut({ cryptoData }) {
               <th className={styles.kryptoBorder}>Kapitalizacja</th>
             </tr>
           </thead>
-          {cryptoData ? (
-            cryptoData
+          {currentItems ? (
+            currentItems
               .filter((coin) => {
                 if (text === "") {
                   return coin;
@@ -165,6 +196,17 @@ function KursyKryptowalut({ cryptoData }) {
             </div>
           )}
         </table>
+      </div>
+      <div className={styles.pagination}>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            className={currentPage === index + 1 ? styles.activePage : ""}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );

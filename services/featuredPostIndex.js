@@ -6,7 +6,7 @@ const graphqlAPI =
 export const getFeaturedPost = async () => {
   const query = gql`
     query MyQuery {
-      featuredPostsConnection {
+      featuredPostsConnection(first: 500) {
         edges {
           node {
             author {

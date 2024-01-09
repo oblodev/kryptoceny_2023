@@ -40,7 +40,7 @@ function Nav() {
               <Link href="onas">O nas</Link>
             </li>
             <li>
-              <a href="mailto:hello@kryptokurs.pl">Kontakt</a>
+              <a href="mailto:hello@netcreators.io">Kontakt</a>
             </li>
           </ul>
         </div>
