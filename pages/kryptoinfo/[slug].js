@@ -6,6 +6,7 @@ import {
 import styles from "../../styles/kryptoinfo.module.scss";
 import Image from "next/image";
 import PriceTicker from "../../components/PriceTicker";
+import Head from "next/head";
 
 function kryptoinfo({ data }) {
   const getContentFragment = (index, text, obj, type) => {
@@ -66,30 +67,65 @@ function kryptoinfo({ data }) {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.header}>
-          <div className={styles.icon}>
-            <img src={data.kryptoImage.url} alt="krypto-logo" />
+    <>
+      <Head>
+        <title>{`KryptoCeny.pl | Informacje o ${data.title} - Kurs i Szczegóły`}</title>
+        <meta
+          name="description"
+          content={`Dowiedz się więcej o ${data.title}, jego kursie, kapitalizacji i aktualnych trendach. Poznaj szczegółowe informacje o tej kryptowalucie.`}
+        />
+        <meta
+          name="keywords"
+          content={`${data.title}, kryptowaluty, kurs, inwestycje`}
+        />
+        <meta
+          property="og:title"
+          content={`Informacje o ${data.title} - Kurs i Szczegóły`}
+        />
+        <meta
+          property="og:description"
+          content={`Aktualne informacje na temat kryptowaluty ${data.title}.`}
+        />
+        <meta property="og:image" content={data.kryptoImage.url} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`https://kryptoceny.pl/kryptoinfo/${data.slug}`}
+        />
+        <link
+          rel="canonical"
+          href={`https://kryptoceny.pl/kryptoinfo/${data.slug}`}
+        />
+      </Head>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <div className={styles.icon}>
+              <img
+                src={data.kryptoImage.url}
+                alt={`${data.title} logo`}
+                loading="lazy"
+              />
+            </div>
+            <div className={styles.heading}>
+              <h1>{`Informacje o ${data.title} - Kurs i Szczegóły`}</h1>
+              <p>{data.desc}</p>
+            </div>
           </div>
-          <div className={styles.heading}>
-            <h1>{data.title}</h1>
-            <p>{data.desc}</p>
-          </div>
-        </div>
-        <div className={styles.info}>
-          <h2>{data.title}</h2>
-          {data.content.raw.children.map((typeObj, index) => {
-            const children = typeObj.children.map((item, itemIndex) =>
-              getContentFragment(itemIndex, item.text, item)
-            );
+          <div className={styles.info}>
+            <h2>{data.title}</h2>
+            {data.content.raw.children.map((typeObj, index) => {
+              const children = typeObj.children.map((item, itemIndex) =>
+                getContentFragment(itemIndex, item.text, item)
+              );
 
-            return getContentFragment(index, children, typeObj, typeObj.type);
-          })}
+              return getContentFragment(index, children, typeObj, typeObj.type);
+            })}
+          </div>
         </div>
+        <PriceTicker />
       </div>
-      <PriceTicker />
-    </div>
+    </>
   );
 }
 
