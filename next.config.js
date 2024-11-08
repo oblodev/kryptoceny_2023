@@ -18,6 +18,7 @@ module.exports = {
       "img.joemonster.org",
       "antyweb.pl",
       "m.natemat.pl",
+      "coin-images.coingecko.com",
     ],
   },
 };
