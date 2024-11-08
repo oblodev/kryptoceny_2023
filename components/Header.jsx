@@ -9,9 +9,7 @@ function Header() {
         whileInView={{ y: [40, 0], opacity: [0, 1] }}
         transition={{ duration: 0.55 }}
       >
-        <h1>KryptoCeny - Aktualne kursy kryptowalut</h1>
-
-        <p>Witamy! Portal obecnie jest w wersji Beta.</p>
+        <h1>KryptoCeny.pl - Aktualne kursy kryptowalut</h1>
       </motion.div>
     </div>
   );

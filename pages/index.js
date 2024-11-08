@@ -38,11 +38,32 @@ export default function Home({
   return (
     <div className={styles.container}>
       <Head>
-        <title>Aktualne kursy kryptowalut || KryptoCeny.pl</title>
+        <title>
+          KryptoCeny.pl | Aktualne kursy kryptowalut || KryptoCeny.pl
+        </title>
+        <title>
+          KryptoCeny.pl | Aktualne Kursy Kryptowalut, Wiadomości i Analizy
+        </title>
         <meta
-          name="Aktualne kursy kryptowalut"
-          content="Odkryj KryptoCeny.pl - Twoje źródło aktualnych informacji o kryptowalutach. Śledź na bieżąco kursy, trendy rynkowe oraz analizy głównych walut cyfrowych, takich jak Bitcoin, Ethereum i inne. Zapoznaj się z naszymi artykułami, aktualnościami oraz przewodnikami edukacyjnymi, aby pogłębić swoją wiedzę o świecie kryptowalut. Niezależnie od tego, czy jesteś doświadczonym inwestorem, czy początkującym entuzjastą, nasza platforma oferuje cenne wskazówki i dane, które pomogą Ci nawigować w dynamicznym świecie inwestycji w krypto."
+          name="description"
+          content="KryptoCeny.pl oferuje najnowsze kursy, analizy, i przewodniki dla Bitcoin, Ethereum i innych kryptowalut. Śledź rynkowe trendy i pogłębiaj swoją wiedzę z naszymi artykułami."
         />
+        <meta
+          name="keywords"
+          content="kursy kryptowalut, Bitcoin, Ethereum, analiza kryptowalut, wiadomości kryptowalut, inwestycje"
+        />
+        <meta
+          property="og:title"
+          content="KryptoCeny.pl | Aktualne Kursy Kryptowalut, Wiadomości i Analizy"
+        />
+        <meta
+          property="og:description"
+          content="Bądź na bieżąco z kursami i analizami kryptowalut. Nasza platforma dostarcza najnowsze wiadomości i przewodniki edukacyjne."
+        />
+
+        <meta property="og:url" content="https://kryptoceny.pl" />
+
+        <link rel="canonical" href="https://kryptoceny.pl" />
         <meta
           name="google-site-verification"
           content="WotMEVkt3D6C6zrVbDo1LCqAO6gvsDcPbJH1xfBa-TQ"
