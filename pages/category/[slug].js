@@ -4,13 +4,27 @@ import moment from "moment";
 import Link from "next/link";
 
 const CategoryPost = ({ posts }) => {
-  // console.log(posts[0].node.categories[0].name);
-  // console.log(posts.map((post) => post.node.categories[0].name));
+  if (!posts || posts.length === 0) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <h1>Brak postów w tej kategorii</h1>
+          </div>
+          <p className={styles.emptyMessage}>
+            Obecnie nie ma żadnych postów w tej kategorii. Sprawdź inne
+            kategorie lub wróć później!
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.header}>
-          {/* <h1>Kategoria: {posts[0].node.categories[0].name}</h1> */}
+          <h1>Kategoria: {posts[0]?.node.categories[0]?.name}</h1>
         </div>
         <div className={styles.postWrap}>
           {posts &&
@@ -18,7 +32,10 @@ const CategoryPost = ({ posts }) => {
               <Link href={`/post/${post.node.slug}`} key={post.node.slug}>
                 <div className={styles.postCard}>
                   <div className={styles.postImage}>
-                    <img src={post.node.featuredImage.url} />
+                    <img
+                      src={post.node.featuredImage.url}
+                      alt={post.node.title}
+                    />
                   </div>
                   <div className={styles.postHeader}>
                     <h2>{post.node.title}</h2>
@@ -37,6 +54,7 @@ const CategoryPost = ({ posts }) => {
     </div>
   );
 };
+
 export default CategoryPost;
 
 export async function getStaticProps({ params }) {
