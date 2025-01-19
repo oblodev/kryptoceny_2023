@@ -103,7 +103,7 @@ export async function getStaticProps() {
   const data = await res.json();
 
   const resNews = await fetch(
-    `https://newsapi.org/v2/everything?q=kryptowaluty+OR+bitcoin+OR+ethereum+OR+web3+OR+cardano+OR+binance+OR+ftx+OR+metaverse+OR+nft+OR+doge+OR+ripple+OR+solana+OR+elon+musk+coin+OR+etf+OR+binance&language=pl&from=${formattedDate}&sortBy=publishedAt&apiKey=802bc8322889437a80f9be9198939678`
+    `https://newsapi.org/v2/everything?q=kryptowaluty+OR+bitcoin+OR+ethereum+OR+web3+OR+cardano+OR+binance+OR+ftx+OR+metaverse+OR+nft+OR+doge+OR+ripple+OR+coinbase+OR+coin+OR+solana+OR+elon+musk+coin+OR+etf+OR+binance&language=pl&from=${formattedDate}&sortBy=publishedAt&apiKey=802bc8322889437a80f9be9198939678`
   );
   const newsData = await resNews.json();
 

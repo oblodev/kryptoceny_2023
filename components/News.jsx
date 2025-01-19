@@ -16,7 +16,7 @@ function News({ newsData }) {
           transition={{ duration: 0.75 }}
         >
           <FaRegNewspaper className={styles.icon} />
-          <h2>News</h2>
+          <h2>Wokół świata kryptowalut</h2>
         </motion.div>
         <div className={styles.news}>
           {newsData &&
