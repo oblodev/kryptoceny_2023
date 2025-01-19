@@ -3,16 +3,18 @@ import { motion } from "framer-motion";
 
 function Header() {
   return (
-    <div className={styles.container}>
+    <header className={styles.container} aria-label="Header Section">
       <motion.div
         className={styles.wrapper}
         whileInView={{ y: [40, 0], opacity: [0, 1] }}
         transition={{ duration: 0.55 }}
+        viewport={{ once: true }} // Ensure the animation plays only once
       >
         <h1>KryptoCeny.pl - Aktualne kursy kryptowalut</h1>
       </motion.div>
-    </div>
+    </header>
   );
 }
 
 export default Header;
+

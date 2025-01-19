@@ -1,16 +1,10 @@
 .container {
-  width: 1280px;
-  margin: auto;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem; // Add padding for smaller screens
+  width: 100%;
 
-  @media screen and (max-width: 420px) {
-    width: auto;
-  }
-
-  @media screen and (max-width: 900px) and (min-width: 421px) {
-    width: auto;
-  }
-
-  @media screen and (min-width: 901px) and (max-width: 1250px) {
+  @media screen and (max-width: 1250px) {
     width: 100%;
   }
 
@@ -22,12 +16,15 @@
     flex-direction: column;
 
     h1 {
-      @media screen and (max-width: 420px) {
-        font-size: 1.1rem;
+      font-size: 2rem; // Default font size
+
+      @media screen and (max-width: 900px) {
+        font-size: 1.6rem;
       }
 
-      @media screen and (max-width: 900px) and (min-width: 421px) {
-        font-size: 1.6rem;
+      @media screen and (max-width: 420px) {
+        font-size: 1.2rem;
+        text-align: center; // Ensure proper alignment for smaller screens
       }
     }
   }

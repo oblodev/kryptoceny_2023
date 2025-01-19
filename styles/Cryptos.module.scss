@@ -27,22 +27,32 @@
     flex-direction: column;
 
     .headerBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-top: 2rem;
+    
       button {
-        background: #fff !important;
+        background: #fff;
         padding: 0.75rem 2rem;
-        font-size: 0.95rem;
-        border-radius: 10px;
+        font-size: 1rem;
+        border-radius: 8px;
         border: 2px solid #5271ff;
+        color: #5271ff;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-        font-weight: 500;
-        margin-top: 1rem;
-      }
-
-      button:hover {
-        background: #5271ff !important;
-        color: #fff;
+    
+        &:hover {
+          background: #5271ff;
+          color: #fff;
+        }
+    
+        &:disabled {
+          background-color: #fff;
+          color: #666666;
+          cursor: not-allowed;
+        }
       }
     }
   }
@@ -196,5 +206,27 @@
 .tabHide {
   @media screen and (max-width: 900px) and (min-width: 421px) {
     display: none;
+  }
+}
+
+
+
+
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #cccccc;
+  border-top: 3px solid #0073e6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

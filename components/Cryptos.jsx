@@ -1,21 +1,43 @@
 import styles from "../styles/Cryptos.module.scss";
-
+import { useState } from "react";
 import Image from "next/image";
 import NumberFormat from "react-number-format";
 
 import Link from "next/link";
 
 function Cryptos({ cryptoData }) {
+  const formatNumber = (value) =>
+    <NumberFormat
+      value={value}
+      displayType="text"
+      thousandSeparator={true}
+      decimalSeparator="."
+      allowNegative={false}
+    />;
+
+
+    const [isLoading, setIsLoading] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsLoading(true);
+    // Simulate a delay for loading
+    setTimeout(() => {
+      setIsLoading(false);
+      // Navigate to the desired page
+      window.location.href = "/kurskryptowalut";
+    }, 1850); // Adjust timeout as needed
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.cryptos}>
-          <table className={styles.kryptoTable}>
+          <table className={styles.kryptoTable} aria-label="Tabela kryptowalut">
             <thead>
               <tr className={styles.kryptoHead}>
                 <th className={styles.kryptoBorder}>#</th>
                 <th className={`${styles.kryptoLeft} ${styles.kryptoBorder}`}>
-                  <p>Kryptowaluta</p>{" "}
+                  <p>Kryptowaluta</p>
                 </th>
                 <th className={styles.kryptoBorder}>Kurs</th>
                 <th className={styles.kryptoBorder}>Kurs 1h</th>
@@ -33,12 +55,12 @@ function Cryptos({ cryptoData }) {
                 <th className={styles.kryptoBorder}>Kapitalizacja</th>
               </tr>
             </thead>
-            {Array.isArray(cryptoData) ? (
-              cryptoData.map((crypto) => (
-                <tbody key={crypto.market_cap_rank}>
-                  <tr>
+            <tbody>
+              {Array.isArray(cryptoData) && cryptoData.length > 0 ? (
+                cryptoData.map((crypto) => (
+                  <tr key={crypto.market_cap_rank}>
                     <td className={styles.kryptoBorder2}>
-                      {crypto.market_cap_rank}{" "}
+                      {crypto.market_cap_rank}
                     </td>
                     <td
                       className={`${styles.kryptoName} ${styles.kryptoBorder2}`}
@@ -46,20 +68,23 @@ function Cryptos({ cryptoData }) {
                       <div className={styles.kryptoImage}>
                         <Image
                           src={crypto.image}
-                          alt="crypto-logo"
-                          width="24px"
-                          height="24px"
-                          style={{ marginRight: "8px" }}
+                          alt={`${crypto.name} logo`}
+                          width={24}
+                          height={24}
                         />
-                      </div>{" "}
-                      <Link href={`/kryptowaluta/${crypto.id}`}>
-                        <a>{crypto.name}</a>
-                      </Link>
+                      </div>
+                      {crypto.id ? (
+                        <Link href={`/kryptowaluta/${crypto.id}`}>
+                          <a>{crypto.name}</a>
+                        </Link>
+                      ) : (
+                        <span>{crypto.name}</span>
+                      )}
                     </td>
                     <td className={styles.kryptoBorder2}>
-                      {crypto?.current_price >= 1
-                        ? crypto?.current_price?.toFixed(2)
-                        : crypto?.current_price?.toFixed(5)}
+                      {crypto.current_price >= 1
+                        ? crypto.current_price.toFixed(2)
+                        : crypto.current_price.toFixed(5)}
                       $
                     </td>
                     <td className={styles.kryptoBorder2}>
@@ -70,7 +95,7 @@ function Cryptos({ cryptoData }) {
                             : "red"
                         }
                       >
-                        {crypto?.price_change_percentage_1h_in_currency?.toFixed(
+                        {crypto.price_change_percentage_1h_in_currency?.toFixed(
                           2
                         )}
                         %
@@ -84,7 +109,7 @@ function Cryptos({ cryptoData }) {
                             : "red"
                         }
                       >
-                        {crypto.price_change_percentage_24h?.toFixed(2)} %
+                        {crypto.price_change_percentage_24h?.toFixed(2)}%
                       </span>
                     </td>
                     <td
@@ -106,49 +131,35 @@ function Cryptos({ cryptoData }) {
                     <td
                       className={`${styles.kryptoPrice} ${styles.kryptoBorder2} ${styles.hide} ${styles.tabHide}`}
                     >
-                      {
-                        <NumberFormat
-                          thousandsGroupStyle="thousand"
-                          value={crypto.total_volume}
-                          decimalSeparator="."
-                          displayType="text"
-                          type="text"
-                          thousandSeparator={true}
-                          allowNegative={true}
-                        />
-                      }
-                      $
+                      {formatNumber(crypto.total_volume)}$
                     </td>
-                    <td
-                      className={`${styles.kryptoPrice} ${styles.kryptoBorder2}`}
-                    >
-                      {
-                        <NumberFormat
-                          thousandsGroupStyle="thousand"
-                          value={crypto.market_cap}
-                          decimalSeparator="."
-                          displayType="text"
-                          type="text"
-                          thousandSeparator={true}
-                          allowNegative={true}
-                        />
-                      }
-                      $
+                    <td className={`${styles.kryptoPrice} ${styles.kryptoBorder2}`}>
+                      {formatNumber(crypto.market_cap)}$
                     </td>
                   </tr>
-                </tbody>
-              ))
-            ) : (
-              <div>
-                <p>Laduje dane ...</p>
-              </div>
-            )}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="8" className={styles.loading}>
+                    Ładowanie danych...
+                  </td>
+                </tr>
+              )}
+            </tbody>
           </table>
         </div>
         <div className={styles.headerBtn}>
-          <Link href="/kurskryptowalut">
-            <button>Zobacz więcej</button>
-          </Link>
+          <button
+            onClick={handleButtonClick}
+            aria-label="Zobacz więcej kursów kryptowalut"
+            disabled={isLoading} // Disable button during loading
+          >
+            {isLoading ? (
+              <div className={styles.spinner}></div>
+            ) : (
+              "Zobacz więcej"
+            )}
+          </button>
         </div>
       </div>
     </div>

@@ -41,9 +41,6 @@ export default function Home({
         <title>
           KryptoCeny.pl | Aktualne kursy kryptowalut || KryptoCeny.pl
         </title>
-        <title>
-          KryptoCeny.pl | Aktualne Kursy Kryptowalut, Wiadomości i Analizy
-        </title>
         <meta
           name="description"
           content="KryptoCeny.pl oferuje najnowsze kursy, analizy, i przewodniki dla Bitcoin, Ethereum i innych kryptowalut. Śledź rynkowe trendy i pogłębiaj swoją wiedzę z naszymi artykułami."
