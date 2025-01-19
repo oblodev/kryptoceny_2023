@@ -1,16 +1,21 @@
+import React from "react";
 import styles from "../styles/KryptowalutaDetail.module.scss";
 import Image from "next/image";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 import Link from "next/link";
+import NumberFormat from "react-number-format";
 
 function KryptowalutaDetail({ krypto }) {
   return (
     <div className={styles.wrapper}>
+      {/* Header */}
       <div className={styles.header}>
         <h1>
           Kurs {krypto.name} ({krypto.symbol.toUpperCase()}) - Wszystkie dane
         </h1>
       </div>
+
+      {/* Current Price Section */}
       <div className={styles.kryptoWrap}>
         <div className={styles.kryptoHeader}>
           <Image
@@ -25,64 +30,29 @@ function KryptowalutaDetail({ krypto }) {
           </h2>
         </div>
         <div className={styles.kryptoChanges}>
-          <div className={styles.kryptoChange}>
-            <p>Zmiana (24h)</p>
-            <div className={styles.kryptoChangeProc}>
-              <p
-                className={
-                  krypto.market_data.price_change_percentage_24h > 0
-                    ? "green"
-                    : "red"
-                }
-              >
-                {krypto.market_data.price_change_percentage_24h.toFixed(2)}%
-              </p>
+          {["24h", "7d", "30d", "1y"].map((timeframe, index) => (
+            <div className={styles.kryptoChange} key={index}>
+              <p>Zmiana ({timeframe})</p>
+              <div className={styles.kryptoChangeProc}>
+                <p
+                  className={
+                    krypto.market_data[`price_change_percentage_${timeframe}`] >
+                    0
+                      ? "green"
+                      : "red"
+                  }
+                >
+                  {krypto.market_data[`price_change_percentage_${timeframe}`]?.toFixed(2) ??
+                    "N/A"}
+                  %
+                </p>
+              </div>
             </div>
-          </div>
-          <div className={styles.kryptoChange}>
-            <p>Zmiana (1 dzien)</p>
-            <div className={styles.kryptoChangeProc}>
-              <p
-                className={
-                  krypto.market_data.price_change_percentage_7d > 0
-                    ? "green"
-                    : "red"
-                }
-              >
-                {krypto.market_data.price_change_percentage_7d.toFixed(2)}%
-              </p>
-            </div>
-          </div>
-          <div className={styles.kryptoChange}>
-            <p>Zmiana (7 dni)</p>
-            <div className={styles.kryptoChangeProc}>
-              <p
-                className={
-                  krypto.market_data.price_change_percentage_30d > 0
-                    ? "green"
-                    : "red"
-                }
-              >
-                {krypto.market_data.price_change_percentage_30d.toFixed(2)}%
-              </p>
-            </div>
-          </div>
-          <div className={styles.kryptoChange}>
-            <p>Zmiana (1 rok)</p>
-            <div className={styles.kryptoChangeProc}>
-              <p
-                className={
-                  krypto.market_data.price_change_percentage_1y > 0
-                    ? "green"
-                    : "red"
-                }
-              >
-                {krypto.market_data.price_change_percentage_1y.toFixed(2)}%
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
+
+      {/* Chart Section */}
       <div className={styles.kryptoWrap}>
         <div className={styles.chartHeader}>
           <div>
@@ -101,12 +71,12 @@ function KryptowalutaDetail({ krypto }) {
           </Sparklines>
           <div className={styles.chartInfo}>
             <p>ATH: ${krypto.market_data.ath.usd.toFixed(2)}</p>
-            <p>
-              Obecny Kurs: ${krypto.market_data.current_price.usd.toFixed(2)}
-            </p>
+            <p>Obecny Kurs: ${krypto.market_data.current_price.usd.toFixed(2)}</p>
           </div>
         </div>
       </div>
+
+      {/* Informacje */}
       <div className={styles.kryptoWrap}>
         <div className={styles.kryptoFaktyHeader}>
           <div>
@@ -121,8 +91,8 @@ function KryptowalutaDetail({ krypto }) {
         </div>
         <div className={styles.kryptoFakty}>
           <p>
-            Obecny kurs {krypto.name} wynosi $
-            {krypto.market_data.current_price.usd.toFixed(2)}. Kurs kryptowaluty{" "}
+            Obecny kurs <span style={{ fontWeight: "600" }}>{krypto.name}</span> wynosi $
+            <span style={{ fontWeight: "600" }}>{krypto.market_data.current_price.usd.toFixed(2)}</span>. Kurs kryptowaluty{" "}
             {krypto.name}{" "}
             {krypto.market_data.price_change_percentage_24h > 0
               ? "zyskał"
@@ -134,49 +104,47 @@ function KryptowalutaDetail({ krypto }) {
           </p>
           <p>
             Do osiągnięcia nowego ATH brakuje{" "}
-            {krypto.market_data.ath_change_percentage.usd.toFixed(2)}%.
+            <span style={{ fontWeight: "600" }}>{krypto.market_data.ath_change_percentage.usd.toFixed(2)}%</span>.
           </p>
           <div className={styles.kryptoInfo}>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Ranking</h4>
-              <p># {krypto.market_cap_rank}</p>
-            </div>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Kapitalizacja rynkowa</h4>
-              <p>${krypto.market_data.market_cap.usd}</p>
-            </div>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Kapitalizacja rynkowa (24h)</h4>
-              <p>
-                {krypto.market_data.market_cap_change_percentage_24h_in_currency.usd.toFixed(
-                  2
-                )}
-                %
-              </p>
-            </div>
-          </div>
-          <div className={styles.kryptoInfo}>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Wolumen (24h)</h4>
-              <p>${krypto.market_data.market_cap.usd}</p>
-            </div>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Ilość w obrocie</h4>
-              <p>
-                {krypto.market_data.circulating_supply}{" "}
-                {krypto.symbol.toUpperCase()}
-              </p>
-            </div>
-
-            <div className={styles.kryptoInfoCard}>
-              <h4>Ilość maksymalna</h4>
-              <p>
-                {krypto.market_data.total_supply} {krypto.symbol.toUpperCase()}
-              </p>
-            </div>
+            {[
+              {
+                title: "Ranking",
+                value: `# ${krypto.market_cap_rank}`,
+              },
+              {
+                title: "Kapitalizacja rynkowa",
+                value: (
+                  <NumberFormat
+                    value={krypto.market_data.market_cap.usd}
+                    displayType="text"
+                    thousandSeparator
+                    prefix="$"
+                  />
+                ),
+              },
+              {
+                title: "Wolumen (24h)",
+                value: (
+                  <NumberFormat
+                    value={krypto.market_data.total_volume.usd}
+                    displayType="text"
+                    thousandSeparator
+                    prefix="$"
+                  />
+                ),
+              },
+            ].map((info, idx) => (
+              <div className={styles.kryptoInfoCard} key={idx}>
+                <h4>{info.title}</h4>
+                <p>{info.value}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+
+      {/* Navigation */}
       <div className={styles.kryptoButtons}>
         <Link href="/kurskryptowalut">
           <button className={styles.wroc}>Wróć</button>
