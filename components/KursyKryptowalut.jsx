@@ -70,11 +70,15 @@ function KursyKryptowalut({ cryptoData }) {
           <h1>Aktualne kursy kryptowalut</h1>
         </div>
         <div className={styles.searchContainer}>
+          <label htmlFor="cryptoSearch" className={styles.searchLabel}>
+            Znajdź kryptowalutę:
+          </label>
           <input
+            id="cryptoSearch"
             className={styles.search}
             type="search"
             onChange={(e) => setText(e.target.value)}
-            placeholder="Wpisz nazwę kryptowaluty..."
+            placeholder="Szukaj według nazwy, np. Bitcoin, Ethereum..."
           />
         </div>
         <div className={styles.cryptos}>
