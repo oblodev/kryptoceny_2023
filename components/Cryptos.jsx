@@ -25,7 +25,7 @@ function Cryptos({ cryptoData }) {
       setIsLoading(false);
       // Navigate to the desired page
       window.location.href = "/kurskryptowalut";
-    }, 1850); // Adjust timeout as needed
+    }, 2500); // Adjust timeout as needed
   };
 
   return (
