@@ -1,7 +1,8 @@
 import styles from "../styles/MoreFeatured.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import Banner from "../components/banner"
+import BitpandaBanner from "../components/BitpandaBanner";
+
 
 function MoreFeatured({ posts }) {
   if (!posts || posts.length === 0) {
@@ -43,7 +44,7 @@ function MoreFeatured({ posts }) {
             </Link>
           ))}
       </div>
-          <Banner />
+       <BitpandaBanner />
     </div>
   );
 }

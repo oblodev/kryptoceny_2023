@@ -1,6 +1,6 @@
 import React from "react";
 
-const Banner = () => {
+const BitpandaBanner = () => {
   return (
     <div style={{ marginTop: "4rem", display: "flex", justifyContent: "center" }}>
         
