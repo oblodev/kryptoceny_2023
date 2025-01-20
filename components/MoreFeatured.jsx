@@ -44,8 +44,6 @@ function MoreFeatured({ posts }) {
           ))}
       </div>
           <Banner />
-      
-
     </div>
   );
 }
