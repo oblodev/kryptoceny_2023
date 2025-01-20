@@ -49,4 +49,4 @@ const BitpandaBanner = () => {
   );
 };
 
-export default Banner;
+export default BitpandaBanner;
