@@ -153,20 +153,20 @@ function KryptowalutaDetail({ krypto }) {
         </div>
         <div className={styles.kryptoFakty}>
           <p>
-            Obecny kurs {krypto.name} wynosi $
-            {krypto.market_data.current_price.usd.toFixed(2)}. Kurs kryptowaluty{" "}
+            Obecny kurs <span style={{fontWeight: "700"}}>{krypto.name}</span> wynosi <span style={{fontWeight: "700"}}>$
+            {krypto.market_data.current_price.usd.toFixed(2)}</span>. Kurs kryptowaluty{" "}
             {krypto.name}{" "}
             {krypto.market_data.price_change_percentage_24h > 0
               ? "zyskał"
               : "stracił"}{" "}
             w ostatnich 24h{" "}
-            {krypto.market_data.price_change_percentage_24h.toFixed(2)}%.
-            Kryptowaluta {krypto.name} obecnie się plasuje na{" "}
-            {krypto.market_cap_rank}. miejscu według kapitalizacji rynkowej.
+            <span style={{fontWeight: "700"}}>{krypto.market_data.price_change_percentage_24h.toFixed(2)}%</span>.
+            Kryptowaluta <span style={{fontWeight: "700"}}>{krypto.name}</span> obecnie się plasuje na{" "}
+            <span style={{fontWeight: "700"}}>{krypto.market_cap_rank}. miejscu</span> według kapitalizacji rynkowej.
           </p>
           <p>
             Do osiągnięcia nowego ATH brakuje{" "}
-            {krypto.market_data.ath_change_percentage.usd.toFixed(2)}%.
+            <span style={{fontWeight: "700"}}>{krypto.market_data.ath_change_percentage.usd.toFixed(2)}%</span>.
           </p>
           <div className={styles.kryptoInfo}>
             <div className={styles.kryptoInfoCard}>
