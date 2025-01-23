@@ -40,7 +40,12 @@ function KryptowalutaDetail({ krypto }) {
           />
           <h2>
             {krypto.name} Kurs:{" "}
-            <span>${krypto?.market_data.current_price.usd.toFixed(3)}</span>
+            <span>
+              {Intl.NumberFormat("pl-PL", {
+                style: "currency",
+                currency: "USD",
+              }).format(krypto?.market_data.current_price.usd)}
+            </span>
           </h2>
         </div>
         <div className={styles.kryptoChanges}>
@@ -134,8 +139,22 @@ function KryptowalutaDetail({ krypto }) {
             </LineChart>
           </ResponsiveContainer>
       <div className={styles.chartInfo}>
-        <p>ATH: ${krypto.market_data.ath.usd.toFixed(2)}</p>
-        <p>Obecny Kurs: ${krypto.market_data.current_price.usd.toFixed(2)}</p>
+      <p>
+        ATH:{" "}
+        {Intl.NumberFormat("pl-PL", {
+          style: "currency",
+          currency: "USD",
+        }).format(krypto.market_data.ath.usd)}
+      </p>
+
+        <p>
+          Obecny Kurs:{" "}
+          {Intl.NumberFormat("pl-PL", {
+            style: "currency",
+            currency: "USD",
+          }).format(krypto.market_data.current_price.usd)}
+        </p>
+
       </div>
     </div>
       </div>
