@@ -20,7 +20,7 @@ function Nav() {
           <Link href="/">
             <Image src={logo} alt="kryptokurs-logo" />
           </Link>
-          <p>BETA</p>
+         
         </div>
         <div className={styles.navList}>
           <ul>

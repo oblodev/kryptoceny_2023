@@ -1,6 +1,6 @@
 {
   "name": "kryptokurs",
-  "version": "0.9.1",
+  "version": "0.9.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,6 +14,7 @@
     "axios": "^0.27.2",
     "big-number": "^2.0.0",
     "bignumber.js": "^9.1.1",
+    "date-fns": "^4.1.0",
     "framer-motion": "^7.10.3",
     "graphql": "^16.6.0",
     "graphql-request": "^4.3.0",
@@ -29,6 +30,7 @@
     "react-sparklines": "^1.7.0",
     "react-spinners": "^0.13.6",
     "react-ts-tradingview-widgets": "^1.0.11",
+    "recharts": "^2.15.0",
     "sass": "^1.54.5"
   },
   "devDependencies": {

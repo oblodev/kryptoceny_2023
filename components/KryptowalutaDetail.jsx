@@ -3,7 +3,26 @@ import Image from "next/image";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 import Link from "next/link";
 
+import {
+  LineChart,
+  Line,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
+
 function KryptowalutaDetail({ krypto }) {
+
+  const sparklineData =
+    krypto?.market_data?.sparkline_7d?.price
+      ?.slice(-7) // Limit to the last 7 days
+      .map((price, index) => ({
+        dzien: `Dzień ${index + 1}`, // Polish labels for XAxis
+        cena: price,
+      })) || [];
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -96,16 +115,29 @@ function KryptowalutaDetail({ krypto }) {
           </div>
         </div>
         <div className={styles.chartKrypto}>
-          <Sparklines data={krypto.market_data.sparkline_7d.price} limit={75}>
-            <SparklinesLine color={"#5277ff"}></SparklinesLine>
-          </Sparklines>
-          <div className={styles.chartInfo}>
-            <p>ATH: ${krypto.market_data.ath.usd.toFixed(2)}</p>
-            <p>
-              Obecny Kurs: ${krypto.market_data.current_price.usd.toFixed(2)}
-            </p>
-          </div>
-        </div>
+        <ResponsiveContainer width="100%" height={200}>
+            <LineChart data={sparklineData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="dzien" label={{ value: "Dni", position: "insideBottom", offset: -5 }} />
+              <YAxis domain={['auto', 'auto']} label={{ value: "Cena (USD)", angle: -90, position: "insideLeft" }} />
+              <Tooltip
+                formatter={(value) => `${value.toFixed(2)} USD`}
+                labelFormatter={(label) => ` ${label}`}
+              />
+              <Line
+                type="monotone"
+                dataKey="cena"
+                stroke="#5277ff"
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+      <div className={styles.chartInfo}>
+        <p>ATH: ${krypto.market_data.ath.usd.toFixed(2)}</p>
+        <p>Obecny Kurs: ${krypto.market_data.current_price.usd.toFixed(2)}</p>
+      </div>
+    </div>
       </div>
       <div className={styles.kryptoWrap}>
         <div className={styles.kryptoFaktyHeader}>
