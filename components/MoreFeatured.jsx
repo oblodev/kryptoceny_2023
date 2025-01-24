@@ -19,7 +19,7 @@ function MoreFeatured({ posts }) {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         {posts
-          .slice(-6)
+          .slice(-9)
           .reverse()
           .map((post) => (
             <Link href={`/post/${post.node.slug}`} key={post.node.id} passHref>
