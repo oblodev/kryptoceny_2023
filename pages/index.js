@@ -39,7 +39,7 @@ export default function Home({
     <div className={styles.container}>
       <Head>
         <title>
-          KryptoCeny.pl | Aktualne kursy kryptowalut || KryptoCeny.pl
+          KryptoCeny.pl | Aktualne kursy kryptowalut, wiadomości i analizy
         </title>
         <meta
           name="description"

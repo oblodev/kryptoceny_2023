@@ -20,7 +20,7 @@ function News({ newsData }) {
         </motion.div>
         <div className={styles.news}>
           {newsData &&
-            newsData.articles.slice(0, 9).map((news) => (
+            newsData.articles.slice(0, 3).map((news) => (
               <Link href={news.url} key={news.title}>
                 <div className={styles.newsCard}>
                   <div className={styles.newsImage}>
