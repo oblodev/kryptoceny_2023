@@ -4,6 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 
 import { RiArrowRightDownLine, RiArrowRightUpLine } from "react-icons/ri";
+import Link from "next/link";
 
 const headers = {
   "X-RapidAPI-Key": "965544b128msh602fdb4437bf366p1faec3jsnd3773b9075b7",
@@ -62,8 +63,15 @@ function PriceWidget() {
                 )}
               </p>
             </div>
+
+            
           </div>
         ))}
+        <div className={styles.moreLink}>
+        <Link href="/kurskryptowalut">
+          <button className={styles.styledButton}>Zobacz więcej</button>
+        </Link>
+      </div>
     </div>
   );
 }

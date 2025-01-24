@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow: visible !important;
 
   padding: 1.5rem 2rem 5rem 2rem;
 
@@ -51,6 +52,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    overflow: visible; /* Ensure no overflow conflicts */
+    min-height: 100vh; /* Ensure sufficient height for scrolling */
 
     @media screen and (max-width: 450px) {
       flex-direction: column;
@@ -106,7 +109,10 @@
     }
 
     .widgets {
-      flex: 0.27;
+      flex: 0.27; /* Ensure it occupies 27% width */
+  position: sticky; /* Sticky behavior */
+  top: 2rem; /* Distance from the top of the viewport */
+  align-self: flex-start; /* Works correctly inside flexbox */
     }
   }
 }
