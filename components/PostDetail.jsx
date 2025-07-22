@@ -6,75 +6,81 @@ import Image from "next/image";
 import Link from "next/link";
 
 function PostDetail({ post }) {
-  // Diese Funktion wandelt die "rohen" Daten von Hygraph in React-Komponenten um.
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
+  // Eine einzige, rekursive Funktion, um den Rich-Text-Baum zu rendern
+  const renderRichTextNode = (node, index) => {
+    // Wenn es sich um einen reinen Text-Knoten handelt, wende Formatierungen an
+    if (node.text) {
+      let textElement = <>{node.text}</>; // Beginne mit dem reinen Text
 
-    // Formatiert Text basierend auf den obj-Eigenschaften (fett, kursiv, etc.)
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>;
+      if (node.bold) {
+        textElement = <b>{textElement}</b>;
       }
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>;
+      if (node.italic) {
+        textElement = <em>{textElement}</em>;
       }
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>;
+      if (node.underline) {
+        textElement = <u>{textElement}</u>;
       }
-      if (obj.code) {
-        modifiedText = <code key={index}>{text}</code>;
+      if (node.code) {
+        textElement = <code>{textElement}</code>;
       }
+
+      return <React.Fragment key={index}>{textElement}</React.Fragment>;
     }
 
-    // Wandelt die verschiedenen Inhaltstypen in HTML-Tags um.
-    switch (type) {
-      case "heading-two":
-        return <h2 key={index}>{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h2>;
-      case "heading-three":
-        return <h3 key={index}>{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
-      case "heading-four":
-        return <h4 key={index}>{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
-      case "paragraph":
-        return <p key={index}>{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
-      
-      // NEU: Unterstützung für Listen
-      case "bulleted-list":
-        return <ul key={index}>{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</ul>;
-      case "numbered-list":
-        return <ol key={index}>{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</ol>;
-      case "list-item-child":
-         return <>{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</>
-      case "list-item":
-         return <li key={index}>{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</li>;
+    // Wenn es sich um einen Element-Knoten handelt, rendere seine Kinder rekursiv
+    const children = node.children?.map((childNode, childIndex) =>
+      renderRichTextNode(childNode, childIndex)
+    );
 
-      // NEU: Verwendung von next/image für bessere Performance
+    switch (node.type) {
+      case "heading-two":
+        return <h2 key={index}>{children}</h2>;
+      case "heading-three":
+        return <h3 key={index}>{children}</h3>;
+      case "heading-four":
+        return <h4 key={index}>{children}</h4>;
+      case "paragraph":
+        return <p key={index}>{children}</p>;
+      case "bulleted-list":
+        return <ul key={index}>{children}</ul>;
+      case "numbered-list":
+        return <ol key={index}>{children}</ol>;
+      case "list-item":
+        return <li key={index}>{children}</li>;
+      // list-item-child ist ein Container innerhalb eines list-item,
+      // wir rendern seinen Inhalt direkt.
+      case "list-item-child":
+        return <>{children}</>;
       case "image":
         return (
           <Image
             key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
+            alt={node.title || "Bild aus Inhalt"}
+            height={node.height}
+            width={node.width}
+            src={node.src}
           />
         );
+      case "link":
+        return <Link href={node.href} key={index} target={node.openInNewTab ? "_blank" : "_self"}>{children}</Link>;
       default:
-        return modifiedText;
+        // Fallback für unbekannte Typen
+        return <React.Fragment key={index}>{children}</React.Fragment>;
     }
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <h1>{post.title}</h1>
+        <h1>{post?.title}</h1>
         <div className={styles.headerInfo}>
-          {/* VERBESSERUNG: Sicherer Zugriff auf Daten */}
           <p>
-            od <span>{post.author?.name}</span>
+            od <span>{post?.author?.name}</span>
           </p>
-          <p>{moment(post.date).format("DD.MM.YYYY")}</p>
-          {post.categories?.[0] && (
-             <Link
+          <p>{moment(post?.date).format("DD.MM.YYYY")}</p>
+          {post?.categories?.[0] && (
+            <Link
               href={`/category/${post.categories[0].slug}`}
               className={styles.category}
             >
@@ -85,29 +91,24 @@ function PostDetail({ post }) {
       </div>
       <div className={styles.postWrap}>
         <div className={styles.post}>
-          {/* VERBESSERUNG: Stile in SCSS-Datei auslagern für Sauberkeit */}
-          {post.featuredImage?.url && (
+          {post?.featuredImage?.url && (
             <div className={styles.postImageContainer}>
               <Image
                 src={post.featuredImage.url}
                 alt={post.title || "post-image"}
                 width={880}
                 height={520}
-                style={{ objectFit: 'cover' }} // objectFit als Prop für next/image v13+
+                style={{ objectFit: "cover" }}
+                priority // Lade das Hauptbild priorisiert
               />
             </div>
           )}
 
-          <p className={styles.excerpt}>{post.excerpt}</p>
+          <p className={styles.excerpt}>{post?.excerpt}</p>
           <div className={styles.postText}>
-            {post.content?.raw?.children.map((typeObj, index) => {
-              const children = typeObj.children.map((item, itemIndex) =>
-                // Wichtig: Hier wird der Typ des Kind-Elements übergeben, falls es z.B. ein Link ist
-                getContentFragment(itemIndex, item.text, item, item.type)
-              );
-
-              return getContentFragment(index, children, typeObj, typeObj.type);
-            })}
+            {post?.content?.raw?.children.map((node, index) =>
+              renderRichTextNode(node, index)
+            )}
           </div>
         </div>
         <div className={styles.widgets}>
