@@ -19,6 +19,7 @@ module.exports = {
       "antyweb.pl",
       "m.natemat.pl",
       "coin-images.coingecko.com",
+      'eu-central-1.graphassets.com',
     ],
   },
 };
