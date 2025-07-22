@@ -1,101 +1,81 @@
+// Define a cohesive design system
+$color-text: #4a4a4a;
+$color-text-strong: #000;
+$color-border: #e0e0e0;
+$color-background: #ffffff;
+$color-accent: #5e5ce6; // A modern, subtle purple
+$radius: 16px;
+$gap: 1.5rem;
+
 .container {
   max-width: 1280px;
-  margin: auto;
-  margin-bottom: 8rem;
+  margin: 6rem auto;
+  padding: 0 1.5rem;
+}
 
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 6rem;
-    margin-bottom: 2rem;
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 
-    .header {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-      margin-left: 6rem;
-      margin-bottom: 2rem;
-
-      @media screen and (max-width: 450px) {
-        margin-left: 3rem;
-      }
-
-      .icon {
-        font-size: 1.9rem;
-        margin-right: 0.7rem;
-        color: #ffa052;
-      }
-
-      h2 {
-        font-size: 1.85rem;
-        @media screen and (max-width: 450px) {
-          font-size: 1.7rem;
-        }
-      }
-    }
-
-    .statCards {
-      display: flex;
-      flex-direction: row;
-
-      @media screen and (max-width: 420px) {
-        flex-direction: column;
-      }
-
-      @media screen and (max-width: 900px) and (min-width: 421px) {
-        flex-direction: column;
-      }
-
-      .statCard {
-        background-color: #fff;
-        padding: 2.5em 2.75rem;
-        border-radius: 30px;
-        margin-right: 1.4rem;
-        border: 1px solid #5271ff;
-        box-shadow: 0 0 25px 3px rgb(0 0 0 / 4%);
-        transition: all 0.3s ease-in-out;
-
-        @media screen and (max-width: 420px) {
-          margin-bottom: 1rem;
-          margin-right: 0;
-        }
-
-        @media screen and (max-width: 900px) and (min-width: 421px) {
-          margin-bottom: 2rem;
-        }
-
-        @media screen and (min-width: 901px) and (max-width: 1050px) {
-          padding: 1.5rem 1.5rem;
-        }
-
-        h2 {
-          font-size: 1.1rem;
-          font-weight: 700;
-          margin: 0;
-
-          @media screen and (max-width: 420px) {
-            font-size: 1rem;
-          }
-        }
-
-        p {
-          font-size: 1.15rem;
-          font-weight: 700;
-          color: #5271ff;
-
-          @media screen and (max-width: 420px) {
-            font-size: 1rem;
-          }
-        }
-      }
-
-      .statCard:hover {
-        box-shadow: 0 0 25px 3px rgb(0 0 0 / 14%);
-      }
-    }
+  .icon {
+    font-size: 1.7rem;
+    color: $color-accent;
   }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $color-text-strong;
+  }
+}
+
+// ✨ Modern CSS Grid Layout
+.statGrid {
+  display: grid;
+  gap: $gap;
+  // Creates a fluid grid that automatically wraps cards based on available space
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.statCard {
+  background: $color-background;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; // Vertical space between label and value
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  // Modern hover effect
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  }
+
+  // Label style (h2)
+  h2 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $color-text;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  // Value style (p)
+  p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color-text-strong;
+    line-height: 1.2;
+    margin: 0;
+  }
+}
+
+.errorMessage {
+  color: $color-text;
+  font-style: italic;
 }
