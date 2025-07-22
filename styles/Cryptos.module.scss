@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-// --- Main Container ---
-// No major changes, just cleaner structure
+// --- Main Container & Wrapper ---
 .container {
   max-width: 1100px;
   margin: 6rem auto;
-  padding: 0 1rem; // Add some padding for smaller screen edges
+  padding: 0 1rem;
 
   @media screen and (max-width: 1250px) {
     margin-top: 4rem;
@@ -13,7 +12,6 @@
   }
 }
 
-// --- Main Wrapper ---
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -23,49 +21,55 @@
 
 // --- Crypto Table ---
 .kryptoTable {
-  // 1. Use CSS Variables for easy theming
   --primary-color: #5271ff;
   --text-color: #2c3e50;
   --text-color-light: #7f8c8d;
   --border-color: #ecf0f1;
   --background-color: #ffffff;
   --hover-background: #f9f9f9;
-  --border-radius: 16px; // Softer, modern radius
+  --border-radius: 16px;
 
   width: 100%;
   font-family: "Poppins", sans-serif;
   background: var(--background-color);
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); // Softer shadow
-  border-collapse: collapse; // Ensures borders are clean
-  overflow: hidden; // Keeps content within the rounded corners
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  border-collapse: collapse;
+  overflow: hidden;
 
-  // --- Table Header ---
-  thead tr {
-    border-bottom: 1px solid var(--border-color);
+  // --- General Cell Styling & Responsiveness ---
+  th, td {
+    padding: 1rem 1.25rem;
+    vertical-align: middle;
+
+    // --- TABLET STYLES ---
+    @media screen and (max-width: 768px) {
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+    // --- MOBILE-SPECIFIC ADJUSTMENTS ---
+    @media screen and (max-width: 480px) {
+      padding: 0.75rem 0.5rem;
+      font-size: 0.85rem;
+    }
   }
 
+  // --- Table Header ---
   th {
-    padding: 1rem 1.5rem;
     font-weight: 600;
     color: var(--text-color-light);
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     letter-spacing: 0.5px;
-    text-align: right; // Right-align all headers by default
+    text-align: right;
 
-    &:first-child { // Rank column
+    &:first-child {
       text-align: center;
       width: 5%;
     }
-
-    &.kryptoLeft { // "Kryptowaluta" column header
+    &.kryptoLeft {
       text-align: left;
-    }
-
-    @media screen and (max-width: 900px) {
-      padding: 0.75rem 1rem;
     }
   }
 
@@ -73,33 +77,18 @@
   tbody tr {
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.2s ease-in-out;
-
-    &:last-child {
-      border-bottom: none; // No border on the last row
-    }
-
-    &:hover {
-      background-color: var(--hover-background);
-    }
+    &:last-child { border-bottom: none; }
+    &:hover { background-color: var(--hover-background); }
   }
 
   td {
-    padding: 1.25rem 1.5rem;
-    font-size: 1rem;
     font-weight: 500;
     color: var(--text-color);
-    text-align: right; // Right-align numeric data for readability
-    vertical-align: middle;
-
-    &:first-child { // Rank column
+    text-align: right;
+    &:first-child {
       font-weight: 600;
       color: var(--text-color-light);
       text-align: center;
-    }
-
-    @media screen and (max-width: 900px) {
-      padding: 1rem;
-      font-size: 0.9rem;
     }
   }
 
@@ -107,15 +96,18 @@
   .kryptoName {
     display: flex;
     align-items: center;
-    gap: 1rem; // Modern way to create space
+    gap: 0.75rem;
     text-align: left;
     font-weight: 600;
 
     a {
       transition: color 0.2s ease-in-out;
-      &:hover {
-        color: var(--primary-color);
-      }
+      &:hover { color: var(--primary-color); }
+    }
+    
+    @media screen and (max-width: 480px) {
+      gap: 0.5rem;
+      font-size: 0.9rem;
     }
   }
 }
@@ -123,7 +115,6 @@
 // --- Button & Spinner ---
 .headerBtn {
   margin-top: 2.5rem;
-
   button {
     background: transparent;
     padding: 0.8rem 2.5rem;
@@ -134,14 +125,12 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-
     &:hover {
       background: var(--primary-color, #5271ff);
       color: var(--background-color, #fff);
       transform: translateY(-2px);
       box-shadow: 0 4px 15px rgba(82, 113, 255, 0.2);
     }
-
     &:disabled {
       background-color: #f2f2f2;
       border-color: #dcdcdc;
@@ -160,24 +149,22 @@
   border-top-color: var(--primary-color, #5271ff);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto; // Center the spinner if it's in a block container
+  margin: 0 auto;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-// --- Responsive Visibility ---
-.hide {
-  @media screen and (max-width: 420px) {
+// --- RESPONSIVE VISIBILITY CLASSES ---
+.hideOnMobile {
+  @media screen and (max-width: 480px) {
     display: none;
   }
 }
 
-.tabHide {
-  @media screen and (max-width: 900px) {
+.hideOnTablet {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 }
