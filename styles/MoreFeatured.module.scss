@@ -1,122 +1,91 @@
+// Define a cohesive design system
+$color-text: #4a4a4a;
+$color-text-strong: #1a1a1a;
+$color-border: #e0e0e0;
+$color-accent: #5e5ce6;
+$radius: 16px;
+
 .container {
-  max-width: 1200px;
-  margin: auto;
-  margin-top: 4rem;
-  margin-bottom: 8rem;
+  max-width: 1280px;
+  margin: 6rem auto;
+  padding: 0 1.5rem;
+}
 
-  @media screen and (max-width: 420px) {
-    width: 100%;
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h2 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 700;
   }
+}
 
-  @media screen and (max-width: 900px) and (min-width: 421px) {
-    width: 100%;
-  }
+// ✨ Fully responsive grid with auto-fitting columns
+.articlesGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
 
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1.5rem;
+// ✨ Modern article card design
+.articleCard {
+  display: block; // Allows the link to behave like a block element
+  text-decoration: none;
+  color: inherit;
+  
+  article {
+    background: #ffffff;
+    border-radius: $radius;
+    border: 1px solid $color-border;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    @media screen and (max-width: 450px) {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    @media screen and (max-width: 900px) and (min-width: 451px) {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    @media screen and (min-width: 901px) and (max-width: 1200px) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .moreCard {
-      display: flex;
-      justify-content: center;
-      max-width: 360px;
-
-      @media screen and (min-width: 981px) {
-      }
-      h4 {
-        margin-bottom: 0.75rem;
-        margin-left: 0.4rem;
-        font-weight: 700;
-        font-size: 0.8rem;
-
-        @media screen and (max-width: 420px) {
-          font-size: 0.6rem;
-        }
-
-        @media screen and (max-width: 900px) and (min-width: 421px) {
-          font-size: 0.8rem;
-        }
-      }
-
-      .moreImg {
-        border-radius: 18px;
-        overflow: hidden;
-        cursor: pointer;
-        border: 10px solid #fff;
-        box-shadow: 0 0 25px 3px rgb(0 0 0 / 8%);
-        transition: 0.2s all ease-in;
-        position: relative;
-        @media screen and (max-width: 420px) {
-          max-width: 360px;
-          height: 300px;
-        }
-
-        @media screen and (max-width: 900px) and (min-width: 421px) {
-          max-height: 300px;
-          max-width: 300px;
-        }
-
-        .imgWrapper {
-          width: 400px;
-          height: 300px;
-
-          @media screen and (max-width: 420px) {
-            max-width: 360px;
-            height: 300px;
-          }
-        }
-
-        .feature {
-          position: absolute;
-          width: 100%;
-
-          bottom: 0;
-          padding-left: 0.225rem;
-          color: #fff;
-          background-color: rgba(0, 0, 0, 0.6);
-
-          @media screen and (max-width: 420px) {
-            padding-left: 0.25rem;
-          }
-        }
-      }
-
-      .moreImg:hover {
-        border: 10px solid #5277ff;
-      }
-
-      h5 {
-        margin-left: 0.3rem;
-        margin-top: 0.25rem;
-        font-weight: 300;
-        font-size: 1.1rem;
-
-        @media screen and (max-width: 420px) {
-          font-size: 0.9rem;
-        }
-
-        @media screen and (max-width: 900px) and (min-width: 421px) {
-          font-size: 0.95rem;
-        }
-      }
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
   }
+}
+
+.cardImage {
+  position: relative;
+  width: 100%;
+  padding-top: 60%; // Aspect ratio for the image
+}
+
+.cardContent {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.categoryTag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $color-accent;
+  background-color: rgba($color-accent, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+  align-self: flex-start; // Ensures the tag doesn't stretch
+}
+
+.cardContent h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: $color-text-strong;
+  margin: 0;
+}
+
+.noPosts {
+  text-align: center;
+  color: $color-text;
+  font-style: italic;
 }

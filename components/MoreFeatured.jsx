@@ -3,49 +3,58 @@ import Image from "next/image";
 import Link from "next/link";
 import BitpandaBanner from "../components/BitpandaBanner";
 
+// A cleaner, self-contained card component
+function ArticleCard({ post }) {
+  const { title, slug, featuredImage, categories } = post.node;
+
+  return (
+    <Link href={`/post/${slug}`} passHref>
+      <a className={styles.articleCard} aria-label={title}>
+        <article>
+          <div className={styles.cardImage}>
+            <Image
+              src={featuredImage.url}
+              alt={title || "Post image"}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+          <div className={styles.cardContent}>
+            <span className={styles.categoryTag}>
+              {categories[0]?.name || "Kategoria"}
+            </span>
+            <h3>{title}</h3>
+          </div>
+        </article>
+      </a>
+    </Link>
+  );
+}
 
 function MoreFeatured({ posts }) {
   if (!posts || posts.length === 0) {
     return (
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <p className={styles.noPosts}>Brak dostępnych postów.</p>
-        </div>
-      </div>
+      <section className={styles.container}>
+        <p className={styles.noPosts}>Brak dostępnych postów.</p>
+      </section>
     );
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
+    <section className={styles.container}>
+      <header className={styles.header}>
+        <h2>Polecane Artykuły</h2>
+      </header>
+      <div className={styles.articlesGrid}>
         {posts
-          .slice(-9)
-          .reverse()
+          .slice(-9) // Use -9 to get the LAST 9 items (the newest)
+          .reverse() // Then reverse them to show the absolute newest first
           .map((post) => (
-            <Link href={`/post/${post.node.slug}`} key={post.node.id} passHref>
-              <article className={styles.moreCard} aria-label={post.node.title}>
-                <div className={styles.moreImg}>
-                  <div className={styles.imgWrapper}>
-                    <Image
-                      src={post.node.featuredImage.url}
-                      objectFit="cover"
-                      layout="responsive"
-                      width={600} // Set fixed dimensions for better responsiveness
-                      height={400}
-                      alt={post.node.title || "Post image"}
-                    />
-                  </div>
-                  <div className={styles.feature}>
-                    <h4>{post.node.categories[0]?.name || "Kategoria"}</h4>
-                    <h5>{post.node.title}</h5>
-                  </div>
-                </div>
-              </article>
-            </Link>
+            <ArticleCard post={post} key={post.node.id} />
           ))}
       </div>
-       <BitpandaBanner />
-    </div>
+      <BitpandaBanner />
+    </section>
   );
 }
 
