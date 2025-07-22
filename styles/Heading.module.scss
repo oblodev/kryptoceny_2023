@@ -1,34 +1,51 @@
+// Define a cohesive, minimal color palette
+$color-text: #4a4a4a; // A softer dark gray for body text
+$color-text-strong: #000000;
+$color-border: #e0e0e0;
+$color-positive: #00b159; // A slightly more modern green
+$color-negative: #d11141; // A strong but not overly bright red
+
 .container {
+  max-width: 650px;
+  // Negative top margin pulls the card up to nestle cleanly under the header's border
+  margin: -1.5rem auto 0;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid $color-border;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
-  font-size: 0.8765rem;
-  margin-bottom: -3rem;
-
-  .wrapper {
-    @media screen and (max-width: 450px) {
-      padding: 1rem;
-    }
-
-    @media screen and (max-width: 900px) and (min-width: 451px) {
-      padding: 0.75rem;
-    }
-
-    .info {
-      .infoNum {
-        font-size: 1rem;
-        font-weight: 700;
-      }
-    }
-  }
+  font-size: 0.95rem;
+  color: $color-text;
+  line-height: 1.7;
 }
 
-.plus {
-  color: #00cc00;
-  font-size: 1rem;
-  font-weight: 500;
+// Styles the market cap value to make it stand out
+.value {
+  font-weight: 700;
+  color: $color-text-strong;
 }
 
-.minus {
-  color: #f91e5a;
-  font-size: 1rem;
-  font-weight: 500;
+// Common styles for the percentage change "pill"
+.positive,
+.negative {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  margin-left: 0.25em;
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.4; // Ensure consistent line height within the pill
+}
+
+// Pill-specific background and text colors
+.positive {
+  color: $color-positive;
+  // Use a light, transparent version of the main color for the background
+  background-color: rgba($color-positive, 0.1);
+}
+
+.negative {
+  color: $color-negative;
+  background-color: rgba($color-negative, 0.1);
 }

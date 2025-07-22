@@ -1,37 +1,46 @@
 import styles from "../styles/Heading.module.scss";
-import BigNumber from "bignumber.js";
+
+// Reusable formatters can be defined outside the component
+const numberFormatter = new Intl.NumberFormat('pl-PL', {
+  style: 'decimal',
+  maximumFractionDigits: 2,
+});
+
+const percentFormatter = new Intl.NumberFormat('pl-PL', {
+  style: 'percent',
+  signDisplay: 'exceptZero', // Automatically adds '+' or '-'
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1,
+});
 
 function Heading({ stats }) {
-  const TRILLION = 1e12; // Define a meaningful constant
-  const marketCap = stats?.data?.total_market_cap?.usd || 0;
-  const marketCapChange = stats?.data?.market_cap_change_percentage_24h_usd || 0;
+  const marketCap = stats?.data?.total_market_cap?.usd;
+  const marketCapChange = stats?.data?.market_cap_change_percentage_24h_usd;
 
-  const formattedMarketCap = (marketCap / TRILLION).toFixed(2);
-  const changeClass = marketCapChange > 0 ? styles.plus : styles.minus;
+  // Loading state
+  if (marketCap === undefined || marketCapChange === undefined) {
+    return (
+      <header className={styles.container}>
+        <p>Ładowanie danych rynkowych...</p>
+      </header>
+    );
+  }
+
+  // Use a simple class for color based on the value
+  const changeStyle = marketCapChange >= 0 ? styles.positive : styles.negative;
+  
+  // Format values using the Intl API
+  const formattedMarketCap = numberFormatter.format(marketCap / 1e12); // 1e12 is a trillion
+  const formattedChange = percentFormatter.format(marketCapChange / 100); // Intl.NumberFormat expects a decimal (e.g., 0.05 for 5%)
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        {marketCap ? (
-          <div className={styles.info}>
-            <p>
-              Globalna kapitalizacja rynkowa kryptowalut wynosi dzisiaj{" "}
-              <span className={styles.infoNum}>
-                {formattedMarketCap.slice(0, 4)}
-              </span>{" "}
-              biliona dolarów, co stanowi zmianę o{" "}
-              <span className={changeClass}>
-                {marketCapChange.toFixed(1)}%
-              </span>{" "}
-              w ciągu ostatnich 24 godzin.
-            </p>
-          </div>
-        ) : (
-          <p>Ładowanie danych o rynku kryptowalut...</p>
-        )}
-        <div className={styles.loserGainer}></div>
-      </div>
-    </div>
+    <header className={styles.container}>
+      <p>
+        Globalna kapitalizacja rynkowa wynosi dziś
+        <strong className={styles.value}> ${formattedMarketCap} biliona</strong>,
+        co stanowi zmianę o <span className={changeStyle}>{formattedChange}</span> w ciągu 24h.
+      </p>
+    </header>
   );
 }
 
