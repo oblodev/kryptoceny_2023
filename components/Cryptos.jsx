@@ -2,31 +2,31 @@ import styles from "../styles/Cryptos.module.scss";
 import { useState } from "react";
 import Image from "next/image";
 import NumberFormat from "react-number-format";
+import { useRouter } from "next/router"; // 1. Import useRouter
 
 import Link from "next/link";
 
 function Cryptos({ cryptoData }) {
-  const formatNumber = (value) =>
+  const router = useRouter(); // 2. Initialize the router
+  const [isLoading, setIsLoading] = useState(false);
+
+  const formatNumber = (value) => (
     <NumberFormat
       value={value}
       displayType="text"
       thousandSeparator={true}
       decimalSeparator="."
       allowNegative={false}
-    />;
+    />
+  );
 
-
-    const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonClick = () => {
     setIsLoading(true);
-    // Simulate a delay for loading
-    setTimeout(() => {
-      setIsLoading(false);
-      // Navigate to the desired page
-      window.location.href = "/kurskryptowalut";
-    }, 3250); // Adjust timeout as needed
+    // 3. Use router.push for fast, client-side navigation
+    router.push("/kurskryptowalut");
   };
+
 
   return (
     <div className={styles.container}>
@@ -58,7 +58,7 @@ function Cryptos({ cryptoData }) {
             <tbody>
               {Array.isArray(cryptoData) && cryptoData.length > 0 ? (
                 cryptoData.map((crypto) => (
-                  <tr key={crypto.market_cap_rank}>
+                   <tr key={crypto.id}> 
                     <td className={styles.kryptoBorder2}>
                       {crypto.market_cap_rank}
                     </td>
