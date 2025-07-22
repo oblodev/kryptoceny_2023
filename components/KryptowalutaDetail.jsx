@@ -1,260 +1,101 @@
 import styles from "../styles/KryptowalutaDetail.module.scss";
 import Image from "next/image";
-import { Sparklines, SparklinesLine } from "react-sparklines";
 import Link from "next/link";
+import { LineChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis, CartesianGrid } from "recharts";
 
-import {
-  LineChart,
-  Line,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-} from "recharts";
+// Helper for formatting numbers consistently
+const formatters = {
+  usd: new Intl.NumberFormat('pl-PL', { style: 'currency', currency: 'USD' }),
+  usdCompact: new Intl.NumberFormat('pl-PL', { style: 'currency', currency: 'USD', notation: 'compact', maximumFractionDigits: 2 }),
+  percent: new Intl.NumberFormat('pl-PL', { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+  number: new Intl.NumberFormat('pl-PL')
+};
+
+// Reusable component for the stats sidebar
+function StatItem({ label, value, note = '' }) {
+  return (
+    <div className={styles.statItem}>
+      <span className={styles.label}>{label}</span>
+      <span className={styles.value}>{value} {note}</span>
+    </div>
+  );
+}
 
 function KryptowalutaDetail({ krypto }) {
+  // Process data for the 7-day chart
+  const chartData = krypto?.market_data?.sparkline_7d?.price
+    ?.map((price, index) => ({
+      day: index + 1,
+      cena: price,
+    })) || [];
 
-  const sparklineData =
-    krypto?.market_data?.sparkline_7d?.price
-      ?.slice(-7) // Limit to the last 7 days
-      .map((price, index) => ({
-        dzien: `Dzień ${index + 1}`, // Polish labels for XAxis
-        cena: price,
-      })) || [];
+  const change24h = krypto.market_data.price_change_percentage_24h;
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <h1>
-          Kurs {krypto.name} ({krypto.symbol.toUpperCase()}) - Wszystkie dane
-        </h1>
-      </div>
-      <div className={styles.kryptoWrap}>
-        <div className={styles.kryptoHeader}>
-          <Image
-            src={krypto.image.thumb}
-            alt="krypto-logo"
-            height="32px"
-            width="32px"
-          />
-          <h2>
-            {krypto.name} Kurs:{" "}
-            <span>
-              {Intl.NumberFormat("pl-PL", {
-                style: "currency",
-                currency: "USD",
-              }).format(krypto?.market_data.current_price.usd)}
-            </span>
-          </h2>
+    <main className={styles.container}>
+      {/* --- Dashboard Header --- */}
+      <header className={styles.dashboardHeader}>
+        <Image src={krypto.image.large} alt={`${krypto.name} logo`} height="50px" width="50px" />
+        <div className={styles.titleGroup}>
+          <h1>{krypto.name}</h1>
+          <span>{krypto.symbol.toUpperCase()}</span>
         </div>
-        <div className={styles.kryptoChanges}>
-          <div className={styles.kryptoChange}>
-            <p>Zmiana (24h)</p>
-            <div className={styles.kryptoChangeProc}>
-              <p
-                className={
-                  krypto.market_data.price_change_percentage_24h > 0
-                    ? "green"
-                    : "red"
-                }
-              >
-                {krypto.market_data.price_change_percentage_24h.toFixed(2)}%
-              </p>
-            </div>
-          </div>
-          <div className={styles.kryptoChange}>
-            <p>Zmiana (1 dzien)</p>
-            <div className={styles.kryptoChangeProc}>
-              <p
-                className={
-                  krypto.market_data.price_change_percentage_7d > 0
-                    ? "green"
-                    : "red"
-                }
-              >
-                {krypto.market_data.price_change_percentage_7d.toFixed(2)}%
-              </p>
-            </div>
-          </div>
-          <div className={styles.kryptoChange}>
-            <p>Zmiana (7 dni)</p>
-            <div className={styles.kryptoChangeProc}>
-              <p
-                className={
-                  krypto.market_data.price_change_percentage_30d > 0
-                    ? "green"
-                    : "red"
-                }
-              >
-                {krypto.market_data.price_change_percentage_30d.toFixed(2)}%
-              </p>
-            </div>
-          </div>
-          <div className={styles.kryptoChange}>
-            <p>Zmiana (1 rok)</p>
-            <div className={styles.kryptoChangeProc}>
-              <p
-                className={
-                  krypto.market_data.price_change_percentage_1y > 0
-                    ? "green"
-                    : "red"
-                }
-              >
-                {krypto.market_data.price_change_percentage_1y.toFixed(2)}%
-              </p>
-            </div>
-          </div>
+        <div className={styles.priceGroup}>
+          <p className={styles.currentPrice}>{formatters.usd.format(krypto.market_data.current_price.usd)}</p>
+          <span className={change24h > 0 ? styles.positive : styles.negative}>
+            {formatters.percent.format(change24h / 100)} (24h)
+          </span>
         </div>
-      </div>
-      <div className={styles.kryptoWrap}>
-        <div className={styles.chartHeader}>
-          <div>
-            <Image
-              src={krypto.image.thumb}
-              alt="krypto-logo"
-              height="32px"
-              width="32px"
-            />
-            <h3>{krypto.name} - Ostatnie 7 dni</h3>
-          </div>
-        </div>
-        <div className={styles.chartKrypto}>
-        <ResponsiveContainer width="100%" height={200}>
-            <LineChart data={sparklineData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="dzien" label={{ value: "Dni", position: "insideBottom", offset: -5 }} />
-              <YAxis domain={['auto', 'auto']} label={{ value: "Cena (USD)", angle: -90, position: "insideLeft" }} />
-              <Tooltip
-                formatter={(value) => `${value.toFixed(2)} USD`}
-                labelFormatter={(label) => ` ${label}`}
-              />
-              <Line
-                type="monotone"
-                dataKey="cena"
-                stroke="#5277ff"
-                strokeWidth={2}
-                dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-      <div className={styles.chartInfo}>
-      <p>
-        ATH:{" "}
-        {Intl.NumberFormat("pl-PL", {
-          style: "currency",
-          currency: "USD",
-        }).format(krypto.market_data.ath.usd)}
-      </p>
+      </header>
+      
+      {/* --- Dashboard Grid --- */}
+      <div className={styles.dashboardGrid}>
+        {/* --- Main Content (Left Column) --- */}
+        <div className={styles.mainContent}>
+          <section className={styles.chartContainer}>
+            <h3>Wykres Ceny (7 dni)</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={chartData} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+                <XAxis dataKey="day" tickFormatter={(tick) => `Dzień ${tick}`} stroke="#6c757d" />
+                <YAxis orientation="right" stroke="#6c757d" tickFormatter={(value) => formatters.usd.format(value)} />
+                <Tooltip contentStyle={{ backgroundColor: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px' }}
+                  formatter={(value) => [formatters.usd.format(value), 'Cena']}
+                  labelFormatter={(label) => `Dzień ${label}`}
+                />
+                <Line type="monotone" dataKey="cena" stroke="#5e5ce6" strokeWidth={2} dot={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          </section>
 
-        <p>
-          Obecny Kurs:{" "}
-          {Intl.NumberFormat("pl-PL", {
-            style: "currency",
-            currency: "USD",
-          }).format(krypto.market_data.current_price.usd)}
-        </p>
-
-      </div>
-    </div>
-      </div>
-      <div className={styles.kryptoWrap}>
-        <div className={styles.kryptoFaktyHeader}>
-          <div>
-            <Image
-              src={krypto.image.thumb}
-              alt="krypto-logo"
-              height="32px"
-              width="32px"
-            />
-            <h3>{krypto.name} - Informacje</h3>
-          </div>
+          <section className={styles.infoText}>
+            <h3>Informacje o {krypto.name}</h3>
+            <p>
+              Aktualny kurs <strong>{krypto.name}</strong> wynosi <strong>{formatters.usd.format(krypto.market_data.current_price.usd)}</strong>. 
+              W ciągu ostatnich 24 godzin kurs {change24h > 0 ? "zyskał" : "stracił"} na wartości <strong>{formatters.percent.format(change24h / 100)}</strong>.
+              Kryptowaluta plasuje się na <strong>#{krypto.market_cap_rank}</strong> miejscu w globalnym rankingu.
+            </p>
+          </section>
         </div>
-        <div className={styles.kryptoFakty}>
-          <p>
-            Obecny kurs <span style={{fontWeight: "700"}}>{krypto.name}</span> wynosi <span style={{fontWeight: "700"}}>$
-            {krypto.market_data.current_price.usd.toFixed(2)}</span>. Kurs kryptowaluty{" "}
-            {krypto.name}{" "}
-            {krypto.market_data.price_change_percentage_24h > 0
-              ? "zyskał"
-              : "stracił"}{" "}
-            w ostatnich 24h{" "}
-            <span style={{fontWeight: "700"}}>{krypto.market_data.price_change_percentage_24h.toFixed(2)}%</span>.
-            Kryptowaluta <span style={{fontWeight: "700"}}>{krypto.name}</span> obecnie się plasuje na{" "}
-            <span style={{fontWeight: "700"}}>{krypto.market_cap_rank}. miejscu</span> według kapitalizacji rynkowej.
-          </p>
-          <p>
-            Do osiągnięcia nowego ATH brakuje{" "}
-            <span style={{fontWeight: "700"}}>{krypto.market_data.ath_change_percentage.usd.toFixed(2)}%</span>.
-          </p>
-          <div className={styles.kryptoInfo}>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Ranking</h4>
-              <p># {krypto.market_cap_rank}</p>
-            </div>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Kapitalizacja rynkowa</h4>
-              <p>
-                $
-                {Intl.NumberFormat("pl-PL", {
-                  style: "currency",
-                  currency: "USD",
-                  maximumFractionDigits: 0,
-                }).format(krypto.market_data.market_cap.usd)}
-              </p>
-            </div>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Kapitalizacja rynkowa (24h)</h4>
-              <p>
-                {Intl.NumberFormat("pl-PL", {
-                  style: "percent",
-                  maximumFractionDigits: 2,
-                }).format(
-                  krypto.market_data.market_cap_change_percentage_24h_in_currency.usd / 100
-                )}
-              </p>
-            </div>
-          </div>
-          <div className={styles.kryptoInfo}>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Wolumen (24h)</h4>
-              <p>
-                $
-                {Intl.NumberFormat("pl-PL", {
-                  style: "currency",
-                  currency: "USD",
-                  maximumFractionDigits: 0,
-                }).format(krypto.market_data.total_volume.usd)}
-              </p>
-            </div>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Ilość w obrocie</h4>
-              <p>
-                {Intl.NumberFormat("pl-PL", {
-                  maximumFractionDigits: 0,
-                }).format(krypto.market_data.circulating_supply)}{" "}
-                {krypto.symbol.toUpperCase()}
-              </p>
-            </div>
-            <div className={styles.kryptoInfoCard}>
-              <h4>Ilość maksymalna</h4>
-              <p>
-                {Intl.NumberFormat("pl-PL", {
-                  maximumFractionDigits: 0,
-                }).format(krypto.market_data.total_supply)}{" "}
-                {krypto.symbol.toUpperCase()}
-              </p>
-            </div>
-          </div>
 
-        </div>
+        {/* --- Sidebar (Right Column) --- */}
+        <aside className={styles.statsPanel}>
+          <h3>Kluczowe Dane</h3>
+          <StatItem label="Kapitalizacja rynkowa" value={formatters.usdCompact.format(krypto.market_data.market_cap.usd)} />
+          <StatItem label="Wolumen (24h)" value={formatters.usdCompact.format(krypto.market_data.total_volume.usd)} />
+          <StatItem label="Ilość w obiegu" value={formatters.number.format(krypto.market_data.circulating_supply)} note={krypto.symbol.toUpperCase()} />
+          {krypto.market_data.total_supply && <StatItem label="Ilość całkowita" value={formatters.number.format(krypto.market_data.total_supply)} note={krypto.symbol.toUpperCase()} />}
+          <StatItem label="ATH (Najwyższy kurs)" value={formatters.usd.format(krypto.market_data.ath.usd)} />
+          <StatItem label="Zmiana od ATH" value={formatters.percent.format(krypto.market_data.ath_change_percentage.usd / 100)} />
+        </aside>
       </div>
-      <div className={styles.kryptoButtons}>
+
+      <div className={styles.backButtonContainer}>
         <Link href="/kurskryptowalut">
-          <button className={styles.wroc}>Wróć</button>
+          <a className={styles.backButton}>Wróć do listy</a>
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
 

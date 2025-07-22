@@ -1,16 +1,42 @@
-import styles from "../styles/kryptowaluty2.module.scss";
-import {
-  getKryptowaluty,
-  getKryptowalutyDetails,
-} from "../services/kryptoInfoData";
+
+import styles from "../styles/kryptowaluty.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 import PriceTicker from "../components/PriceTicker";
 import Head from "next/head";
+import { getKryptowaluty } from "../services/kryptoInfoData"; // Add this line
 
-function kryptowaluty({ data }) {
+// Reusable Article Card Component
+function ArticleCard({ krypto }) {
+  const { title, slug, kryptoImage, desc } = krypto.node;
+  
+  return (
+    <article className={styles.articleCard}>
+      <Link href={`/kryptoinfo/${slug}`} passHref>
+        <a className={styles.cardLink}>
+          <div className={styles.cardImage}>
+            <Image
+              src={kryptoImage.url}
+              alt={`${title} logo`}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+          <div className={styles.cardContent}>
+            <h2>{title}</h2>
+            <p>{desc}</p>
+            <span className={styles.readMore}>Dowiedz się więcej &rarr;</span>
+          </div>
+        </a>
+      </Link>
+    </article>
+  );
+}
+
+function Kryptowaluty({ data }) {
   return (
     <>
-      <Head>
+       <Head>
         <title>Kryptoceny.pl - Informacje i Aktualności</title>
         <meta
           name="description"
@@ -32,46 +58,32 @@ function kryptowaluty({ data }) {
         <meta property="og:url" content="https://kryptoceny.pl/kryptowaluty" />
       </Head>
 
-      <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <div className={styles.header}>
-            <h1>Kryptowaluty Informacje</h1>
-          </div>
-          <div className={styles.kryptoWrap}>
-            {data &&
-              data.map((krypto) => (
-                <div className={styles.kryptoCard} key={krypto.cursor}>
-                  <div className={styles.kryptoCardHeader}>
-                    <h2>{krypto.node.title}</h2>
-                    <img
-                      src={krypto.node.kryptoImage.url}
-                      alt={`${krypto.node.title} logo`}
-                    />
-                  </div>
-                  <div className={styles.kryptoCardInfo}>
-                    <p>{krypto.node.desc}</p>
-                    <Link href={`/kryptoinfo/${krypto.node.slug}`}>
-                      <button>Dowiedz sie wiecej o {krypto.node.title}</button>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-          </div>
+      <main className={styles.container}>
+        <header className={styles.hero}>
+          <h1>Informacje o Kryptowalutach</h1>
+          <p className={styles.subtitle}>
+            Poznaj podstawy najpopularniejszych kryptowalut na rynku.
+          </p>
+        </header>
+
+        <div className={styles.articlesGrid}>
+          {data &&
+            data.map((krypto) => (
+              <ArticleCard krypto={krypto} key={krypto.cursor} />
+            ))}
         </div>
-        <PriceTicker />
-      </div>
+      </main>
+
+      <PriceTicker />
     </>
   );
 }
 
-export default kryptowaluty;
+export default Kryptowaluty;
 
 export async function getStaticProps() {
   const data = await getKryptowaluty();
-
   return {
-    props: {
-      data,
-    },
+    props: { data },
   };
 }

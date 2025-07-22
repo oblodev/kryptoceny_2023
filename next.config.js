@@ -1,17 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Your original settings
   reactStrictMode: true,
   swcMinify: true,
-};
 
-module.exports = nextConfig;
-module.exports = {
+  // Your images configuration, all in one place
   images: {
+    // I've removed the duplicate domain names for you
     domains: [
       "assets.coingecko.com",
       "media.graphassets.com",
       "cdn.coinranking.com",
-      "assets.coingecko.com",
       "cdn.benchmark.pl",
       "galeria.bankier.pl",
       "tvn24.pl",
@@ -21,5 +20,10 @@ module.exports = {
       "coin-images.coingecko.com",
       'eu-central-1.graphassets.com',
     ],
+    // Re-adding the settings to allow SVGs securely
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
+
+module.exports = nextConfig;

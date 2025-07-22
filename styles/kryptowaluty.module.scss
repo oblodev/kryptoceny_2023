@@ -1,51 +1,100 @@
+// Define a cohesive design system
+$color-text: #4a4a4a;
+$color-text-strong: #1a1a1a;
+$color-border: #e0e0e0;
+$color-accent: #5e5ce6;
+$radius: 16px;
+
 .container {
-  margin: auto;
-  background: #f2f5f8;
+  max-width: 1280px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
 
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+// ✨ Modern hero section for the page title
+.hero {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: $color-text-strong;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    color: $color-text;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
 
-    h1 {
-      font-size: 1.4rem;
-      margin-top: 4rem;
+// ✨ Fully responsive grid with auto-fitting columns
+.articlesGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
 
-      span {
-        color: #5277ff;
-        font-weight: 900;
-      }
-    }
+// ✨ Modern article card design
+.articleCard {
+  background: #ffffff;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    .cryptoWrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 4rem;
-      margin-top: 4rem;
-      margin-bottom: 4rem;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+}
 
-      .crypto {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-        padding: 1.5rem;
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+}
 
-        .cryptoHeader {
-          color: #343b42;
-        }
+.cardImage {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; // Creates a 16:9 aspect ratio
+}
 
-        .cryptoInfo {
-          .cryptoInfoText {
-            display: flex;
-            flex-direction: row;
+.cardContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; // Allows the "read more" to be pushed to the bottom
+  
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $color-text-strong;
+    margin: 0 0 0.5rem;
+  }
+  
+  p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: $color-text;
+    margin: 0;
+    flex-grow: 1; // Pushes the link down
+  }
+}
 
-            div {
-              margin-right: 2rem;
-            }
-          }
-        }
-      }
-    }
+.readMore {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: $color-accent;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  
+  .cardLink:hover & {
+    text-decoration: underline;
   }
 }

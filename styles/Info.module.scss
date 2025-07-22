@@ -1,98 +1,100 @@
+// Define a cohesive design system
+$color-text: #4a4a4a;
+$color-text-strong: #1a1a1a;
+$color-border: #e0e0e0;
+$color-accent: #5e5ce6;
+$color-disclaimer-bg: #f7f7f7;
+$radius: 12px;
+
 .container {
   max-width: 1200px;
-  margin: auto;
+  margin: 6rem auto;
+  padding: 0 1.5rem;
+}
 
-  @media screen and (max-width: 420px) {
-    width: 100%;
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+
+  .icon {
+    font-size: 2rem;
+    color: $color-accent;
   }
-
-  @media screen and (max-width: 900px) and (min-width: 421px) {
-    width: 100%;
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color-text-strong;
   }
+}
 
-  @media screen and (min-width: 901px) and (max-width: 1200px) {
-    width: 100%;
+// ✨ Modern Two-Column CSS Grid
+.contentGrid {
+  display: grid;
+  gap: 3rem 2rem;
+  // One column on mobile
+  grid-template-columns: 1fr;
+
+  // Two columns on larger screens
+  @media (min-width: 900px) {
+    grid-template-columns: 2fr 1fr;
   }
+}
 
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding-bottom: 6rem;
-    padding-top: 4rem;
-
-    @media screen and (max-width: 420px) {
-      margin: 1.5rem;
-    }
-
-    @media screen and (max-width: 900px) and (min-width: 421px) {
-      margin: 2rem;
-    }
-
-    @media screen and (min-width: 901px) and (max-width: 1200px) {
-      margin: 2rem;
-    }
-
-    .infoWrap {
-      .header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        .icon {
-          margin-right: 0.7rem;
-          font-size: 1.9rem;
-          color: #ffa052;
-        }
-
-        h2 {
-          font-size: 1.85rem;
-          font-weight: 700;
-
-          @media screen and (max-width: 420px) {
-            font-size: 1.3rem;
-          }
-
-          @media screen and (max-width: 900px) and (min-width: 421px) {
-            font-size: 1.5rem;
-          }
-
-          @media screen and (min-width: 901px) and (max-width: 1200px) {
-            font-size: 1.7rem;
-          }
-        }
-      }
-    }
-
-    p {
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.4;
-
-      @media screen and (max-width: 420px) {
-        font-size: 1rem;
-      }
-
-      @media screen and (max-width: 900px) and (min-width: 421px) {
-        font-size: 1rem;
-      }
-
-      @media screen and (min-width: 901px) and (max-width: 1200px) {
-        font-size: 1rem;
-      }
-    }
-
-    .kryptoLink {
-      font-weight: 500;
-      color: #5277ff;
-      transition: 0.3s all ease-in-out;
-      cursor: pointer;
+// General typography for the content area
+.mainContent, .sidebar {
+  p {
+    line-height: 1.7;
+    color: $color-text;
+    margin-bottom: 1em;
+  }
+  a {
+    color: $color-accent;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
   }
+}
 
-  .nota {
-    margin-top: 4rem;
-    font-size: 0.84rem !important;
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+  .infoBlock {
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $color-text-strong;
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
+// ✨ Modern disclaimer box style
+.disclaimerBox {
+  margin-top: 4rem;
+  padding: 1.5rem;
+  background: $color-disclaimer-bg;
+  border-left: 4px solid $color-border;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  
+  .disclaimerIcon {
+    font-size: 1.5rem;
+    color: $color-text;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: darken($color-text, 10%);
+    margin: 0;
   }
 }

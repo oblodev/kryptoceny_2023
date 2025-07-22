@@ -1,245 +1,142 @@
-.wrapper {
+// Define a cohesive design system
+$color-text: #4a4a4a;
+$color-text-light: #6c757d;
+$color-text-strong: #000;
+$color-border: #e0e0e0;
+$color-background: #f8f9fa;
+$color-accent: #5e5ce6;
+$color-positive: #00b159;
+$color-negative: #d11141;
+$radius: 12px;
+
+.container {
+  max-width: 1400px;
+  margin:  auto;
+  padding: 0 1.5rem;
+}
+
+// ✨ Modern Dashboard Header
+.dashboardHeader {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $color-border;
+  padding-top: 3rem;
+}
+
+.titleGroup {
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  span {
+    font-size: 1rem;
+    color: $color-text-light;
+  }
+}
+
+.priceGroup {
+  margin-left: auto; // Pushes the price to the right
+  text-align: right;
+  .currentPrice {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  span {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+}
+
+// ✨ Dashboard Grid Layout
+.dashboardGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr; // Mobile-first: one column
+
+  // Two columns on larger screens
+  @media (min-width: 1024px) {
+    grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
+  }
+}
+
+.mainContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  .header {
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-    font-size: 1.25rem;
-    text-align: center;
-
-    @media screen and (max-width: 420px) {
-      font-size: 1rem;
-    }
-  }
-
-  .kryptoWrap {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 6%);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-
-    @media screen and (max-width: 420px) {
-      padding: 1.5rem;
-    }
-
-    .kryptoHeader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      h2 {
-        margin-left: 1rem;
-        font-size: 2rem;
-        color: #4b5661;
-
-        @media screen and (max-width: 420px) {
-          font-size: 1.2rem;
-        }
-
-        span {
-          color: #5277ff;
-        }
-      }
-    }
-
-    .kryptoChanges {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-
-      @media screen and (max-width: 420px) {
-        flex-direction: column;
-      }
-
-      .kryptoChange {
-        background-color: #eef2ff;
-        padding: 0.75rem 2.95rem;
-        margin-right: 0.95rem;
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        @media screen and (max-width: 420px) {
-          margin-top: 1rem;
-        }
-
-        p {
-          font-size: 1.15rem;
-          margin-bottom: 1.75rem;
-        }
-
-        .kryptoChangeProc {
-          padding: 0.6rem 1.5rem;
-          border: 1px solid #4b5661;
-          border-radius: 25px;
-
-          p {
-            margin: 0;
-            font-weight: 500;
-          }
-        }
-      }
-    }
-
-    .chartHeader {
-      display: flex;
-      width: 950px;
-      margin-bottom: 2rem;
-
-      @media screen and (max-width: 420px) {
-        width: auto;
-      }
-
-      div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 1rem;
-
-        h3 {
-          font-size: 1.5rem;
-          margin-left: 0.5rem;
-
-          @media screen and (max-width: 420px) {
-            font-size: 1.2rem;
-            margin-left: 0.25rem;
-          }
-        }
-      }
-    }
-
-    .chartKrypto {
-      .chartInfo {
-        display: flex;
-        justify-content: space-between;
-
-        p {
-          font-size: 1.35rem;
-          font-weight: 700;
-          margin-bottom: 2rem;
-
-          @media screen and (max-width: 420px) {
-            font-size: 1.1rem;
-            margin-left: 0.5rem;
-          }
-        }
-
-        p:first-child {
-          margin-left: 2rem;
-          @media screen and (max-width: 420px) {
-            margin-left: 0.5rem;
-          }
-        }
-
-        p:last-child {
-          margin-right: 2rem;
-
-          @media screen and (max-width: 420px) {
-            margin-left: 0.5rem;
-          }
-        }
-      }
-    }
-
-    .kryptoFaktyHeader {
-      margin-bottom: 2rem;
-      align-items: center;
-
-      div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        h3 {
-          margin-left: 1rem;
-        }
-      }
-
-      @media screen and (max-width: 420px) {
-        width: auto;
-      }
-    }
-
-    .kryptoFakty {
-      line-height: 1.5;
-      padding: 0 1.25rem;
-      width: 950px;
-
-      @media screen and (max-width: 420px) {
-        padding: 0 0.5rem;
-        width: auto;
-      }
-
-      .kryptoInfo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        @media screen and (max-width: 420px) {
-          flex-direction: column;
-          margin-bottom: 2rem;
-        }
-
-        .kryptoInfoCard {
-          background-color: #eef2ff;
-          margin-right: 2rem;
-          width: 30%;
-          padding: 1.5rem;
-          margin-top: 2rem;
-          text-align: center;
-          box-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 6%);
-          border-radius: 16px;
-
-          @media screen and (max-width: 420px) {
-            width: 80%;
-            margin-right: 0;
-          }
-
-          h4 {
-            margin: 0;
-            font-size: 1rem;
-          }
-          p {
-            font-size: 1.3rem;
-            font-weight: 900;
-          }
-        }
-      }
-    }
-  }
+  gap: 2rem;
 }
 
-.kryptoButtons {
-  width: 1000px;
-  margin: auto;
-  display: flex;
-  align-items: flex-start;
-  margin-top: 2rem;
-
-  @media screen and (max-width: 420px) {
-    margin-left: 2rem;
-  }
-
-  .wroc {
-    background-color: #fff;
-    padding: 0.4rem 1.75rem;
-    font-size: 1rem;
-    border: 1px solid #5277ff;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: 0.3s all ease-in-out;
-    margin-left: 1rem;
+.chartContainer, .infoText, .statsPanel {
+  background: #ffffff;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  padding: 1.5rem;
+  
+  h3 {
+    font-size: 1.2rem;
     font-weight: 700;
-  }
-
-  .wroc:hover {
-    background-color: #5277ff;
-    color: #fff;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
   }
 }
+
+.infoText p {
+  line-height: 1.7;
+  color: $color-text;
+}
+
+// ✨ Clean Stats Sidebar
+.statsPanel {
+  height: fit-content; // Ensures panel doesn't stretch unnecessarily
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    color: $color-text-light;
+  }
+  .value {
+    font-weight: 600;
+    color: $color-text-strong;
+  }
+}
+
+.backButtonContainer {
+  margin-top: 2rem;
+}
+
+.backButton {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid $color-accent;
+  color: $color-accent;
+  background-color: transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $color-accent;
+    color: #ffffff;
+  }
+}
+
+// Global styles for positive/negative indicators
+.positive { color: $color-positive; }
+.negative { color: $color-negative; }
