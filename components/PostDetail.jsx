@@ -6,29 +6,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 function PostDetail({ post }) {
-  // Eine einzige, rekursive Funktion, um den Rich-Text-Baum zu rendern
   const renderRichTextNode = (node, index) => {
-    // Wenn es sich um einen reinen Text-Knoten handelt, wende Formatierungen an
     if (node.text) {
-      let textElement = <>{node.text}</>; // Beginne mit dem reinen Text
-
-      if (node.bold) {
-        textElement = <b>{textElement}</b>;
-      }
-      if (node.italic) {
-        textElement = <em>{textElement}</em>;
-      }
-      if (node.underline) {
-        textElement = <u>{textElement}</u>;
-      }
-      if (node.code) {
-        textElement = <code>{textElement}</code>;
-      }
-
+      let textElement = <>{node.text}</>;
+      if (node.bold) textElement = <b>{textElement}</b>;
+      if (node.italic) textElement = <em>{textElement}</em>;
+      if (node.underline) textElement = <u>{textElement}</u>;
+      if (node.code) textElement = <code>{textElement}</code>;
       return <React.Fragment key={index}>{textElement}</React.Fragment>;
     }
 
-    // Wenn es sich um einen Element-Knoten handelt, rendere seine Kinder rekursiv
     const children = node.children?.map((childNode, childIndex) =>
       renderRichTextNode(childNode, childIndex)
     );
@@ -48,8 +35,6 @@ function PostDetail({ post }) {
         return <ol key={index}>{children}</ol>;
       case "list-item":
         return <li key={index}>{children}</li>;
-      // list-item-child ist ein Container innerhalb eines list-item,
-      // wir rendern seinen Inhalt direkt.
       case "list-item-child":
         return <>{children}</>;
       case "image":
@@ -63,9 +48,13 @@ function PostDetail({ post }) {
           />
         );
       case "link":
-        return <Link href={node.href} key={index} target={node.openInNewTab ? "_blank" : "_self"}>{children}</Link>;
+        // DIES IST DIE KORREKTUR
+        return (
+          <Link href={node.href} key={index} legacyBehavior passHref>
+            <a target={node.openInNewTab ? "_blank" : "_self"}>{children}</a>
+          </Link>
+        );
       default:
-        // Fallback für unbekannte Typen
         return <React.Fragment key={index}>{children}</React.Fragment>;
     }
   };
@@ -99,7 +88,7 @@ function PostDetail({ post }) {
                 width={880}
                 height={520}
                 style={{ objectFit: "cover" }}
-                priority // Lade das Hauptbild priorisiert
+                priority
               />
             </div>
           )}
