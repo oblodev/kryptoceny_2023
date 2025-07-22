@@ -1,49 +1,57 @@
 import styles from "../styles/Poradnik.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { IoDocumentTextOutline } from "react-icons/io";
-import { Button } from "react-bootstrap";
+import { motion } from "framer-motion";
+
+// This is a much cleaner and more maintainable card structure.
+function PoradnikCard({ post }) {
+  return (
+    <Link href={`/poradnik/${post.node.slug}`} passHref>
+      <a className={styles.poradnikCard}>
+        <div className={styles.cardImage}>
+          <Image
+            src={post.node.poradnikImage.url}
+            layout="fill"
+            objectFit="cover"
+            alt={post.node.title}
+          />
+        </div>
+        <div className={styles.cardContent}>
+          <h3>{post.node.title}</h3>
+        </div>
+      </a>
+    </Link>
+  );
+}
 
 function Poradnik({ poradnikPosts }) {
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.header}>
-          <h2>Poradnik</h2>
-        </div>
-        <div className={styles.poradnikWrap}>
-          {poradnikPosts &&
-            poradnikPosts
-              .slice(-3)
-              .reverse()
-              .map((poradnikPost) => (
-                <Link
-                  href={`/poradnik/${poradnikPost.node.slug}`}
-                  key={poradnikPost.id}
-                >
-                  <div className={styles.poradnikCard}>
-                    <div className={styles.poradnikImg}>
-                      <Image
-                        src={poradnikPost.node.poradnikImage.url}
-                        width="400px"
-                        height="280px"
-                        objectFit="cover"
-                        alt="poradnik-image"
-                      />
-                    </div>
-                    <div className={styles.poradnikHeader}>
-                      <h3>{poradnikPost.node.title}</h3>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-        </div>
+    <section className={styles.container} aria-labelledby="poradnik-heading">
+      <div className={styles.header}>
+        <h2 id="poradnik-heading">Poradnik</h2>
+        <p>Przeczytaj nasze najnowsze artykuły i poszerz swoją wiedzę.</p>
+      </div>
 
-        <Link href="/poradnik/all">
-          <button className={styles.button}>Zobacz więcej</button>
+      <motion.div
+        className={styles.poradnikGrid}
+        whileInView={{ y: [30, 0], opacity: [0, 1] }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        {poradnikPosts &&
+          poradnikPosts
+            .slice(0, 3) // Simpler to take the first 3
+            .map((poradnikPost) => (
+              <PoradnikCard key={poradnikPost.node.id} post={poradnikPost} />
+            ))}
+      </motion.div>
+
+      <div className={styles.buttonContainer}>
+        <Link href="/poradnik/all" passHref>
+          <a className={styles.viewMoreButton}>Zobacz wszystkie artykuły</a>
         </Link>
       </div>
-    </div>
+    </section>
   );
 }
 
