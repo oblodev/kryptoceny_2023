@@ -3,6 +3,7 @@ $color-text: #4a4a4a;
 $color-text-strong: #1a1a1a;
 $color-border: #e0e0e0;
 $color-accent: #5e5ce6;
+$radius: 8px;
 $breakpoint-desktop: 900px;
 
 .container {
@@ -13,39 +14,95 @@ $breakpoint-desktop: 900px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
   border-bottom: 1px solid $color-border;
-  position: relative; // For positioning context
+  position: relative;
 }
 
 .logo {
   cursor: pointer;
-  z-index: 101; // Ensures logo is above the mobile menu overlay
+  z-index: 101;
 }
 
-// ✨ Unified Navigation List
 .navList {
-  display: none; // Hidden on mobile by default
+  display: none;
   list-style: none;
   margin: 0;
   padding: 0;
   gap: 2rem;
   
-  // Desktop styles
   @media (min-width: $breakpoint-desktop) {
     display: flex;
+    align-items: center;
   }
   
-  a {
+  a, span {
     color: $color-text;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    
     &:hover {
       color: $color-accent;
     }
   }
+
+  .chevron {
+    font-size: 0.65rem;
+    opacity: 0.7;
+  }
 }
 
-// ✨ Mobile Menu Toggle Button
+// ✨ Dropdown Functionality
+.dropdown {
+  position: relative;
+   padding-bottom: 1rem;
+  margin-bottom: -1rem;
+
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    top: 120%; // Position below the nav item
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    min-width: 180px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-radius: $radius;
+    border: 1px solid $color-border;
+    padding: 0.5rem;
+    z-index: 10;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, top 0.2s ease;
+
+    li {
+      width: 100%;
+    }
+    
+    a {
+      padding: 0.75rem 1rem;
+      display: block; // Make the link fill the space
+      border-radius: $radius / 1.5;
+      font-size: 0.85rem;
+
+      &:hover {
+        background-color: rgba($color-accent, 0.1);
+      }
+    }
+  }
+
+  &:hover .dropdownContent {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+  }
+}
+
 .menuToggle {
   display: flex;
   align-items: center;
@@ -56,15 +113,13 @@ $breakpoint-desktop: 900px;
   padding: 0.5rem;
   font-size: 1.5rem;
   color: $color-text-strong;
-  z-index: 101; // Ensures toggle is above the mobile menu overlay
+  z-index: 101;
 
-  // Hide on desktop
   @media (min-width: $breakpoint-desktop) {
     display: none;
   }
 }
 
-// ✨ Modern Mobile Menu Overlay
 .mobileMenu {
   position: fixed;
   top: 0;

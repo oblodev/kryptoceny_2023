@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "../styles/Nav.module.scss";
 import Image from "next/image";
 import logo from "../public/images/KryptoCeny.png";
@@ -6,11 +6,18 @@ import Link from "next/link";
 import { VscMenu } from "react-icons/vsc";
 import { HiX } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaChevronDown } from "react-icons/fa";
 
-// Define navigation links once to avoid duplication
+// Updated navLinks structure to support dropdowns
 const navLinks = [
   { href: "/kurskryptowalut", label: "Kurs Kryptowalut" },
-  { href: "/kryptowaluty", label: "Informacje" },
+  {
+    label: "Informacje", // Parent item
+    subLinks: [ // Child items
+      { href: "/kryptokursy", label: "O Kursach" },
+      { href: "/kryptowaluty", label: "O Kryptowalutach" },
+    ],
+  },
   { href: "/onas", label: "O nas" },
   { href: "mailto:kontakt@kryptoceny.pl", label: "Kontakt", isExternal: true },
 ];
@@ -18,8 +25,6 @@ const navLinks = [
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Close menu on route change (useful for mobile)
-  // This is a placeholder; in a real app, you'd use router events.
   const handleLinkClick = () => {
     setIsMenuOpen(false);
   };
@@ -28,15 +33,28 @@ function Nav() {
     <nav className={styles.container}>
       <Link href="/">
         <a className={styles.logo}>
-          <Image src={logo} alt="KryptoCeny.pl logo" width={180} height={48} />
+          <Image src={logo} alt="KryptoCeny.pl logo" width={180} height={40} />
         </a>
       </Link>
 
-      {/* Unified Navigation List */}
+      {/* --- Desktop Navigation --- */}
       <ul className={styles.navList}>
         {navLinks.map((link) => (
-          <li key={link.href}>
-            {link.isExternal ? (
+          <li key={link.label} className={link.subLinks ? styles.dropdown : ""}>
+            {link.subLinks ? (
+              <>
+                <span>
+                  {link.label} <FaChevronDown className={styles.chevron} />
+                </span>
+                <ul className={styles.dropdownContent}>
+                  {link.subLinks.map((subLink) => (
+                    <li key={subLink.href}>
+                      <Link href={subLink.href}>{subLink.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : link.isExternal ? (
               <a href={link.href}>{link.label}</a>
             ) : (
               <Link href={link.href}>{link.label}</Link>
@@ -45,7 +63,7 @@ function Nav() {
         ))}
       </ul>
 
-      {/* Mobile Menu Toggle */}
+      {/* --- Mobile Menu --- */}
       <button
         className={styles.menuToggle}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -54,7 +72,6 @@ function Nav() {
         {isMenuOpen ? <HiX /> : <VscMenu />}
       </button>
 
-      {/* Mobile Menu Overlay with Animation */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -65,13 +82,16 @@ function Nav() {
             transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
           >
             <ul>
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  {link.isExternal ? (
-                    <a href={link.href} onClick={handleLinkClick}>{link.label}</a>
+              {/* Flatten the links for the mobile menu */}
+              {navLinks.flatMap((link) =>
+                link.subLinks ? link.subLinks : link
+              ).map((item) => (
+                <li key={item.href || item.label}>
+                  {item.isExternal ? (
+                    <a href={item.href} onClick={handleLinkClick}>{item.label}</a>
                   ) : (
-                    <Link href={link.href}>
-                      <a onClick={handleLinkClick}>{link.label}</a>
+                    <Link href={item.href}>
+                      <a onClick={handleLinkClick}>{item.label}</a>
                     </Link>
                   )}
                 </li>
