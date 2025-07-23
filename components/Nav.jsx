@@ -33,7 +33,7 @@ function Nav() {
     <nav className={styles.container}>
       <Link href="/">
         <a className={styles.logo}>
-          <Image src={logo} alt="KryptoCeny.pl logo" width={180} height={40} />
+          <Image src={logo} alt="KryptoCeny.pl logo" width={180} height={52} />
         </a>
       </Link>
 
