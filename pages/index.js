@@ -70,7 +70,6 @@ export default function Home({
       <Header />
       <Heading stats={stats} />
       <Cryptos cryptoData={cryptoData} />
-      <Featured featuredPost={featuredPost} />
       <MoreFeatured posts={posts} />
       <Stats stats={stats} />
       <News newsData={newsData} />

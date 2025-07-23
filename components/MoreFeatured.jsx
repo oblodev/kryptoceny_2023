@@ -2,6 +2,7 @@ import styles from "../styles/MoreFeatured.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import BitpandaBanner from "../components/BitpandaBanner";
+import { FaStar } from "react-icons/fa";
 
 // A cleaner, self-contained card component
 function ArticleCard({ post }) {
@@ -43,6 +44,7 @@ function MoreFeatured({ posts }) {
   return (
     <section className={styles.container}>
       <header className={styles.header}>
+        <FaStar className={styles.icon} />
         <h2>Polecane Artykuły</h2>
       </header>
       <div className={styles.articlesGrid}>
