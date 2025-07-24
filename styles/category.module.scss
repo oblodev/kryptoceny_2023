@@ -1,95 +1,96 @@
+// Define a cohesive design system
+$color-text: #4a4a4a;
+$color-text-light: #6c757d;
+$color-text-strong: #1a1a1a;
+$color-border: #e0e0e0;
+$radius: 16px;
+
 .container {
-  background: #f2f5f8;
+  max-width: 1280px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
 
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    max-width: 1080px;
-    margin: auto;
-
-    .header {
-      margin-top: 4rem;
-      margin-bottom: 2rem;
-
-      @media screen and (max-width: 450px) {
-        padding: 1rem;
-      }
-
-      @media screen and (max-width: 900px) and (min-width: 451px) {
-        padding: 1rem;
-      }
-    }
-
-    .postWrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 1rem;
-      margin-bottom: 4rem;
-
-      @media screen and (max-width: 450px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.75rem;
-      }
-
-      @media screen and (max-width: 900px) and (min-width: 451px) {
-        grid-template-columns: 1fr 1fr;
-        padding: 1rem;
-      }
-
-      @media screen and (min-width: 901px) and (max-width: 1200px) {
-        width: 100%;
-        padding: 0.5rem;
-      }
-
-      .postCard {
-        background: #f2f5f8;
-        border-radius: 12px;
-        cursor: pointer;
-        margin-bottom: 2rem;
-        border: 7px solid #fff;
-        transition: 0.3s all ease-in-out;
-        box-shadow: 0 0 25px 3px rgb(0 0 0 / 8%);
-        position: relative;
-
-        img {
-          width: 100%;
-          height: 224px;
-          margin: auto;
-        }
-
-        h2 {
-          padding: 0.45rem;
-        }
-
-        p {
-          padding: 0.45rem;
-          font-size: 0.95rem;
-          line-height: 1.5;
-        }
-      }
-
-      .postCard:hover {
-        border: 7px solid #5277ff;
-      }
-
-      .postCard:hover h2 {
-        color: #5277ff;
-      }
-
-      .postText {
-        margin-bottom: 4rem;
-      }
-
-      .postInfo {
-        margin-top: 4rem;
-        bottom: 0;
-        position: absolute;
-        p {
-          font-size: 0.8rem;
-        }
-      }
-    }
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: $color-text-strong;
+    margin-bottom: 0.5rem;
   }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    color: $color-text;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+// ✨ Fully responsive grid with auto-fitting columns
+.postsGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.postCardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+// ✨ Modern article card design
+.postCard {
+  background: #ffffff;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.cardImage {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; // Creates a 16:9 aspect ratio
+}
+
+.cardContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; // Allows the footer to be pushed to the bottom
+  
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $color-text-strong;
+    margin: 0 0 0.75rem;
+    line-height: 1.4;
+  }
+  
+  .excerpt {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: $color-text;
+    margin: 0;
+    flex-grow: 1; // Pushes the footer down
+  }
+}
+
+.cardFooter {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: $color-text-light;
+  font-weight: 500;
 }
