@@ -71,9 +71,8 @@ export default CategoryPost;
 
 export async function getStaticProps({ params }) {
   const posts = (await getCategoryPost(params.slug)) || [];
-  // Reverse here to show newest first
   return {
-    props: { posts: posts.reverse() },
+    props: { posts: posts },
   };
 }
 
