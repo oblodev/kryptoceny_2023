@@ -15,6 +15,7 @@ import Analytics from "analytics";
 import googleAnalytics from "@analytics/google-analytics";
 import PriceTicker from "../components/PriceTicker";
 import Heading from "../components/Heading";
+import Script from "next/script";
 
 export default function Home({
   stats,
@@ -65,13 +66,7 @@ export default function Home({
           name="google-site-verification"
           content="WotMEVkt3D6C6zrVbDo1LCqAO6gvsDcPbJH1xfBa-TQ"
         />#
-        <script type="text/javascript">
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "sm5oayz5x8");
-        </script>
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
@@ -83,6 +78,18 @@ export default function Home({
       <Poradnik poradnikPosts={poradnikPosts} />
       <Info />
       <PriceTicker />
+            <Script
+        id="clarity"
+        strategy="afterInteractive"
+      >
+        {`
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "sm5oayz5x8");
+        `}
+      </Script>
     </div>
   );
 }
