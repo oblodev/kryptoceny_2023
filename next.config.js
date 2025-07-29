@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your original settings
   reactStrictMode: true,
   swcMinify: true,
 
-  // Your images configuration, all in one place
   images: {
-    // I've removed the duplicate domain names for you
+    // Only the domains you actually use
     domains: [
       "assets.coingecko.com",
       "media.graphassets.com",
@@ -18,11 +16,40 @@ const nextConfig = {
       "antyweb.pl",
       "m.natemat.pl",
       "coin-images.coingecko.com",
-      'eu-central-1.graphassets.com',
+      "eu-central-1.graphassets.com",
     ],
-    // Re-adding the settings to allow SVGs securely
+
+    // Secure SVG support
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+
+    // ——————————————
+    // CACHE & TRANSFORMATION TUNING
+    // ——————————————
+
+    // Keep each transformed image in cache for 31 days
+    minimumCacheTTL: 2678400,
+
+    // Only output WebP (removes AVIF duplicates)
+    formats: ["image/webp"],
+
+    // Restrict to the widths your UI actually uses
+    deviceSizes: [320, 640, 1024],    // for responsive <Image> breakpoints
+    imageSizes: [16, 32, 48],         // for icon‑sized <Image> uses
+
+    // If you want even tighter control than domains:
+    // remotePatterns: [
+    //   {
+    //     protocol: "https",
+    //     hostname: "assets.coingecko.com",
+    //     port: "",
+    //     pathname: "/**",
+    //   },
+    //   // …add only the patterns you truly need
+    // ],
+
+    // For any static‐imported images (in /public or imported via ES modules),
+    // Next.js will automatically serve them with long‐term caching.
   },
 };
 
