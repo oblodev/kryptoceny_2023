@@ -52,6 +52,7 @@ function Cryptos({ cryptoData }) {
                         alt={`${crypto.name} logo`}
                         width={24}
                         height={24}
+                        unoptimized
                       />
                       <Link href={`/kryptowaluta/${crypto.id}`}>
                         {crypto.name}

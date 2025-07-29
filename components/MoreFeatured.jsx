@@ -14,10 +14,15 @@ function ArticleCard({ post }) {
         <article>
           <div className={styles.cardImage}>
             <Image
-              src={featuredImage.url}
-              alt={title || "Post image"}
+              src={post.node.featuredImage.url}
               layout="fill"
               objectFit="cover"
+              alt={title}
+              // exactly one quality variant
+              quality={75}
+              // exactly three width variants
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              onLoadingComplete={() => setLoading(false)}
             />
           </div>
           <div className={styles.cardContent}>
