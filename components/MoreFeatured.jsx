@@ -1,3 +1,4 @@
+import { useState } from 'react'; // <--- 1. IMPORT useState
 import styles from "../styles/MoreFeatured.module.scss";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,21 +8,24 @@ import { FaStar } from "react-icons/fa";
 // A cleaner, self-contained card component
 function ArticleCard({ post }) {
   const { title, slug, featuredImage, categories } = post.node;
+  // 2. INITIALIZE the state inside the component
+  const [loading, setLoading] = useState(true);
 
   return (
     <Link href={`/post/${slug}`} passHref>
       <a className={styles.articleCard} aria-label={title}>
         <article>
           <div className={styles.cardImage}>
+            {/* You can optionally add a loading skeleton here based on the 'loading' state */}
+            {loading && <div className={styles.imagePlaceholder} />}
             <Image
               src={post.node.featuredImage.url}
               layout="fill"
               objectFit="cover"
               alt={title}
-              // exactly one quality variant
               quality={75}
-              // exactly three width variants
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              // 3. THIS WILL NOW WORK
               onLoadingComplete={() => setLoading(false)}
             />
           </div>
@@ -37,6 +41,7 @@ function ArticleCard({ post }) {
   );
 }
 
+// No changes needed in the MoreFeatured component
 function MoreFeatured({ posts }) {
   if (!posts || posts.length === 0) {
     return (
@@ -54,8 +59,8 @@ function MoreFeatured({ posts }) {
       </header>
       <div className={styles.articlesGrid}>
         {posts
-          .slice(-9) // Use -9 to get the LAST 9 items (the newest)
-          .reverse() // Then reverse them to show the absolute newest first
+          .slice(-9)
+          .reverse()
           .map((post) => (
             <ArticleCard post={post} key={post.node.id} />
           ))}
