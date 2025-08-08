@@ -7,3 +7,15 @@ export default async function handler(req, res) {
 
   res.json(data);
 }
+
+
+export default async function handler(req, res) {
+  try {
+    const { slug } = req.query;
+    await res.revalidate('/');                 // homepage
+    if (slug) await res.revalidate(`/post/${slug}`); // post page
+    return res.json({ revalidated: true });
+  } catch (e) {
+    return res.status(500).json({ revalidated: false, error: String(e) });
+  }
+}

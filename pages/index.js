@@ -129,6 +129,6 @@ export async function getStaticProps() {
       cryptoData: data,
       newsData,
     },
-    revalidate: 30,
+    revalidate: 60,
   };
 }
