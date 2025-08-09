@@ -1,13 +1,25 @@
 // Define a cohesive, minimal color palette
-$color-text: #4a4a4a; // A softer dark gray for body text
+$color-text: #4a4a4a;
 $color-text-strong: #000000;
 $color-border: #e0e0e0;
-$color-positive: #00b159; // A slightly more modern green
-$color-negative: #d11141; // A strong but not overly bright red
+$color-positive: #00b159;
+$color-negative: #d11141;
+
+// --- Keyframes for Entrance Animation ---
+// This will make the container fade in and slide up smoothly on load.
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .container {
   max-width: 650px;
-  // Negative top margin pulls the card up to nestle cleanly under the header's border
   margin: -1.5rem auto 0;
   padding: 1rem 1.5rem;
   background-color: #ffffff;
@@ -18,6 +30,22 @@ $color-negative: #d11141; // A strong but not overly bright red
   font-size: 0.95rem;
   color: $color-text;
   line-height: 1.7;
+
+  // --- ✨ Stunning Effect Additions ---
+
+  // 1. Apply the entrance animation.
+  // 'ease-out' makes the end of the animation smooth.
+  // 'forwards' ensures it stays in its final state.
+  animation: fadeInUp 0.8s ease-out forwards;
+
+  // 2. Add a smooth transition for the hover effect.
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  // 3. Add an interactive hover effect to make the card "lift".
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  }
 }
 
 // Styles the market cap value to make it stand out
@@ -35,13 +63,12 @@ $color-negative: #d11141; // A strong but not overly bright red
   border-radius: 7px;
   font-weight: 700;
   font-size: 0.9rem;
-  line-height: 1.4; // Ensure consistent line height within the pill
+  line-height: 1.4;
 }
 
 // Pill-specific background and text colors
 .positive {
   color: $color-positive;
-  // Use a light, transparent version of the main color for the background
   background-color: rgba($color-positive, 0.1);
 }
 
