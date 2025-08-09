@@ -54,11 +54,11 @@ export default PostDetails;
 
 export async function getStaticProps({ params }) {
   const data = await getPostDetails(params.slug);
+  if (!data) return { notFound: true };
 
   return {
-    props: {
-      data,
-    },
+    props: { data },
+    revalidate: 60, // refresh this post page at most every 60s
   };
 }
 

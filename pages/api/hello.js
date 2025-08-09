@@ -1,11 +1,39 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default async function handler(req, res) {
-  const data = await fetch(
-    `https://newsapi.org/v2/everything?q=krypto&language=pl&from=2023-01-17&sortBy=publishedAt&apiKey=802bc8322889437a80f9be9198939678`
-  ).then((response) => response.json());
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Use POST" });
+  }
+  if (
+    process.env.REVALIDATE_SECRET &&
+    req.query.secret !== process.env.REVALIDATE_SECRET
+  ) {
+    return res.status(401).json({ message: "Invalid token" });
+  }
 
-  res.json(data);
+  try {
+    const { slug, paths = [] } = req.body || {};
+
+    // homepage
+    await res.revalidate("/");
+
+    // post detail (if provided)
+    if (slug) {
+      await res.revalidate(`/post/${slug}`);
+    }
+
+    // any extra paths you want to refresh
+    if (Array.isArray(paths)) {
+      for (const p of paths) {
+        await res.revalidate(p);
+      }
+    }
+
+    return res.json({ revalidated: true });
+  } catch (e) {
+    return res.status(500).json({ revalidated: false, error: String(e) });
+  }
 }
+
 
 

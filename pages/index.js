@@ -74,7 +74,6 @@ export default function Home({
       <Cryptos cryptoData={cryptoData} />
       <MoreFeatured posts={posts} />
       <Stats stats={stats} />
-      <News newsData={newsData} />
       <Poradnik poradnikPosts={poradnikPosts} />
       <Info />
       <PriceTicker />

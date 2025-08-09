@@ -58,10 +58,7 @@ function MoreFeatured({ posts }) {
         <h2>Polecane Artykuły</h2>
       </header>
       <div className={styles.articlesGrid}>
-        {posts
-          .slice(-9)
-          .reverse()
-          .map((post) => (
+        {posts.slice(0, 9).map((post) => (
             <ArticleCard post={post} key={post.node.id} />
           ))}
       </div>
