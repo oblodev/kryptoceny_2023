@@ -37,7 +37,7 @@ function PoradnikDetail({ poradnik }) {
       case "list-item":
         return <li key={index}>{children}</li>;
       case "list-item-child":
-        return <>{children}</>;
+         return <React.Fragment key={index}>{children}</React.Fragment>;
       case "image":
         return (
           <Image
