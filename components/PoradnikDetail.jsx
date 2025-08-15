@@ -6,62 +6,60 @@ import PriceWidget from "./PriceWidget";
 import React from "react";
 
 function PoradnikDetail({ poradnik }) {
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
-
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>;
-      }
-
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>;
-      }
-
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>;
-      }
+  // ++ ADDED the robust rich text renderer from PostDetail.js
+  const renderRichTextNode = (node, index) => {
+    if (node.text) {
+      let textElement = <>{node.text}</>;
+      if (node.bold) textElement = <b>{textElement}</b>;
+      if (node.italic) textElement = <em>{textElement}</em>;
+      if (node.underline) textElement = <u>{textElement}</u>;
+      if (node.code) textElement = <code>{textElement}</code>;
+      return <React.Fragment key={index}>{textElement}</React.Fragment>;
     }
 
-    switch (type) {
+    const children = node.children?.map((childNode, childIndex) =>
+      renderRichTextNode(childNode, childIndex)
+    );
+
+    switch (node.type) {
+      case "heading-two":
+        return <h2 key={index}>{children}</h2>;
       case "heading-three":
-        return (
-          <h3 key={index}>
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h3>
-        );
-      case "paragraph":
-        return (
-          <p key={index}>
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </p>
-        );
+        return <h3 key={index}>{children}</h3>;
       case "heading-four":
-        return (
-          <h4 key={index}>
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h4>
-        );
+        return <h4 key={index}>{children}</h4>;
+      case "paragraph":
+        return <p key={index}>{children}</p>;
+      case "bulleted-list":
+        return <ul key={index}>{children}</ul>;
+      case "numbered-list":
+        return <ol key={index}>{children}</ol>;
+      case "list-item":
+        return <li key={index}>{children}</li>;
+      case "list-item-child":
+        return <>{children}</>;
       case "image":
         return (
           <Image
             key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
+            alt={node.title || "Bild aus Inhalt"}
+            height={node.height}
+            width={node.width}
+            src={node.src}
           />
         );
+      case "link":
+        return (
+          <Link href={node.href} key={index} legacyBehavior passHref>
+            <a target={node.openInNewTab ? "_blank" : "_self"}>{children}</a>
+          </Link>
+        );
       default:
-        return modifiedText;
+        return <React.Fragment key={index}>{children}</React.Fragment>;
     }
   };
+
+  // -- REMOVED the old getContentFragment function
 
   return (
     <div className={styles.wrapper}>
@@ -79,33 +77,33 @@ function PoradnikDetail({ poradnik }) {
       </div>
       <div className={styles.postWrap}>
         <div className={styles.post}>
-          <div
-            className={styles.featuredImage}
-            style={{
-              border: "8px solid #fff",
-              borderRadius: "16px",
-              objectFit: "cover",
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src={poradnik.poradnikImage.url}
-              alt="post-image"
-              width="880px"
-              height="520px"
-              objectFit="cover"
-            />
-          </div>
+          {poradnik?.poradnikImage?.url && ( // Added optional chaining for safety
+            <div
+              className={styles.featuredImage}
+              style={{
+                border: "8px solid #fff",
+                borderRadius: "16px",
+                objectFit: "cover",
+                overflow: "hidden",
+              }}
+            >
+              <Image
+                src={poradnik.poradnikImage.url}
+                alt={poradnik.title || "post-image"} // Used poradnik title for better alt text
+                width={880}
+                height={520}
+                style={{ objectFit: "cover" }}
+                priority // Added priority prop since it's likely LCP
+              />
+            </div>
+          )}
 
           <p className={styles.excerpt}>{poradnik.excerpt}</p>
           <div className={styles.postText}>
-            {poradnik.content.raw.children.map((typeObj, index) => {
-              const children = typeObj.children.map((item, itemIndex) =>
-                getContentFragment(itemIndex, item.text, item)
-              );
-
-              return getContentFragment(index, children, typeObj, typeObj.type);
-            })}
+            {/* ++ UPDATED this mapping logic to be simpler and more powerful */}
+            {poradnik?.content?.raw?.children.map((node, index) =>
+              renderRichTextNode(node, index)
+            )}
           </div>
         </div>
         <div className={styles.widgets}>
