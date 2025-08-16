@@ -4,9 +4,10 @@ const graphqlAPI =
   "https://api-eu-central-1.hygraph.com/v2/cl76l80og092e01ukc84h18n2/master";
 
 export const getPoradnikPosts = async () => {
+  // The only change is adding orderBy: date_DESC here
   const query = gql`
     query MyQuery {
-      poradniksConnection {
+      poradniksConnection(orderBy: date_DESC) {
         edges {
           cursor
           node {
@@ -44,6 +45,7 @@ export const getPoradnikPosts = async () => {
 
   return result.poradniksConnection.edges;
 };
+
 
 export const getPoradnikDetails = async (slug) => {
   const query = gql`
