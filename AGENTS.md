@@ -14,3 +14,5 @@ The project currently relies on linting and manual QA. When adding features, pai
 
 ## Commit & Pull Request Guidelines
 Recent commits favor short, lowercase summaries such as `heading update js`. Keep messages under 60 characters, use the imperative mood, and mention the affected feature (`poradnik detail fix`). Pull requests should link related issues, describe data sources touched (e.g., APIs under `services/crypto.js`), and include screenshots or GIFs for UI updates plus reproduction steps for bug fixes. Confirm lint passes in the PR description.
+
+Ask before you want to edit files

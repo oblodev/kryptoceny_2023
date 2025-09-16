@@ -11,37 +11,80 @@
     text-align: center;
   }
 
+  .notice {
+    margin-top: 1.5rem;
+    max-width: 720px;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    background: #fff4e5;
+    border: 1px solid #ffbf69;
+    color: #a35400;
+    text-align: center;
+    font-weight: 500;
+  }
+
   .searchContainer {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-  
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(82, 113, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 6px 20px rgba(41, 47, 89, 0.12);
+
     .searchLabel {
       font-weight: 600;
-      font-size: 1.1rem;
-      color: #333;
+      font-size: 1.05rem;
+      color: #2a2a44;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
-  
-    .search {
-      padding: 0.5rem;
-      width: 280px;
-      font-weight: 700;
+
+    .searchWrapper {
+      width: min(360px, 90vw);
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(82, 113, 255, 0.35);
+      box-shadow: 0 10px 24px rgba(82, 113, 255, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus-within {
+        box-shadow: 0 12px 28px rgba(82, 113, 255, 0.25);
+        transform: translateY(-2px);
+      }
+    }
+
+    .searchIcon {
+      position: absolute;
+      left: 1rem;
+      font-size: 1.3rem;
       color: #5271ff;
-      border: 2px solid #5271ff;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-  
+    }
+
+    .search {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.75rem;
+      font-weight: 600;
+      color: #1f2a4d;
+      border: none;
+      background: transparent;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+
       &:focus {
         outline: none;
-        border-color: #0056e6;
-        box-shadow: 0 0 6px rgba(82, 113, 255, 0.5);
+        color: #0f1c3f;
       }
-  
+
       &::placeholder {
         font-style: italic;
-        color: #a0a0a0;
+        color: #8c92b0;
       }
     }
   
@@ -71,13 +114,15 @@
   }
 
   .cryptos {
+    width: 100%;
     margin-top: 4rem;
     margin-bottom: 4rem;
+    overflow-x: auto;
   }
 }
 
 .kryptoBorder {
-  border-bottom: 2px solid #5271ff;
+  border-bottom: 2px solid rgba(82, 113, 255, 0.25);
   @media screen and (max-width: 420px) {
     font-size: 0.8rem;
   }
@@ -92,8 +137,9 @@
 }
 
 .kryptoBorder2 {
-  border-bottom: 1px solid #5271ff;
+  border-bottom: 1px solid rgba(82, 113, 255, 0.15);
   font-size: 1.05rem;
+  color: #273057;
   font-weight: 400;
 
   @media screen and (max-width: 420px) {
@@ -106,37 +152,77 @@
 }
 
 .kryptoTable {
-  width: 1180px;
+  width: min(1180px, 100%);
+  margin: 0 auto;
   text-align: center;
-  padding: 2rem 1rem;
-  background: #fff;
-  border-radius: 40px;
-  border: 1px solid #5271ff;
-
-  box-shadow: 0 0 25px 3px rgb(0 0 0 / 8%);
+  padding: 2rem 1.5rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f8ff 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(82, 113, 255, 0.2);
+  box-shadow: 0 12px 32px rgba(40, 56, 136, 0.1);
   font-family: "Poppins", sans-serif;
+  border-collapse: collapse;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+
+  th,
+  td {
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid rgba(82, 113, 255, 0.12);
+  }
+
+  thead tr {
+    background: rgba(82, 113, 255, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 0.85rem;
+    color: #2a2a44;
+  }
+
+  tbody tr {
+    background: #ffffff;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  tbody tr:nth-child(even) {
+    background: rgba(82, 113, 255, 0.05);
+  }
+
+  tbody tr:hover {
+    background: rgba(82, 113, 255, 0.12);
+    transform: translateY(-1px);
+  }
+
+  &:hover {
+    box-shadow: 0 14px 36px rgba(40, 56, 136, 0.12);
+  }
 
   @media screen and (max-width: 420px) {
     width: 100%;
-    padding: 1rem 0.5rem;
+    padding: 1.5rem 0.75rem;
     margin: 0.2rem 0.05rem;
+
+    th,
+    td {
+      padding: 0.75rem 0.5rem;
+    }
   }
 
   @media screen and (max-width: 900px) and (min-width: 421px) {
     width: 100%;
-    padding: 1rem 1rem;
+    padding: 1.5rem 1rem;
     margin: 0.2rem 0.2rem;
   }
 
   @media screen and (min-width: 901px) and (max-width: 1250px) {
     width: 100%;
-    padding: 1rem 1rem;
+    padding: 1.75rem 1.25rem;
     margin: 1rem 1.4rem;
   }
 
   .kryptoHeader {
-    border-bottom: 2px solid #5271ff;
-    background-color: red;
+    border-bottom: 2px solid rgba(82, 113, 255, 0.2);
+    background-color: transparent;
   }
 
   .kryptoHead {
@@ -169,6 +255,7 @@
     font-weight: 700;
     display: flex;
     align-items: center;
+    gap: 0.75rem;
 
     a {
       transition: 0.2s all ease-in-out;
@@ -187,8 +274,8 @@
     }
 
     .kryptoImage {
-      margin-right: 0.5rem;
-      margin-left: 2rem;
+      margin-right: 0;
+      margin-left: 1rem;
 
       @media screen and (max-width: 420px) {
         margin-left: 0.5rem;
@@ -244,4 +331,20 @@
     color: #fff; // White text for active page
     border-color: #007bff;
   }
+}
+
+
+.positive {
+  color: #168a4a;
+  font-weight: 600;
+}
+
+.negative {
+  color: #d64545;
+  font-weight: 600;
+}
+
+.neutral {
+  color: #546074;
+  font-weight: 600;
 }
