@@ -7,7 +7,7 @@ export const getPoradnikPosts = async () => {
   // The only change is adding orderBy: date_DESC here
   const query = gql`
     query MyQuery {
-      poradniksConnection(orderBy: date_DESC) {
+      poradniksConnection(first: 100, orderBy: date_DESC) {
         edges {
           cursor
           node {
