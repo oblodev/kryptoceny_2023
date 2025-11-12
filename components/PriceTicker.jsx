@@ -29,6 +29,7 @@ function PriceTicker() {
                     width="24px"
                     height="24px"
                     style={{ marginRight: "8px" }}
+                    unoptimized
                   />
                   <div className={styles.name}>{crypto.name}:</div>
                   <div

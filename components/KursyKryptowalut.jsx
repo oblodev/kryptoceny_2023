@@ -139,6 +139,7 @@ function KursyKryptowalut({ cryptoData, isRateLimited }) {
                           height="24px"
                           style={{ marginRight: "8px" }}
                           loading="lazy"
+                          unoptimized
                         />
                       </div>{" "}
                       <Link href={`/kryptowaluta/${crypto.id}`}>

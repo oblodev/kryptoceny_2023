@@ -52,6 +52,7 @@ function Featured({ featuredPost }) {
                 objectFit="cover"
                 layout="fill"
                 alt={post.title || "Post image"}
+                unoptimized
               />
             </div>
             <div className={styles.feature}>
